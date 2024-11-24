@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlifsiakmhyc6"]
+
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="1_fb3ue"]
+
+[node name="three_cells" type="Node2D"]
+position = Vector2(-2, 2)
+
+[node name="Planet" parent="." instance=ExtResource("1_fb3ue")]
+position = Vector2(234, 245)
+ship_speed_production = 0.5
+max_ships = 5
+
+[node name="Planet2" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("1_fb3ue")]
+position = Vector2(887, 175)
+ship_speed_production = 0.5
+max_ships = 5
+neighbors = [NodePath("../Planet3"), NodePath("../Planet")]
+
+[node name="Planet3" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("1_fb3ue")]
+position = Vector2(607, 532)
+max_ships = 2
+neighbors = [NodePath("../Planet")]
