@@ -4,7 +4,7 @@ class_name Planet
 
 @export var ship_speed_production = 1.0 # nombre de cell par sec
 var current_ship_production = 0
-var number_of_ships = 0
+@export var number_of_ships = 0
 
 @export var max_ships = 10
 
@@ -14,7 +14,7 @@ var road_set = false
 
 var roads : Array[Road]
 
-enum {UNIT_NEUTRAL, UNIT_ENEMY, UNIT_ALLY}
+@export var alliance : PlanetType.Alliance
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +26,9 @@ func _ready() -> void:
 			roads.back().add_to_group("Roads")
 			add_sibling.call_deferred(roads.back())
 			print("yooooooo " + str(roads.size()))
+	
+	
+	modulate = PlanetType.get_alliance_color(alliance)
 	pass # Replace with function body.
 
 
@@ -49,7 +52,7 @@ func produce_ships(delta: float) -> void:
 
 func animate()->void :
 	$AnimatedSprite2D.play()
-	#scale = Vector2(1 + 0.2 * sqrt(float(number_of_ships + current_ship_production) / float(max_ships)), 1 + 0.2 * sqrt(float(number_of_ships + current_ship_production) / float(max_ships)))
+	scale = Vector2(1 + 0.1* sqrt(float(number_of_ships + current_ship_production) / float(max_ships)), 1 + 0.1* sqrt(float(number_of_ships + current_ship_production) / float(max_ships)))
 
 func update_text() -> void:
 	$TextEdit.text = str(number_of_ships) + " / " + str(max_ships)
@@ -62,3 +65,11 @@ func addShip() -> bool:
 		number_of_ships +=1
 		return true
 	return false
+	
+func hit(aAlliance : PlanetType.Alliance) -> void:
+	number_of_ships -= 1
+	if(number_of_ships < 0):
+		self.alliance = aAlliance
+		self.modulate = PlanetType.get_alliance_color(aAlliance)
+		number_of_ships = 1
+	
