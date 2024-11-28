@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func produce_ships(delta: float) -> void:
-	if(number_of_ships < max_ships) :
+	if(number_of_ships <= max_ships) :
 		current_ship_production += delta * ship_speed_production
 		if(current_ship_production >= 1):
 			number_of_ships += 1

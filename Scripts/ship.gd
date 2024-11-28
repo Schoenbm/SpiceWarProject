@@ -37,12 +37,12 @@ func _on_area_entered(area: Area2D) -> void:
 			sendingPlanet = destinationPlanet
 			destinationPlanet = temp_planet
 			direction = -1 * direction
-	elif(area == destinationPlanet) : #Enemy planet
+	elif(area == destinationPlanet) : #Enemy planet 
 		destinationPlanet.hit(alliance)
 		destroy()
 	elif(area.has_method("create_ship") && area.alliance != self.alliance): # vaisseau enemi
 		destroy()
 		
 func destroy() -> void :
-		get_parent().remove_ship()
+		get_parent().remove_ship_by_alliance(alliance)
 		queue_free()

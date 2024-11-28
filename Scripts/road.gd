@@ -4,7 +4,8 @@ extends Line2D
 
 class_name Road
 @export var max_capacity = 3
-var current_ships_number = 0
+var current_ships_number_alliance1 = 0
+var current_ships_number_alliance2 = 0
 
 @export var planet1 : Planet
 @export var planet2 : Planet
@@ -30,8 +31,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func send_ship(sender : Planet) -> void:
-	if(current_ships_number < max_capacity):
-		current_ships_number += 1
+	if(check_road_full_by_alliance(sender.alliance)):
+		incr_ships_number_by_alliance(sender.alliance)
 		sender.number_of_ships -= 1
 		var destination : Planet
 		if(sender == planet1):
@@ -39,8 +40,32 @@ func send_ship(sender : Planet) -> void:
 		else:
 			destination = planet1
 		var new_ship = Ship.create_ship(destination,sender)
-		new_ship.name = "ship" + str(current_ships_number)
+		new_ship.name = "ship" + PlanetType.get_alliance_name(sender.alliance) + str(get_current_ships_number_by_alliance(sender.alliance)) #TODO EURK
 		add_child(new_ship)
 
-func remove_ship() :
-	current_ships_number -= 1
+
+#TODO IMRPOVE ?
+func remove_ship_by_alliance(alliance: PlanetType.Alliance) -> void:
+	if(alliance == planet1.alliance):
+		current_ships_number_alliance1 -= 1
+	else:
+		current_ships_number_alliance2 -= 1
+		
+	
+func incr_ships_number_by_alliance(alliance: PlanetType.Alliance) -> void:
+	if(alliance == planet1.alliance):
+		current_ships_number_alliance1 += 1
+	else:
+		current_ships_number_alliance2 += 1
+		
+func check_road_full_by_alliance(alliance: PlanetType.Alliance) -> bool:
+	if(alliance == planet1.alliance):
+		return current_ships_number_alliance1 <= max_capacity
+	else:
+		return current_ships_number_alliance2 <= max_capacity
+		
+func get_current_ships_number_by_alliance(alliance: PlanetType.Alliance) -> int:
+	if(alliance == planet1.alliance):
+		return current_ships_number_alliance1
+	else:
+		return current_ships_number_alliance2
