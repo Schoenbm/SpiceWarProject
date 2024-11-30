@@ -14,3 +14,12 @@ config/name="SpiceWar"
 run/main_scene="res://Scenes/three_cells.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=411
+window/size/viewport_height=731
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true

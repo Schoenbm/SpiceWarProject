@@ -21,7 +21,6 @@ static func create_ship(destination : Planet, sender : Planet) -> Ship:
 	
 func _process(delta: float) -> void:
 	translate(delta * direction * speed)
-	$AnimatedSprite2D.play()
 	
 func _ready() -> void:
 	global_position = sendingPlanet.global_position

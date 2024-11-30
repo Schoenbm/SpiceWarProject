@@ -16,6 +16,10 @@ var roads : Array[Road]
 
 @export var alliance : PlanetType.Alliance
 
+var player : Player
+
+var current_overlay : OverlayPlanet
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#TODO Find Neighbors
@@ -51,7 +55,6 @@ func produce_ships(delta: float) -> void:
 		current_ship_production = 0
 
 func animate()->void :
-	$AnimatedSprite2D.play()
 	scale = Vector2(1 + 0.1* sqrt(float(number_of_ships + current_ship_production) / float(max_ships)), 1 + 0.1* sqrt(float(number_of_ships + current_ship_production) / float(max_ships)))
 
 func update_text() -> void:
@@ -72,4 +75,15 @@ func hit(aAlliance : PlanetType.Alliance) -> void:
 		self.alliance = aAlliance
 		self.modulate = PlanetType.get_alliance_color(aAlliance)
 		number_of_ships = 1
-	
+
+func enableOverlay(bol):
+	if(bol):
+		var overlay = OverlayPlanet.create_overlay(player)
+		current_overlay = overlay
+		add_child(overlay)
+	else:
+		current_overlay.queuefree()
+
+
+func setPlayer(aPlayer):
+	player = aPlayer

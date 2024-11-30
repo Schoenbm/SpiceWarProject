@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlifsiakmhyc6"]
+
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="1_fb3ue"]
+[ext_resource type="Texture2D" uid="uid://b7pxw317gv8em" path="res://Assets/Sprites/background4.png" id="2_ivb8s"]
+[ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="3_tx5oo"]
+
+[node name="three_cells" type="Node2D"]
+position = Vector2(-2, 2)
+
+[node name="Planet" parent="." instance=ExtResource("1_fb3ue")]
+position = Vector2(668, 696)
+ship_speed_production = 0.0
+number_of_ships = 3
+max_ships = 5
+alliance = 4
+
+[node name="Planet2" parent="." node_paths=PackedStringArray("neighbors") instance=ExtResource("1_fb3ue")]
+position = Vector2(796, 547)
+ship_speed_production = 0.5
+max_ships = 5
+neighbors = [NodePath("../Planet"), NodePath("../Planet3")]
+
+[node name="Planet3" parent="." instance=ExtResource("1_fb3ue")]
+position = Vector2(877, 344)
+ship_speed_production = 0.5
+max_ships = 2
+
+[node name="Planet4" parent="." instance=ExtResource("1_fb3ue")]
+position = Vector2(657, 388)
+
+[node name="Background4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(736, 785)
+scale = Vector2(0.996582, 0.735495)
+texture = ExtResource("2_ivb8s")
+
+[node name="Player" parent="." instance=ExtResource("3_tx5oo")]
