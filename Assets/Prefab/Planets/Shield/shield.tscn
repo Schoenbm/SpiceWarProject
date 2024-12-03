@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://clr7o1ws1wp3t"]
+
+[ext_resource type="Shader" path="res://Assets/Material/shield.gdshader" id="1_mewdh"]
+[ext_resource type="Texture2D" uid="uid://cdhjc40snegk6" path="res://Assets/SpritesKrita/shield.png" id="2_3csj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlug4"]
+shader = ExtResource("1_mewdh")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Shield" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_vlug4")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_3csj0")
