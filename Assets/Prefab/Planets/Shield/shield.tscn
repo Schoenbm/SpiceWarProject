@@ -1,14 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://clr7o1ws1wp3t"]
+[gd_scene load_steps=7 format=3 uid="uid://cin8seu8bis48"]
 
-[ext_resource type="Shader" path="res://Assets/Material/shield.gdshader" id="1_mewdh"]
-[ext_resource type="Texture2D" uid="uid://cdhjc40snegk6" path="res://Assets/SpritesKrita/shield.png" id="2_3csj0"]
+[ext_resource type="Shader" path="res://Assets/Material/shield.gdshader" id="1_gxgjq"]
+[ext_resource type="Texture2D" uid="uid://dmq3kcfkpg0ua" path="res://Assets/Sprites/Shader/circlemask.png" id="2_rtpp2"]
+[ext_resource type="Texture2D" uid="uid://crvnu0h7qc4ui" path="res://Assets/Sprites/Shader/HexEdgeSmol.png" id="3_k6dkl"]
+[ext_resource type="Script" path="res://Scripts/shield.gd" id="5_v8mls"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlug4"]
-shader = ExtResource("1_mewdh")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4d1fe"]
+resource_local_to_scene = true
+shader = ExtResource("1_gxgjq")
+shader_parameter/blink_speed = 3.0
+shader_parameter/charged = false
+shader_parameter/fade_state = 0.0
+shader_parameter/blink_charged_amp = 0.1
+shader_parameter/blink_charging_amp = 0.17
+shader_parameter/blink_charged_base = 0.37
+shader_parameter/blink_charging_base = 0.3
+shader_parameter/ring_color = Color(1, 1, 1, 1)
+shader_parameter/ring_frequency = 5.0
+shader_parameter/ring_portion = 0.9
+shader_parameter/move_speed = -3.0
+shader_parameter/matrices_texture = ExtResource("3_k6dkl")
+shader_parameter/circle_texture = ExtResource("2_rtpp2")
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jw1x2"]
+load_path = "res://.godot/imported/shield.png-1bf5fb3ebf158fdd741932ea72d4193b.ctex"
 
-[node name="Shield" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_vlug4")
+[node name="Shield" type="Sprite2D"]
+material = SubResource("ShaderMaterial_4d1fe")
+position = Vector2(-2.38419e-07, 4.76837e-07)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_3csj0")
+texture = SubResource("CompressedTexture2D_jw1x2")
+script = ExtResource("5_v8mls")

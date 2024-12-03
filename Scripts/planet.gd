@@ -14,9 +14,10 @@ var current_ship_production = 0
 var neighbors = {}
 
 var preselected_neighbor : Planet
-var selected_neighbor : Planet
+var selected_neighbor = self
 var selected_road : Planet
 
+@export var shield : Shield
 
 var roads = {}
 
@@ -32,7 +33,7 @@ func _ready() -> void:
 	if(auto_find_neighbors):
 		print("start detection")
 		detect_neighbors()
-		
+	
 	for neighbor in input_neighbors:
 		roads[neighbor.name] = Road.create_road(self,neighbor)
 		neighbor.setup_road(roads[neighbor.name], self)
@@ -55,7 +56,7 @@ func _process(delta: float) -> void:
 func produce_ships(delta: float) -> void:
 	if(len(neighbors) == 0): #Ne devrait pas etre necessaire
 		return
-	if(number_of_ships > send_ship_treshold && selected_neighbor != null && alliance != PlanetType.Alliance.NEUTRAL): # SI LE TRESHOLD EST ATTEINT ENVOI SHIP
+	if(number_of_ships > send_ship_treshold && selected_neighbor != self && alliance != PlanetType.Alliance.NEUTRAL): # SI LE TRESHOLD EST ATTEINT ENVOI SHIP
 		if(roads[selected_neighbor.name].send_ship(self)):
 			number_of_ships -=1
 			
@@ -89,6 +90,10 @@ func addShip() -> bool:
 	return false
 	
 func hit(aAlliance : PlanetType.Alliance) -> void:
+	if(shield != null && shield.activated):
+		shield.hit(1)
+		return
+		
 	number_of_ships -= 1
 	if(number_of_ships < 0):
 		self.alliance = aAlliance
@@ -108,6 +113,7 @@ func setPlayer(aPlayer):
 	player = aPlayer
 
 func preselectClosestNeighbor(touch_pos):
+	preselected_neighbor = self
 	if(len(neighbors) == 0):
 		return
 		
@@ -118,10 +124,11 @@ func preselectClosestNeighbor(touch_pos):
 		if(min_distance > neighbor.global_position.distance_to(touch_pos)):
 			closest_neighbor = neighbor
 			min_distance = neighbor.global_position.distance_to(touch_pos)
-	preselected_neighbor = closest_neighbor
+	if(global_position.distance_to(touch_pos) > 20):
+		preselected_neighbor = closest_neighbor
 	
 func selectNeighbor():
-	if preselected_neighbor != null :
+	if preselected_neighbor != null:
 		selected_neighbor = preselected_neighbor
 
 #Detecte tout les voisins dans un cercle de rayon neighbor_radius et les place dans input_neighbors
@@ -135,11 +142,11 @@ func detect_neighbors():
 	physics_query.collision_mask = 0b10
 	physics_query.collide_with_areas = true
 	physics_query.collide_with_bodies = false
-	physics_query.transform.origin = self.position
+	physics_query.transform.origin = self.position # TODO AMELIORER CA CAR ORIGIN VA CHANGER SI ON DEPLACE PLANETS
 	
 	var results = space_state.intersect_shape(physics_query)
 	
 	for result in results:
-		if(result.collider is Planet):
+		if(result.collider is Planet && result.collider != self):
 			input_neighbors.append(result.collider)
 	PhysicsServer2D.free_rid(circle)

@@ -17,6 +17,7 @@ scale = Vector2(2.04712, 1.1446)
 texture = ExtResource("1_3a0lb")
 
 [node name="Player" parent="." node_paths=PackedStringArray("planets") instance=ExtResource("2_8mi1l")]
+position = Vector2(995, 628)
 planets = NodePath("../Planets")
 
 [node name="Planets" type="Node2D" parent="."]

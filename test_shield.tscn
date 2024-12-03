@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkosxkwkhvkuh"]
+
+[ext_resource type="PackedScene" uid="uid://cfekwlvm5wmhs" path="res://Assets/Prefab/Planets/BatteryPlanet.tscn" id="1_j5b4m"]
+[ext_resource type="PackedScene" uid="uid://bkd0legw2r62m" path="res://Assets/Prefab/Planets/GeneratorPlanet.tscn" id="2_oxuqk"]
+[ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="3_y8wyh"]
+[ext_resource type="Texture2D" uid="uid://b7pxw317gv8em" path="res://Assets/Sprites/background4.png" id="4_pyu8x"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." node_paths=PackedStringArray("planets") instance=ExtResource("3_y8wyh")]
+planets = NodePath("../Planets")
+
+[node name="Background4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(705, 992)
+scale = Vector2(2.04712, 1.1446)
+texture = ExtResource("4_pyu8x")
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="DefensivePlanet" parent="Planets" instance=ExtResource("1_j5b4m")]
+position = Vector2(679, 208)
+alliance = 1
+
+[node name="GeneratorPlanet" parent="Planets" instance=ExtResource("2_oxuqk")]
+position = Vector2(797, 125)
+alliance = 1
+
+[node name="GeneratorPlanet2" parent="Planets" instance=ExtResource("2_oxuqk")]
+position = Vector2(771, 672)
+
+[node name="DefensivePlanet2" parent="Planets" instance=ExtResource("1_j5b4m")]
+position = Vector2(673, 401)
+
+[node name="GeneratorPlanet3" parent="Planets" node_paths=PackedStringArray("input_neighbors") instance=ExtResource("2_oxuqk")]
+position = Vector2(671, 545)
+auto_find_neighbors = false
+input_neighbors = [NodePath("../GeneratorPlanet4"), NodePath("../GeneratorPlanet4"), NodePath("../DefensivePlanet2")]
+
+[node name="GeneratorPlanet4" parent="Planets" instance=ExtResource("2_oxuqk")]
+position = Vector2(566, 663)

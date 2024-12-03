@@ -23,24 +23,37 @@ position = Vector2(804, 621)
 ship_speed_production = 0.0
 number_of_ships = 3
 max_ships = 5
+send_ship_treshold = 5
+auto_find_neighbors = false
 radius_neighbors = 640
 alliance = 4
 
 [node name="Planet2" parent="Planets" instance=ExtResource("1_fb3ue")]
 position = Vector2(873, 465)
+ship_speed_production = 1.0
+number_of_ships = 0
 max_ships = 5
 send_ship_treshold = 3
 auto_find_neighbors = true
 radius_neighbors = 250
+alliance = 0
 
 [node name="Planet3" parent="Planets" instance=ExtResource("1_fb3ue")]
 position = Vector2(797, 325)
 ship_speed_production = 0.5
+number_of_ships = 0
 max_ships = 2
+send_ship_treshold = 5
 auto_find_neighbors = true
 radius_neighbors = 0
+alliance = 0
 
 [node name="Planet4" parent="Planets" instance=ExtResource("1_fb3ue")]
 position = Vector2(657, 388)
+ship_speed_production = 1.0
+number_of_ships = 0
+max_ships = 10
+send_ship_treshold = 5
 auto_find_neighbors = true
 radius_neighbors = 0
+alliance = 0
