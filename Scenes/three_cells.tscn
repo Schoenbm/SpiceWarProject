@@ -9,8 +9,8 @@ position = Vector2(-2, 2)
 
 [node name="Background4" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(736, 785)
-scale = Vector2(0.996582, 0.735495)
+position = Vector2(1273.88, 1203.93)
+scale = Vector2(2.04712, 1.1446)
 texture = ExtResource("2_ivb8s")
 
 [node name="Player" parent="." node_paths=PackedStringArray("planets") instance=ExtResource("3_tx5oo")]
@@ -19,33 +19,28 @@ planets = NodePath("../Planets")
 [node name="Planets" type="Node2D" parent="."]
 
 [node name="Planet" parent="Planets" instance=ExtResource("1_fb3ue")]
-position = Vector2(668, 696)
+position = Vector2(804, 621)
 ship_speed_production = 0.0
 number_of_ships = 3
 max_ships = 5
-auto_find_neighbors = false
+radius_neighbors = 640
 alliance = 4
 
 [node name="Planet2" parent="Planets" instance=ExtResource("1_fb3ue")]
-position = Vector2(796, 547)
-ship_speed_production = 0.5
-number_of_ships = 0
+position = Vector2(873, 465)
 max_ships = 5
-auto_find_neighbors = false
-alliance = 0
+send_ship_treshold = 3
+auto_find_neighbors = true
+radius_neighbors = 250
 
 [node name="Planet3" parent="Planets" instance=ExtResource("1_fb3ue")]
-position = Vector2(877, 344)
+position = Vector2(797, 325)
 ship_speed_production = 0.5
-number_of_ships = 0
 max_ships = 2
-auto_find_neighbors = false
-alliance = 0
+auto_find_neighbors = true
+radius_neighbors = 0
 
 [node name="Planet4" parent="Planets" instance=ExtResource("1_fb3ue")]
 position = Vector2(657, 388)
-ship_speed_production = 1.0
-number_of_ships = 0
-max_ships = 10
-auto_find_neighbors = false
-alliance = 0
+auto_find_neighbors = true
+radius_neighbors = 0

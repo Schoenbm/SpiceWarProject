@@ -30,10 +30,10 @@ static func create_road(P1: Planet, P2: Planet) -> Road :
 func _ready() -> void:
 	pass # Replace with function body.
 
-func send_ship(sender : Planet) -> void:
+#renvoie true si le ship est bien enboyé
+func send_ship(sender : Planet) -> bool:
 	if(check_road_full_by_alliance(sender.alliance)):
 		incr_ships_number_by_alliance(sender.alliance)
-		sender.number_of_ships -= 1
 		var destination : Planet
 		if(sender == planet1):
 			destination = planet2
@@ -42,6 +42,8 @@ func send_ship(sender : Planet) -> void:
 		var new_ship = Ship.create_ship(destination,sender)
 		new_ship.name = "ship" + PlanetType.get_alliance_name(sender.alliance) + str(get_current_ships_number_by_alliance(sender.alliance)) #TODO EURK
 		add_child(new_ship)
+		return true
+	return false
 
 
 #TODO IMRPOVE ?

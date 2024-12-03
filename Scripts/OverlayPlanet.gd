@@ -12,5 +12,5 @@ static func create_overlay(aPlayer):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	look_at(player.getFingerPos())
+	look_at(player.get_finger_pos())
 	pass

@@ -11,6 +11,12 @@ z_index = 1
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_c1och")
+ship_speed_production = null
+number_of_ships = null
+max_ships = null
+send_ship_treshold = null
+auto_find_neighbors = null
+alliance = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3yang")

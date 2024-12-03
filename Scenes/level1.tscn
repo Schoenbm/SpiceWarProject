@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://urfnfsu26p4r"]
+
+[ext_resource type="Texture2D" uid="uid://b7pxw317gv8em" path="res://Assets/Sprites/background4.png" id="1_3a0lb"]
+[ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="2_8mi1l"]
+[ext_resource type="PackedScene" uid="uid://dguc4h6mov8jx" path="res://Assets/Prefab/Planets/EmptyPlanet.tscn" id="3_no8ey"]
+[ext_resource type="PackedScene" uid="uid://bkd0legw2r62m" path="res://Assets/Prefab/Planets/GeneratorPlanet.tscn" id="4_b5dkw"]
+[ext_resource type="PackedScene" uid="uid://ds2pqv3vpnjv7" path="res://Assets/Prefab/Planets/SimplePlanet.tscn" id="5_vftk4"]
+[ext_resource type="PackedScene" uid="uid://cfekwlvm5wmhs" path="res://Assets/Prefab/Planets/BatteryPlanet.tscn" id="6_k0pwp"]
+
+[node name="three_cells" type="Node2D"]
+position = Vector2(-2, 2)
+
+[node name="Background4" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1175, 1231)
+scale = Vector2(2.04712, 1.1446)
+texture = ExtResource("1_3a0lb")
+
+[node name="Player" parent="." node_paths=PackedStringArray("planets") instance=ExtResource("2_8mi1l")]
+planets = NodePath("../Planets")
+
+[node name="Planets" type="Node2D" parent="."]
+
+[node name="EmptyPlanet" parent="Planets" instance=ExtResource("3_no8ey")]
+position = Vector2(1013, 489)
+radius_neighbors = 150
+
+[node name="EmptyPlanet2" parent="Planets" instance=ExtResource("3_no8ey")]
+position = Vector2(1190, 337)
+radius_neighbors = 150
+
+[node name="EmptyPlanet3" parent="Planets" instance=ExtResource("3_no8ey")]
+position = Vector2(1223, 633)
+radius_neighbors = 150
+
+[node name="EmptyPlanet4" parent="Planets" instance=ExtResource("3_no8ey")]
+position = Vector2(1417, 455)
+radius_neighbors = 150
+
+[node name="GeneratorPlanet" parent="Planets" instance=ExtResource("4_b5dkw")]
+position = Vector2(1213, 477)
+radius_neighbors = 150
+alliance = 4
+
+[node name="Planet" parent="Planets" instance=ExtResource("5_vftk4")]
+position = Vector2(1079, 400)
+radius_neighbors = 150
+alliance = 4
+
+[node name="Planet2" parent="Planets" instance=ExtResource("5_vftk4")]
+position = Vector2(1354, 571)
+radius_neighbors = 150
+alliance = 4
+
+[node name="Planet3" parent="Planets" instance=ExtResource("5_vftk4")]
+position = Vector2(1306, 374)
+radius_neighbors = 150
+alliance = 4
+
+[node name="Planet4" parent="Planets" instance=ExtResource("5_vftk4")]
+position = Vector2(1076, 583)
+radius_neighbors = 150
+alliance = 4
+
+[node name="BatteryPlanet" parent="Planets" instance=ExtResource("6_k0pwp")]
+position = Vector2(888, 507)
+radius_neighbors = 150
+
+[node name="BatteryPlanet2" parent="Planets" instance=ExtResource("6_k0pwp")]
+position = Vector2(1531, 413)
+radius_neighbors = 150
+alliance = 1
+
+[node name="GeneratorPlanet2" parent="Planets" instance=ExtResource("4_b5dkw")]
+position = Vector2(794, 413)
+radius_neighbors = 150
+
+[node name="Planet5" parent="Planets" instance=ExtResource("5_vftk4")]
+position = Vector2(786, 602)
+radius_neighbors = 150
+
+[node name="Planet6" parent="Planets" instance=ExtResource("5_vftk4")]
+position = Vector2(791, 756)
+radius_neighbors = 150
+
+[node name="Planet7" parent="Planets" instance=ExtResource("5_vftk4")]
+position = Vector2(1635, 188)
+radius_neighbors = 150
+alliance = 1
+
+[node name="GeneratorPlanet3" parent="Planets" instance=ExtResource("4_b5dkw")]
+position = Vector2(1648, 494)
+radius_neighbors = 150
+alliance = 1
+
+[node name="Planet8" parent="Planets" instance=ExtResource("5_vftk4")]
+position = Vector2(1636, 317)
+radius_neighbors = 150
+alliance = 1
+
+[node name="GeneratorPlanet4" parent="Planets" instance=ExtResource("4_b5dkw")]
+position = Vector2(1340, 668)
+alliance = 4
+
+[node name="GeneratorPlanet5" parent="Planets" instance=ExtResource("4_b5dkw")]
+position = Vector2(1769, 325)
+alliance = 1
