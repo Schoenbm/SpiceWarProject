@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yang"]
 radius = 24.1868
 
-[sub_resource type="Shader" id="Shader_bd50y"]
+[sub_resource type="Shader" id="Shader_0sjpj"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 uniform sampler2D matrices_texture;
@@ -68,7 +68,7 @@ load_path = "res://.godot/imported/HexEdgeSmol.png-a785bb15c2ec58596af1071f07c16
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kcake"]
 resource_local_to_scene = true
-shader = SubResource("Shader_bd50y")
+shader = SubResource("Shader_0sjpj")
 shader_parameter/blink_speed = 3.0
 shader_parameter/charged = false
 shader_parameter/fade_state = 0.0
