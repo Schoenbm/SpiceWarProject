@@ -1,13 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://br4o8xqbdn12j"]
+[gd_scene load_steps=7 format=3 uid="uid://br4o8xqbdn12j"]
 
 [ext_resource type="Script" path="res://Scripts/planet.gd" id="1_c1och"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="1_gdd4u"]
 [ext_resource type="Texture2D" uid="uid://bhm7yurck1f4q" path="res://Assets/Sprites/ship2.png" id="3_nw3pg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awsqw"]
+resource_local_to_scene = true
+shader = ExtResource("1_gdd4u")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yang"]
 radius = 24.1868
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjrm6"]
+shader = ExtResource("1_gdd4u")
+shader_parameter/red = null
+shader_parameter/blue = null
+shader_parameter/green = null
+
 [node name="Planet" type="Area2D"]
 z_index = 1
+material = SubResource("ShaderMaterial_awsqw")
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_c1och")
@@ -31,7 +46,8 @@ placeholder_text = "0 / 10"
 caret_type = 1
 caret_blink_interval = 0.84
 
-[node name="Ship2" type="Sprite2D" parent="."]
+[node name="PlanetSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mjrm6")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_nw3pg")
 

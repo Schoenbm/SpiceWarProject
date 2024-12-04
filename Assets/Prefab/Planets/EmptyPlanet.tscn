@@ -39,7 +39,7 @@ placeholder_text = "0 / 10"
 caret_type = 1
 caret_blink_interval = 0.84
 
-[node name="Ship2" type="Sprite2D" parent="."]
+[node name="PlanetSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_jqb2j")
 

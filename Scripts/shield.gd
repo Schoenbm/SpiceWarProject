@@ -43,7 +43,6 @@ func reboot(delta : float):
 	
 func hit(damage):
 	shield_capacity = ( max(0, shield_capacity - damage))
-	print("ouch for " + str(damage) + " hp now is" + str(shield_capacity))
 	material.set_shader_parameter('charged',false)
 	if(shield_capacity == 0):
 		time_elapsed_before_reboot = 0;

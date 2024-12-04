@@ -20,7 +20,7 @@ var cursor
 func _ready() -> void:
 	assert(planets != null)
 	set_player_in_nodes()
-	cursor = self.get_child(0) #TODO CHANGER CA
+	cursor = $Cursor
 	cursor.hide()
 	
 func _input(event):	

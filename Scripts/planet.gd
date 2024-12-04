@@ -42,9 +42,11 @@ func _ready() -> void:
 		if(!neighbors.has(neighbor.name)):
 			neighbors[neighbor.name] = neighbor
 	input_neighbors.clear()
-	modulate = PlanetType.get_alliance_color(alliance)
-	pass # Replace with function body.
+	change_color_alliance(alliance)
 
+
+func change_color_alliance(pAlliance):
+		$PlanetSprite.modulate = PlanetType.get_alliance_color(alliance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -97,7 +99,7 @@ func hit(aAlliance : PlanetType.Alliance) -> void:
 	number_of_ships -= 1
 	if(number_of_ships < 0):
 		self.alliance = aAlliance
-		self.modulate = PlanetType.get_alliance_color(aAlliance)
+		change_color_alliance(alliance)
 		number_of_ships = 1
 
 func enable_overlay(bol):

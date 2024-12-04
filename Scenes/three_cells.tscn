@@ -1,8 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlifsiakmhyc6"]
+[gd_scene load_steps=9 format=3 uid="uid://dlifsiakmhyc6"]
 
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="1_fb3ue"]
 [ext_resource type="Texture2D" uid="uid://b7pxw317gv8em" path="res://Assets/Sprites/background4.png" id="2_ivb8s"]
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="3_tx5oo"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="4_hs7cy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdulh"]
+resource_local_to_scene = true
+shader = ExtResource("4_hs7cy")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hy23d"]
+resource_local_to_scene = true
+shader = ExtResource("4_hs7cy")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hxyux"]
+resource_local_to_scene = true
+shader = ExtResource("4_hs7cy")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vuu35"]
+resource_local_to_scene = true
+shader = ExtResource("4_hs7cy")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
 
 [node name="three_cells" type="Node2D"]
 position = Vector2(-2, 2)
@@ -19,41 +48,32 @@ planets = NodePath("../Planets")
 [node name="Planets" type="Node2D" parent="."]
 
 [node name="Planet" parent="Planets" instance=ExtResource("1_fb3ue")]
+material = SubResource("ShaderMaterial_hdulh")
 position = Vector2(804, 621)
 ship_speed_production = 0.0
 number_of_ships = 3
 max_ships = 5
-send_ship_treshold = 5
-auto_find_neighbors = false
 radius_neighbors = 640
 alliance = 4
 
 [node name="Planet2" parent="Planets" instance=ExtResource("1_fb3ue")]
+material = SubResource("ShaderMaterial_hy23d")
 position = Vector2(873, 465)
-ship_speed_production = 1.0
-number_of_ships = 0
 max_ships = 5
 send_ship_treshold = 3
 auto_find_neighbors = true
 radius_neighbors = 250
-alliance = 0
 
 [node name="Planet3" parent="Planets" instance=ExtResource("1_fb3ue")]
+material = SubResource("ShaderMaterial_hxyux")
 position = Vector2(797, 325)
 ship_speed_production = 0.5
-number_of_ships = 0
 max_ships = 2
-send_ship_treshold = 5
 auto_find_neighbors = true
 radius_neighbors = 0
-alliance = 0
 
 [node name="Planet4" parent="Planets" instance=ExtResource("1_fb3ue")]
+material = SubResource("ShaderMaterial_vuu35")
 position = Vector2(657, 388)
-ship_speed_production = 1.0
-number_of_ships = 0
-max_ships = 10
-send_ship_treshold = 5
 auto_find_neighbors = true
 radius_neighbors = 0
-alliance = 0

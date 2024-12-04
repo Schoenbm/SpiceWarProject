@@ -9,10 +9,10 @@ enum Alliance{
 }
 
 static var alliances_colors = {
-	Alliance.RED: Color(1, 0, 0),    # Rouge
-	Alliance.BLUE: Color(0, 0, 1),   # Bleu
-	Alliance.GREEN: Color(0, 1, 0),  # Vert
-	Alliance.YELLOW: Color(1, 1, 0),  # Jaune
+	Alliance.RED: Color(0.8, 0.3, 0.3),    # Rouge
+	Alliance.BLUE: Color(0.3, 0.3, 0.8),   # Bleu
+	Alliance.GREEN: Color(0.3, 0.8, 0.3),  # Vert
+	Alliance.YELLOW: Color(0.6, 0.6, 0.2),  # Jaune
 	Alliance.NEUTRAL: Color(0.3, 0.3, 0.3)  # Neutral
 }
 
