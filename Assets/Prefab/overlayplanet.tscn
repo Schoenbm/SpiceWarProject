@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/OverlayPlanet.gd" id="2_i75cr"]
 
 [node name="Overlayship" type="Sprite2D"]
+z_index = -2
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_nc2pv")
 offset = Vector2(25, 0)

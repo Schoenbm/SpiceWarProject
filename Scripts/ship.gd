@@ -43,5 +43,5 @@ func _on_area_entered(area: Area2D) -> void:
 		destroy()
 		
 func destroy() -> void :
-		get_parent().remove_ship_by_alliance(alliance)
+		get_parent().remove_ship()
 		queue_free()

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b8iqpfxsg0lus" path="res://Assets/Sprites/ship.png" id="2_63wy5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l058k"]
-radius = 2.0
+radius = 1.0
 
 [node name="Ship" type="Area2D"]
 z_index = 2

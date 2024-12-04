@@ -29,7 +29,8 @@ var current_overlay : OverlayPlanet
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#TODO Find Neighbors
+	$PermanentCursorPivot.hide() #cache le curseur avant d'attaquer
+	
 	if(auto_find_neighbors):
 		print("start detection")
 		detect_neighbors()
@@ -68,7 +69,7 @@ func produce_ships(delta: float) -> void:
 			number_of_ships += 1
 			current_ship_production -=1
 	else : #SINON ON ENVOIE L'EXCES
-		if(roads.size() >0 && selected_neighbor == null && alliance != PlanetType.Alliance.NEUTRAL && roads[neighbors.values().pick_random().name].send_ship(self) ):
+		if( roads.size() >0 && selected_neighbor == self && alliance != PlanetType.Alliance.NEUTRAL && roads[neighbors.values().pick_random().name].send_ship(self) ):
 			number_of_ships -=1
 		else:
 			current_ship_production = 0
@@ -128,10 +129,15 @@ func preselectClosestNeighbor(touch_pos):
 			min_distance = neighbor.global_position.distance_to(touch_pos)
 	if(global_position.distance_to(touch_pos) > 20):
 		preselected_neighbor = closest_neighbor
-	
+
+#Selectionne le voisin attaqué et montre qu'il est attaqué
 func selectNeighbor():
 	if preselected_neighbor != null:
 		selected_neighbor = preselected_neighbor
+		$PermanentCursorPivot.look_at(selected_neighbor.position)
+		$PermanentCursorPivot.show()
+	else:
+		$PermanentCursorPivot.hide()
 
 #Detecte tout les voisins dans un cercle de rayon neighbor_radius et les place dans input_neighbors
 func detect_neighbors():

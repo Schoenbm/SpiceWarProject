@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://deh2o6x4w83v7"]
+
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="1_jeql6"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_qxyjn"]
+[ext_resource type="PackedScene" uid="uid://cin8seu8bis48" path="res://Assets/Prefab/Planets/Shield/Shield.tscn" id="3_gs5ru"]
+[ext_resource type="Shader" path="res://Assets/Material/shield.gdshader" id="4_2lgxt"]
+[ext_resource type="Texture2D" uid="uid://dmq3kcfkpg0ua" path="res://Assets/Sprites/Shader/circlemask.png" id="5_tqu08"]
+[ext_resource type="Texture2D" uid="uid://crvnu0h7qc4ui" path="res://Assets/Sprites/Shader/HexEdgeSmol.png" id="6_lpqrq"]
+[ext_resource type="Texture2D" uid="uid://4ak7hjulijxj" path="res://Assets/Sprites/—Pngtree—vector shield icon_3785558.png" id="7_avgox"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vrjwx"]
+resource_local_to_scene = true
+shader = ExtResource("2_qxyjn")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kobw6"]
+resource_local_to_scene = true
+shader = ExtResource("4_2lgxt")
+shader_parameter/blink_speed = 3.0
+shader_parameter/charged = false
+shader_parameter/fade_state = 0.0
+shader_parameter/blink_charged_amp = 0.1
+shader_parameter/blink_charging_amp = 0.17
+shader_parameter/blink_charged_base = 0.37
+shader_parameter/blink_charging_base = 0.3
+shader_parameter/ring_color = Color(1, 1, 1, 1)
+shader_parameter/ring_frequency = 5.0
+shader_parameter/ring_portion = 0.9
+shader_parameter/move_speed = -3.0
+shader_parameter/matrices_texture = ExtResource("6_lpqrq")
+shader_parameter/circle_texture = ExtResource("5_tqu08")
+
+[node name="DefensivePlanet" node_paths=PackedStringArray("shield") instance=ExtResource("1_jeql6")]
+material = SubResource("ShaderMaterial_vrjwx")
+shield = NodePath("Shield")
+
+[node name="Shield" parent="." index="4" instance=ExtResource("3_gs5ru")]
+material = SubResource("ShaderMaterial_kobw6")
+position = Vector2(0, 0)
+scale = Vector2(0.04, 0.04)
+
+[node name="ShieldIcon" type="Sprite2D" parent="." index="5"]
+modulate = Color(1, 1, 1, 0.486)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("7_avgox")

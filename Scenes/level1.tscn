@@ -1,18 +1,151 @@
-[gd_scene load_steps=7 format=3 uid="uid://urfnfsu26p4r"]
+[gd_scene load_steps=26 format=3 uid="uid://urfnfsu26p4r"]
 
 [ext_resource type="Texture2D" uid="uid://b7pxw317gv8em" path="res://Assets/Sprites/background4.png" id="1_3a0lb"]
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="2_8mi1l"]
-[ext_resource type="PackedScene" uid="uid://dguc4h6mov8jx" path="res://Assets/Prefab/Planets/EmptyPlanet.tscn" id="3_no8ey"]
-[ext_resource type="PackedScene" uid="uid://bkd0legw2r62m" path="res://Assets/Prefab/Planets/GeneratorPlanet.tscn" id="4_b5dkw"]
-[ext_resource type="PackedScene" uid="uid://ds2pqv3vpnjv7" path="res://Assets/Prefab/Planets/SimplePlanet.tscn" id="5_vftk4"]
-[ext_resource type="PackedScene" uid="uid://cfekwlvm5wmhs" path="res://Assets/Prefab/Planets/BatteryPlanet.tscn" id="6_k0pwp"]
+[ext_resource type="PackedScene" uid="uid://deh2o6x4w83v7" path="res://Assets/Prefab/Planets/defensive_planet.tscn" id="3_47dnc"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="4_ml1c1"]
+[ext_resource type="PackedScene" uid="uid://bx3yqljwof8cr" path="res://Assets/Prefab/Planets/generator.tscn" id="5_bsql3"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="6_ivlrr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n5uqb"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vgia"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41vea"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3puj"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8exhw"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_raa41"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_honop"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_26ovx"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0snnh"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ie2j"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42nse"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ld24q"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cewct"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0dc3d"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42eh0"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ubh0"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0f1k3"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0hst"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kirl3"]
+resource_local_to_scene = true
+shader = ExtResource("4_ml1c1")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
 
 [node name="three_cells" type="Node2D"]
 position = Vector2(-2, 2)
 
 [node name="Background4" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(1175, 1231)
+z_index = -10
+position = Vector2(945, 813)
 scale = Vector2(2.04712, 1.1446)
 texture = ExtResource("1_3a0lb")
 
@@ -22,87 +155,127 @@ planets = NodePath("../Planets")
 
 [node name="Planets" type="Node2D" parent="."]
 
-[node name="EmptyPlanet" parent="Planets" instance=ExtResource("3_no8ey")]
-position = Vector2(1013, 489)
-radius_neighbors = 150
+[node name="DefensivePlanet" parent="Planets" instance=ExtResource("3_47dnc")]
+material = SubResource("ShaderMaterial_n5uqb")
+position = Vector2(974, 885)
+auto_find_neighbors = true
+radius_neighbors = 200
 
-[node name="EmptyPlanet2" parent="Planets" instance=ExtResource("3_no8ey")]
-position = Vector2(1190, 337)
-radius_neighbors = 150
+[node name="GeneratorPlanet" parent="Planets" instance=ExtResource("5_bsql3")]
+material = SubResource("ShaderMaterial_2vgia")
+position = Vector2(907, 969)
+radius_neighbors = 200
 
-[node name="EmptyPlanet3" parent="Planets" instance=ExtResource("3_no8ey")]
-position = Vector2(1223, 633)
-radius_neighbors = 150
+[node name="GeneratorPlanet2" parent="Planets" instance=ExtResource("5_bsql3")]
+material = SubResource("ShaderMaterial_41vea")
+position = Vector2(1047, 978)
+radius_neighbors = 200
 
-[node name="EmptyPlanet4" parent="Planets" instance=ExtResource("3_no8ey")]
-position = Vector2(1417, 455)
-radius_neighbors = 150
-
-[node name="GeneratorPlanet" parent="Planets" instance=ExtResource("4_b5dkw")]
-position = Vector2(1213, 477)
-radius_neighbors = 150
+[node name="Planet" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_o3puj")
+position = Vector2(902, 747)
+auto_find_neighbors = true
+radius_neighbors = 200
 alliance = 4
 
-[node name="Planet" parent="Planets" instance=ExtResource("5_vftk4")]
-position = Vector2(1079, 400)
-radius_neighbors = 150
+[node name="Planet2" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_8exhw")
+position = Vector2(1024, 747)
+auto_find_neighbors = true
+radius_neighbors = 200
 alliance = 4
 
-[node name="Planet2" parent="Planets" instance=ExtResource("5_vftk4")]
-position = Vector2(1354, 571)
-radius_neighbors = 150
+[node name="Planet3" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_raa41")
+position = Vector2(958, 601)
+auto_find_neighbors = true
+radius_neighbors = 200
 alliance = 4
 
-[node name="Planet3" parent="Planets" instance=ExtResource("5_vftk4")]
-position = Vector2(1306, 374)
-radius_neighbors = 150
+[node name="Planet4" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_honop")
+position = Vector2(1096, 562)
+auto_find_neighbors = true
+radius_neighbors = 200
 alliance = 4
 
-[node name="Planet4" parent="Planets" instance=ExtResource("5_vftk4")]
-position = Vector2(1076, 583)
-radius_neighbors = 150
+[node name="Planet5" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_26ovx")
+position = Vector2(1188, 413)
+auto_find_neighbors = true
+radius_neighbors = 200
 alliance = 4
 
-[node name="BatteryPlanet" parent="Planets" instance=ExtResource("6_k0pwp")]
-position = Vector2(888, 507)
-radius_neighbors = 150
+[node name="Planet6" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_0snnh")
+position = Vector2(734, 424)
+auto_find_neighbors = true
+radius_neighbors = 200
+alliance = 4
 
-[node name="BatteryPlanet2" parent="Planets" instance=ExtResource("6_k0pwp")]
-position = Vector2(1531, 413)
-radius_neighbors = 150
+[node name="Planet7" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_7ie2j")
+position = Vector2(841, 291)
+auto_find_neighbors = true
+radius_neighbors = 200
+alliance = 4
+
+[node name="Planet8" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_42nse")
+position = Vector2(1119, 281)
+auto_find_neighbors = true
+radius_neighbors = 200
+alliance = 4
+
+[node name="Planet9" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_ld24q")
+position = Vector2(977, 114)
+auto_find_neighbors = true
+radius_neighbors = 200
+alliance = 4
+
+[node name="Planet10" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_cewct")
+position = Vector2(984, 241)
+auto_find_neighbors = true
+radius_neighbors = 200
+alliance = 4
+
+[node name="Planet11" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_0dc3d")
+position = Vector2(783, 558)
+auto_find_neighbors = true
+radius_neighbors = 200
+alliance = 4
+
+[node name="GeneratorPlanet3" parent="Planets" instance=ExtResource("5_bsql3")]
+material = SubResource("ShaderMaterial_42eh0")
+position = Vector2(1085, -184)
+radius_neighbors = 200
 alliance = 1
 
-[node name="GeneratorPlanet2" parent="Planets" instance=ExtResource("4_b5dkw")]
-position = Vector2(794, 413)
-radius_neighbors = 150
-
-[node name="Planet5" parent="Planets" instance=ExtResource("5_vftk4")]
-position = Vector2(786, 602)
-radius_neighbors = 150
-
-[node name="Planet6" parent="Planets" instance=ExtResource("5_vftk4")]
-position = Vector2(791, 756)
-radius_neighbors = 150
-
-[node name="Planet7" parent="Planets" instance=ExtResource("5_vftk4")]
-position = Vector2(1635, 188)
-radius_neighbors = 150
+[node name="DefensivePlanet2" parent="Planets" instance=ExtResource("3_47dnc")]
+material = SubResource("ShaderMaterial_5ubh0")
+position = Vector2(981, -36)
+auto_find_neighbors = true
+radius_neighbors = 200
 alliance = 1
 
-[node name="GeneratorPlanet3" parent="Planets" instance=ExtResource("4_b5dkw")]
-position = Vector2(1648, 494)
-radius_neighbors = 150
+[node name="GeneratorPlanet4" parent="Planets" instance=ExtResource("5_bsql3")]
+material = SubResource("ShaderMaterial_0f1k3")
+position = Vector2(933, -192)
+radius_neighbors = 200
 alliance = 1
 
-[node name="Planet8" parent="Planets" instance=ExtResource("5_vftk4")]
-position = Vector2(1636, 317)
-radius_neighbors = 150
+[node name="GeneratorPlanet5" parent="Planets" instance=ExtResource("5_bsql3")]
+material = SubResource("ShaderMaterial_f0hst")
+position = Vector2(813, -114)
+radius_neighbors = 200
 alliance = 1
 
-[node name="GeneratorPlanet4" parent="Planets" instance=ExtResource("4_b5dkw")]
-position = Vector2(1340, 668)
-alliance = 4
-
-[node name="GeneratorPlanet5" parent="Planets" instance=ExtResource("4_b5dkw")]
-position = Vector2(1769, 325)
+[node name="Planet12" parent="Planets" instance=ExtResource("6_ivlrr")]
+material = SubResource("ShaderMaterial_kirl3")
+position = Vector2(1171, -71)
+auto_find_neighbors = true
+radius_neighbors = 200
 alliance = 1

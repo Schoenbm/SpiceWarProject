@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx3yqljwof8cr"]
+
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="1_a7ab7"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_8aai7"]
+[ext_resource type="Texture2D" uid="uid://ccfgu3qqoyctk" path="res://Assets/Sprites/bolt.png" id="3_amsiw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65ghs"]
+resource_local_to_scene = true
+shader = ExtResource("2_8aai7")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[node name="GeneratorPlanet" instance=ExtResource("1_a7ab7")]
+material = SubResource("ShaderMaterial_65ghs")
+auto_find_neighbors = true
+
+[node name="Bolt" type="Sprite2D" parent="." index="4"]
+z_index = 1
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("3_amsiw")

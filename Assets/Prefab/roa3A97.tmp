@@ -4,7 +4,6 @@
 
 [node name="Road" type="Line2D"]
 visibility_layer = 2
-z_index = -5
 default_color = Color(0.65986, 0.549112, 0.750233, 1)
 end_cap_mode = 1
 script = ExtResource("1_m4n2k")

@@ -37,7 +37,7 @@ shader_parameter/green = 0.5
 position = Vector2(-2, 2)
 
 [node name="Background4" type="Sprite2D" parent="."]
-z_index = -1
+z_index = -10
 position = Vector2(1273.88, 1203.93)
 scale = Vector2(2.04712, 1.1446)
 texture = ExtResource("2_ivb8s")
@@ -51,14 +51,15 @@ planets = NodePath("../Planets")
 material = SubResource("ShaderMaterial_hdulh")
 position = Vector2(804, 621)
 ship_speed_production = 0.0
-number_of_ships = 3
-max_ships = 5
+number_of_ships = 600
+max_ships = 9999
 radius_neighbors = 640
 alliance = 4
 
 [node name="Planet2" parent="Planets" instance=ExtResource("1_fb3ue")]
 material = SubResource("ShaderMaterial_hy23d")
 position = Vector2(873, 465)
+ship_speed_production = 5.0
 max_ships = 5
 send_ship_treshold = 3
 auto_find_neighbors = true
