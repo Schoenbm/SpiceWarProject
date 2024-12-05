@@ -1,5 +1,4 @@
-extends Line2D
-
+extends Node2D
 
 
 class_name Road
@@ -20,15 +19,13 @@ static func create_road(P1: Planet, P2: Planet) -> Road :
 	var new_road : Road = my_scene.instantiate()
 	new_road.planet1 = P1
 	new_road.planet2 = P2
-	
-	new_road.add_point(P1.global_position)
-	new_road.add_point(P2.global_position)
-	
-	new_road.name = P1.name + "2" + P2.name
+
+	new_road.name = P1.name + "to" + P2.name
 	return new_road
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	prepareRoadSprite()
 	pass # Replace with function body.
 
 func _process(delta : float) -> void:
@@ -75,3 +72,17 @@ func get_current_ships(alliance:) -> int:
 
 func remove_ship():
 	current_ships_number -= 1
+
+func prepareRoadSprite():
+	var dist = planet1.global_position.distance_to(planet2.global_position)
+	var size_texture = $RoadTexture.texture.get_width()
+	$RoadTexture.scale.x = dist / size_texture
+	$RoadTexture.offset.x = size_texture / 2
+	$RoadTexture.position = planet1.global_position
+	$RoadTexture.look_at(planet2.global_position)
+
+
+func update_color():
+		$RoadTexture.material.set_shader_parameter('color_begin', PlanetType.get_alliance_color(planet1.alliance))
+		$RoadTexture.material.set_shader_parameter('color_end', PlanetType.get_alliance_color(planet2.alliance))
+	

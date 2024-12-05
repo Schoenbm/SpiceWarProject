@@ -36,11 +36,11 @@ func _ready() -> void:
 		detect_neighbors()
 	
 	for neighbor in input_neighbors:
-		roads[neighbor.name] = Road.create_road(self,neighbor)
-		neighbor.setup_road(roads[neighbor.name], self)
-		roads[neighbor.name].add_to_group("Roads")
-		add_sibling.call_deferred(roads[neighbor.name]) #TODO pourquoi j'ai fais en call deferred
-		if(!neighbors.has(neighbor.name)):
+		if(!roads.has(neighbor.name)):
+			roads[neighbor.name] = Road.create_road(self,neighbor)
+			neighbor.setup_road(roads[neighbor.name], self)
+			roads[neighbor.name].add_to_group("Roads")
+			add_sibling.call_deferred(roads[neighbor.name]) #TODO pourquoi j'ai fais en call deferred
 			neighbors[neighbor.name] = neighbor
 	input_neighbors.clear()
 	change_color_alliance(alliance)
@@ -48,6 +48,9 @@ func _ready() -> void:
 
 func change_color_alliance(pAlliance):
 		$PlanetSprite.modulate = PlanetType.get_alliance_color(alliance)
+		print(str(roads.values()))
+		for road in roads.values():
+			road.update_color()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

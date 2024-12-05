@@ -1,11 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2wsrw1mn7eff"]
+[gd_scene load_steps=5 format=3 uid="uid://bj34rc65maxaq"]
 
-[ext_resource type="Script" path="res://Scripts/road.gd" id="1_m4n2k"]
+[ext_resource type="Script" path="res://Scripts/road.gd" id="1_urb34"]
+[ext_resource type="Shader" path="res://Assets/Material/road.gdshader" id="2_g7rkg"]
+[ext_resource type="Texture2D" uid="uid://dttjwufrj75p3" path="res://Assets/Sprites/road_texture.png" id="2_tdfsd"]
 
-[node name="Road" type="Line2D"]
-visibility_layer = 2
-z_index = -5
-default_color = Color(0.65986, 0.549112, 0.750233, 1)
-end_cap_mode = 1
-script = ExtResource("1_m4n2k")
-flow_rate = 0.15
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfu6b"]
+resource_local_to_scene = true
+shader = ExtResource("2_g7rkg")
+shader_parameter/color_begin = Vector3(1, 0, 0)
+shader_parameter/color_end = Vector3(1, 1, 0)
+shader_parameter/frequency = 30.0
+shader_parameter/speed = 0.6
+shader_parameter/bandwith = 0.9
+shader_parameter/merge_zone_half_width = 0.405
+
+[node name="Road" type="Node2D"]
+script = ExtResource("1_urb34")
+
+[node name="RoadTexture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wfu6b")
+scale = Vector2(3, 0.05)
+texture = ExtResource("2_tdfsd")
+offset = Vector2(64, 0)

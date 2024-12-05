@@ -144,6 +144,7 @@ shader_parameter/green = 0.5
 position = Vector2(-2, 2)
 
 [node name="Background4" type="Sprite2D" parent="."]
+modulate = Color(0.251058, 0.13772, 0.578259, 1)
 z_index = -10
 position = Vector2(945, 813)
 scale = Vector2(2.04712, 1.1446)
