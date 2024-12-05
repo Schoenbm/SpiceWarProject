@@ -19,6 +19,7 @@ var selected_road : Planet
 
 @export var shield : Shield
 
+@export var flow_rate_coefficient = 1
 var roads = {}
 
 @export var alliance : PlanetType.Alliance
@@ -32,7 +33,6 @@ func _ready() -> void:
 	$PermanentCursorPivot.hide() #cache le curseur avant d'attaquer
 	
 	if(auto_find_neighbors):
-		print("start detection")
 		detect_neighbors()
 	
 	for neighbor in input_neighbors:
@@ -48,7 +48,6 @@ func _ready() -> void:
 
 func change_color_alliance(pAlliance):
 		$PlanetSprite.modulate = PlanetType.get_alliance_color(alliance)
-		print(str(roads.values()))
 		for road in roads.values():
 			road.update_color()
 
@@ -104,6 +103,8 @@ func hit(aAlliance : PlanetType.Alliance) -> void:
 	if(number_of_ships < 0):
 		self.alliance = aAlliance
 		change_color_alliance(alliance)
+		for road in roads.values():
+			road.start_color_transition()
 		number_of_ships = 1
 
 func enable_overlay(bol):
@@ -133,10 +134,13 @@ func preselectClosestNeighbor(touch_pos):
 	if(global_position.distance_to(touch_pos) > 20):
 		preselected_neighbor = closest_neighbor
 
-#Selectionne le voisin attaqué et montre qu'il est attaqué
+#Selectionne le voisin attaqué et montre qu'il est attaqué, previent les deux routes du changement
 func selectNeighbor():
-	if preselected_neighbor != null:
+	if preselected_neighbor != self:
+		if(selected_neighbor != self):
+			roads.get(selected_neighbor.name).manage_planet_attack(self, false)
 		selected_neighbor = preselected_neighbor
+		roads.get(selected_neighbor.name).manage_planet_attack(self,true)
 		$PermanentCursorPivot.look_at(selected_neighbor.position)
 		$PermanentCursorPivot.show()
 	else:
