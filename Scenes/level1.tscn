@@ -1,11 +1,11 @@
 [gd_scene load_steps=26 format=3 uid="uid://urfnfsu26p4r"]
 
-[ext_resource type="Texture2D" uid="uid://b7pxw317gv8em" path="res://Assets/Sprites/background4.png" id="1_3a0lb"]
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="2_8mi1l"]
 [ext_resource type="PackedScene" uid="uid://deh2o6x4w83v7" path="res://Assets/Prefab/Planets/defensive_planet.tscn" id="3_47dnc"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="4_ml1c1"]
 [ext_resource type="PackedScene" uid="uid://bx3yqljwof8cr" path="res://Assets/Prefab/Planets/generator.tscn" id="5_bsql3"]
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="6_ivlrr"]
+[ext_resource type="PackedScene" uid="uid://it3melxh4rf1" path="res://Assets/Prefab/Planets/acceleration_planet.tscn" id="7_glf0x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n5uqb"]
 resource_local_to_scene = true
@@ -143,13 +143,6 @@ shader_parameter/green = 0.5
 [node name="three_cells" type="Node2D"]
 position = Vector2(-2, 2)
 
-[node name="Background4" type="Sprite2D" parent="."]
-modulate = Color(0.251058, 0.13772, 0.578259, 1)
-z_index = -10
-position = Vector2(945, 813)
-scale = Vector2(2.04712, 1.1446)
-texture = ExtResource("1_3a0lb")
-
 [node name="Player" parent="." node_paths=PackedStringArray("planets") instance=ExtResource("2_8mi1l")]
 position = Vector2(995, 628)
 planets = NodePath("../Planets")
@@ -158,18 +151,18 @@ planets = NodePath("../Planets")
 
 [node name="DefensivePlanet" parent="Planets" instance=ExtResource("3_47dnc")]
 material = SubResource("ShaderMaterial_n5uqb")
-position = Vector2(974, 885)
+position = Vector2(972, 845)
 auto_find_neighbors = true
 radius_neighbors = 200
 
 [node name="GeneratorPlanet" parent="Planets" instance=ExtResource("5_bsql3")]
 material = SubResource("ShaderMaterial_2vgia")
-position = Vector2(907, 969)
+position = Vector2(847, 912)
 radius_neighbors = 200
 
 [node name="GeneratorPlanet2" parent="Planets" instance=ExtResource("5_bsql3")]
 material = SubResource("ShaderMaterial_41vea")
-position = Vector2(1047, 978)
+position = Vector2(1133, 902)
 radius_neighbors = 200
 
 [node name="Planet" parent="Planets" instance=ExtResource("6_ivlrr")]
@@ -230,7 +223,7 @@ alliance = 4
 
 [node name="Planet9" parent="Planets" instance=ExtResource("6_ivlrr")]
 material = SubResource("ShaderMaterial_ld24q")
-position = Vector2(977, 114)
+position = Vector2(1076, 102)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
@@ -280,3 +273,13 @@ position = Vector2(1171, -71)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 1
+
+[node name="AccelerationPlanet" parent="Planets" instance=ExtResource("7_glf0x")]
+position = Vector2(919, 97)
+alliance = 4
+
+[node name="AccelerationPlanet2" parent="Planets" instance=ExtResource("7_glf0x")]
+position = Vector2(952, 418)
+auto_find_neighbors = true
+radius_neighbors = 300
+alliance = 4

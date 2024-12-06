@@ -19,7 +19,7 @@ var selected_road : Planet
 
 @export var shield : Shield
 
-@export var flow_rate_coefficient = 1
+@export var acceleration_ships = 1
 var roads = {}
 
 @export var alliance : PlanetType.Alliance

@@ -12,12 +12,14 @@ var flow_cd_planet1 = 0
 var flow_cd_planet2 = 0
 
 
+
 @export var attack_animation_speed : float
 @export var wobble_animation_speed : float
 @export var wobble_animation_frequency : float
 
 @export var transition_color_max_time = 0.0
 var transition_color_time = 0
+var transition_locked = false #Pour eviter des calculs inutiles 
 
 var planet1_attacking = false;
 var planet2_attacking = false;
@@ -48,8 +50,9 @@ func _process(delta : float) -> void:
 func transition_color(delta : float) -> void:
 	if(transition_color_time < transition_color_max_time):
 		$RoadTexture.material.set_shader_parameter('transition_time', transition_color_time)
-
-	if(transition_color_time + delta < transition_color_max_time):
+		transition_color_time += delta
+	elif(!transition_locked):
+		transition_locked = true;
 		$RoadTexture.material.set_shader_parameter('color_begin', PlanetType.get_alliance_color(planet1.alliance))
 		$RoadTexture.material.set_shader_parameter('color_end', PlanetType.get_alliance_color(planet2.alliance))
 
@@ -74,9 +77,9 @@ func send_ship(sender : Planet) -> bool:
 
 func put_flow_on_cd(planet : Planet):
 	if(planet == planet1):
-		flow_cd_planet1 = flow_rate * planet.flow_rate_coefficient
+		flow_cd_planet1 = flow_rate / planet.acceleration_ships # Plus les vaisseaux sont accelerees, moins ça prends du temps de tirer
 	else:
-		flow_cd_planet2 = flow_rate * planet.flow_rate_coefficient
+		flow_cd_planet2 = flow_rate / planet.acceleration_ships
 
 func check_flow_rate_by_planet(planet : Planet) -> bool:
 	if(planet == planet1):
@@ -107,6 +110,7 @@ func update_color():
 	
 func start_color_transition():
 	transition_color_time = 0
+	transition_locked = false
 	
 func manage_planet_attack(planet : Planet, isAttacking : bool):
 	planet1_attacking = isAttacking && planet1 == planet

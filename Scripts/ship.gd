@@ -2,7 +2,7 @@ extends Area2D
 
 class_name Ship
 
-const speed = 100
+var speed = 100
 var sendingPlanet : Planet
 var destinationPlanet : Planet
 var direction : Vector2
@@ -17,6 +17,7 @@ static func create_ship(destination : Planet, sender : Planet) -> Ship:
 	new_ship.direction = (destination.global_position - sender.global_position).normalized()
 	new_ship.alliance = sender.alliance
 	new_ship.modulate = PlanetType.get_alliance_color(sender.alliance)
+	new_ship.speed =  new_ship.speed * sender.acceleration_ships
 	return new_ship
 	
 func _process(delta: float) -> void:
