@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://pj6qvxrb3t2x"]
+[gd_scene load_steps=3 format=3 uid="uid://pj6qvxrb3t2x"]
 
 [ext_resource type="Texture2D" uid="uid://bnwni1trbwc5p" path="res://Assets/Sprites/background2.png" id="1_q7j5j"]
+[ext_resource type="Texture2D" uid="uid://gdwrhmdxupqm" path="res://Assets/Sprites/Planets/OVERSTELLAR AssetPack/OVERSTELLAR AssetPack/Scrolling_Space_Background/BG_Color.png" id="2_sp8gm"]
 
 [node name="Background2" type="Sprite2D"]
 z_index = -10
 position = Vector2(489, 353)
 scale = Vector2(4, 4)
 texture = ExtResource("1_q7j5j")
+
+[node name="BgColor" type="Sprite2D" parent="."]
+position = Vector2(-46.25, -18)
+scale = Vector2(25, 25)
+texture = ExtResource("2_sp8gm")

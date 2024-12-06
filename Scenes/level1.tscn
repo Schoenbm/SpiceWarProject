@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://urfnfsu26p4r"]
+[gd_scene load_steps=27 format=3 uid="uid://urfnfsu26p4r"]
 
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="2_8mi1l"]
 [ext_resource type="PackedScene" uid="uid://deh2o6x4w83v7" path="res://Assets/Prefab/Planets/defensive_planet.tscn" id="3_47dnc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bx3yqljwof8cr" path="res://Assets/Prefab/Planets/generator.tscn" id="5_bsql3"]
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="6_ivlrr"]
 [ext_resource type="PackedScene" uid="uid://it3melxh4rf1" path="res://Assets/Prefab/Planets/acceleration_planet.tscn" id="7_glf0x"]
+[ext_resource type="Texture2D" uid="uid://gdwrhmdxupqm" path="res://Assets/Sprites/Planets/OVERSTELLAR AssetPack/OVERSTELLAR AssetPack/Scrolling_Space_Background/BG_Color.png" id="7_psa1m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n5uqb"]
 resource_local_to_scene = true
@@ -283,3 +284,9 @@ position = Vector2(952, 418)
 auto_find_neighbors = true
 radius_neighbors = 300
 alliance = 4
+
+[node name="BgColor" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(1040, 373)
+scale = Vector2(130.578, 111.125)
+texture = ExtResource("7_psa1m")
