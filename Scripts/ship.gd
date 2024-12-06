@@ -42,6 +42,9 @@ func _on_area_entered(area: Area2D) -> void:
 		destroy()
 	elif(area.has_method("create_ship") && area.alliance != self.alliance): # vaisseau enemi
 		destroy()
+	elif(area.has_method("reboot") && area.activated && area.alliance != self.alliance): #shield
+		area.hit(1)
+		destroy()
 		
 func destroy() -> void :
 		get_parent().remove_ship()

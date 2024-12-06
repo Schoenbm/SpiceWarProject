@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b46pxph6ot4cf"]
 
-[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="1_doape"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_doape"]
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="1_wu3yk"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_37bgv"]
 
@@ -20,9 +20,8 @@ shader_parameter/green = 0.5
 
 [node name="RoadTest" type="Node2D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("planets") instance=ExtResource("1_wu3yk")]
+[node name="Player" parent="." instance=ExtResource("1_wu3yk")]
 position = Vector2(198, 333)
-planets = NodePath("../Node2D")
 
 [node name="Node2D" type="Node2D" parent="."]
 

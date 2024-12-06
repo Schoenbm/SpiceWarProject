@@ -9,19 +9,29 @@ var active_touches_pos = {}
 const MIN_ZOOM = 0.25
 const MAX_ZOOM = 2
 
+var visible_width
+var visible_height
+var window_size
+
 var previous_distance = 0
 var delta_distance = 0
 
-@export var planets : Node2D
-
+@export var bound : Vector2
 var active_planet : Planet
 var cursor
 
 func _ready() -> void:
-	assert(planets != null)
-	set_player_in_nodes()
 	cursor = $Cursor
 	cursor.hide()
+	window_size = get_viewport().size
+	visible_width = window_size.x / zoom.x
+	visible_height = window_size.y / zoom.y
+	print(str(visible_height) + " " + str(visible_width))
+
+func clamp_pos():
+	position.x = clamp(position.x, visible_width / 2, bound.x - visible_width / 2)
+	position.y = clamp(position.y, visible_height / 2, bound.y - visible_height / 2)
+	
 	
 func _input(event):	
 	if event is	InputEventScreenTouch :
@@ -52,7 +62,7 @@ func update_active_touches(event):
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			active_touches_pos[event.index] = event.position
-		else:
+		else:	
 			active_touches_pos.erase(event.index)	
 	elif event is InputEventScreenDrag:
 		active_touches_pos[event.index]= event.position
@@ -62,9 +72,13 @@ func zoom_screen(event):
 	previous_distance = active_touches_pos[0].distance_to(active_touches_pos[1])
 	var current_zoom = clamp(zoom.x + delta_distance * 0.01,MIN_ZOOM,MAX_ZOOM)
 	zoom = Vector2(current_zoom, current_zoom)
+	visible_width = window_size.x / zoom.x
+	visible_height = window_size.y / zoom.y
+	clamp_pos()
 
 func drag_screen(event):
 	position -= event.screen_relative
+	clamp_pos()
 
 func emule_touch(bol):
 	var touch_1 = InputEventScreenTouch.new()
@@ -73,11 +87,6 @@ func emule_touch(bol):
 	touch_1.pressed = bol  # Doigt appuyé
 	Input.parse_input_event(touch_1)
 
-func set_player_in_nodes():
-	for planet in planets.get_children():
-		if(planet is Planet):
-			planet.setPlayer(self)
-	
 func check_area(event):
 	if(event.pressed):
 		var space_state = get_world_2d().direct_space_state

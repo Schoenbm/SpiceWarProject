@@ -1,12 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://urfnfsu26p4r"]
+[gd_scene load_steps=28 format=3 uid="uid://urfnfsu26p4r"]
 
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="2_8mi1l"]
 [ext_resource type="PackedScene" uid="uid://deh2o6x4w83v7" path="res://Assets/Prefab/Planets/defensive_planet.tscn" id="3_47dnc"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="4_ml1c1"]
 [ext_resource type="PackedScene" uid="uid://bx3yqljwof8cr" path="res://Assets/Prefab/Planets/generator.tscn" id="5_bsql3"]
-[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="6_ivlrr"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="6_ivlrr"]
 [ext_resource type="PackedScene" uid="uid://it3melxh4rf1" path="res://Assets/Prefab/Planets/acceleration_planet.tscn" id="7_glf0x"]
 [ext_resource type="Texture2D" uid="uid://gdwrhmdxupqm" path="res://Assets/Sprites/Planets/OVERSTELLAR AssetPack/OVERSTELLAR AssetPack/Scrolling_Space_Background/BG_Color.png" id="7_psa1m"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="8_yilak"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n5uqb"]
 resource_local_to_scene = true
@@ -144,9 +145,8 @@ shader_parameter/green = 0.5
 [node name="three_cells" type="Node2D"]
 position = Vector2(-2, 2)
 
-[node name="Player" parent="." node_paths=PackedStringArray("planets") instance=ExtResource("2_8mi1l")]
+[node name="Player" parent="." instance=ExtResource("2_8mi1l")]
 position = Vector2(995, 628)
-planets = NodePath("../Planets")
 
 [node name="Planets" type="Node2D" parent="."]
 
@@ -290,3 +290,6 @@ z_index = -10
 position = Vector2(1040, 373)
 scale = Vector2(130.578, 111.125)
 texture = ExtResource("7_psa1m")
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("8_yilak")

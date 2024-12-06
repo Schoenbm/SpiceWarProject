@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cin8seu8bis48"]
+[gd_scene load_steps=8 format=3 uid="uid://dvudvtb5iwuml"]
 
 [ext_resource type="Shader" path="res://Assets/Material/shield.gdshader" id="1_gxgjq"]
 [ext_resource type="Texture2D" uid="uid://dmq3kcfkpg0ua" path="res://Assets/Sprites/Shader/circlemask.png" id="2_rtpp2"]
@@ -25,9 +25,17 @@ shader_parameter/circle_texture = ExtResource("2_rtpp2")
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jw1x2"]
 load_path = "res://.godot/imported/shield.png-1bf5fb3ebf158fdd741932ea72d4193b.ctex"
 
-[node name="Shield" type="Sprite2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kdb2"]
+radius = 113.004
+
+[node name="Shield" type="Area2D"]
+script = ExtResource("5_v8mls")
+
+[node name="ShieldSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_4d1fe")
 position = Vector2(-2.38419e-07, 4.76837e-07)
 scale = Vector2(0.1, 0.1)
 texture = SubResource("CompressedTexture2D_jw1x2")
-script = ExtResource("5_v8mls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0kdb2")

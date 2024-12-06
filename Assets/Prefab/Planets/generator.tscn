@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bx3yqljwof8cr"]
 
-[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="1_a7ab7"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_a7ab7"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_8aai7"]
 [ext_resource type="Texture2D" uid="uid://ccfgu3qqoyctk" path="res://Assets/Sprites/bolt.png" id="3_amsiw"]
 [ext_resource type="Shader" path="res://Assets/Material/bolt.gdshader" id="3_yk1ab"]

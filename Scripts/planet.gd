@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Planet
 
+signal change_alliance(previous_alliance, current_alliance)
+
 @export var ship_speed_production = 1.0 # nombre de cell par sec
 var current_ship_production = 0
 @export var number_of_ships = 0
@@ -29,9 +31,9 @@ var player : Player
 var current_overlay : OverlayPlanet
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func setup(aPlayer) -> void:
 	$PermanentCursorPivot.hide() #cache le curseur avant d'attaquer
-	
+	player = aPlayer
 	if(auto_find_neighbors):
 		detect_neighbors()
 	
@@ -44,6 +46,8 @@ func _ready() -> void:
 			neighbors[neighbor.name] = neighbor
 	input_neighbors.clear()
 	change_color_alliance(alliance)
+	selected_neighbor = self
+
 
 
 func change_color_alliance(pAlliance):
@@ -101,6 +105,7 @@ func hit(aAlliance : PlanetType.Alliance) -> void:
 		
 	number_of_ships -= 1
 	if(number_of_ships < 0):
+		change_alliance.emit(alliance, aAlliance)
 		self.alliance = aAlliance
 		change_color_alliance(alliance)
 		for road in roads.values():
@@ -115,10 +120,6 @@ func enable_overlay(bol):
 	else:
 		current_overlay.queue_free()
 
-
-func setPlayer(aPlayer):
-	player = aPlayer
-
 func preselectClosestNeighbor(touch_pos):
 	preselected_neighbor = self
 	if(len(neighbors) == 0):
@@ -131,7 +132,7 @@ func preselectClosestNeighbor(touch_pos):
 		if(min_distance > neighbor.global_position.distance_to(touch_pos)):
 			closest_neighbor = neighbor
 			min_distance = neighbor.global_position.distance_to(touch_pos)
-	if(global_position.distance_to(touch_pos) > 20):
+	if(global_position.distance_to(touch_pos) > 40):
 		preselected_neighbor = closest_neighbor
 
 #Selectionne le voisin attaqué et montre qu'il est attaqué, previent les deux routes du changement

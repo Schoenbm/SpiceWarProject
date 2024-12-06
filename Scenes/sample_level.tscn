@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://k06bpausbfuq"]
+
+[ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="1_tkvlp"]
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="2_4t0s1"]
+
+[node name="Level" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("2_4t0s1")
+
+[node name="AllRoads" type="Node2D" parent="GameManager"]
+
+[node name="AllPlanets" type="Node2D" parent="GameManager"]
+
+[node name="Player" parent="GameManager" instance=ExtResource("1_tkvlp")]

@@ -3,14 +3,14 @@ uniform float frequency;
 uniform float speed;
 uniform float bandwith;
 void vertex() {
-	
+
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
 	float dist = UV.y - 0.5;
 	float bands = sin(TIME * speed +  frequency * dist );
-	
+
 	bands = step(bandwith, bands);
 	if(bands > 0.0)
 		COLOR.rgb = vec3(1,1,1);

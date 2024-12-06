@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dlifsiakmhyc6"]
 
-[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/planet.tscn" id="1_fb3ue"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_fb3ue"]
 [ext_resource type="Texture2D" uid="uid://b7pxw317gv8em" path="res://Assets/Sprites/background4.png" id="2_ivb8s"]
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="3_tx5oo"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="4_hs7cy"]

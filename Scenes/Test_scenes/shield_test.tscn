@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdqlymknhy445"]
+
+[ext_resource type="PackedScene" uid="uid://k06bpausbfuq" path="res://Scenes/sample_level.tscn" id="1_yo6wn"]
+[ext_resource type="PackedScene" uid="uid://deh2o6x4w83v7" path="res://Assets/Prefab/Planets/defensive_planet.tscn" id="2_w4urb"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="3_j1wl8"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="4_uccvu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_88qt5"]
+resource_local_to_scene = true
+shader = ExtResource("3_j1wl8")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v68p5"]
+resource_local_to_scene = true
+shader = ExtResource("3_j1wl8")
+shader_parameter/red = 1.0
+shader_parameter/blue = 1.0
+shader_parameter/green = 0.5
+
+[node name="Level" instance=ExtResource("1_yo6wn")]
+
+[node name="DefensivePlanet" parent="GameManager/AllPlanets" index="0" instance=ExtResource("2_w4urb")]
+material = SubResource("ShaderMaterial_88qt5")
+position = Vector2(837, 326)
+ship_speed_production = 0.0
+number_of_ships = 10
+alliance = 1
+
+[node name="Planet" parent="GameManager/AllPlanets" index="1" instance=ExtResource("4_uccvu")]
+material = SubResource("ShaderMaterial_v68p5")
+position = Vector2(646, 313)
+ship_speed_production = 2.0
+auto_find_neighbors = true
+radius_neighbors = 300

@@ -23,22 +23,22 @@ void vertex() {
 void fragment() {
 	float dist = UV.x;
 	float bands;
-	
+
 	if(wobble){
 		bands = sin(sin(TIME * wobble_speed) * speed +  frequency * dist );
 	}
 	else{
 		bands = sin(TIME * speed +  frequency * dist );
 	}
-	
+
 	bands = step(bandwith, bands);
-	
+
 	float begin_color_coef;
 	float end_color_coef;
-	
+
 	if(bands > 0.0)
 		COLOR.a = 0.0;
-	
+
 
 	begin_color_coef = smoothstep(0.5 + merge_zone_half_width, 0.5 - merge_zone_half_width,dist);
 	end_color_coef = smoothstep(0.5 - merge_zone_half_width, 0.5 + merge_zone_half_width,dist);
