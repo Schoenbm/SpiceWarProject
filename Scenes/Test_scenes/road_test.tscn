@@ -7,16 +7,18 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hnl8u"]
 resource_local_to_scene = true
 shader = ExtResource("2_37bgv")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ms7qr"]
 resource_local_to_scene = true
 shader = ExtResource("2_37bgv")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [node name="RoadTest" type="Node2D"]
 

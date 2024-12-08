@@ -25,6 +25,8 @@ var selected_road : Planet
 var roads = {}
 
 @export var alliance : PlanetType.Alliance
+@export var color_change_anim_duration = 0.15
+var color_change_anim_time = 0
 
 var player : Player
 
@@ -33,6 +35,8 @@ var current_overlay : OverlayPlanet
 # Called when the node enters the scene tree for the first time.
 func setup(aPlayer) -> void:
 	$PermanentCursorPivot.hide() #cache le curseur avant d'attaquer
+	$PlanetSprite.material.set_shader_parameter('transition_time',0)
+	$PlanetSprite.material.set_shader_parameter('transition_duration',color_change_anim_duration)
 	player = aPlayer
 	if(auto_find_neighbors):
 		detect_neighbors()
@@ -51,14 +55,17 @@ func setup(aPlayer) -> void:
 
 
 func change_color_alliance(pAlliance):
-		$PlanetSprite.modulate = PlanetType.get_alliance_color(alliance)
+		$PlanetSprite.material.set_shader_parameter('previous_color',PlanetType.get_alliance_color(alliance))
+		$PlanetSprite.material.set_shader_parameter('color',PlanetType.get_alliance_color(pAlliance))
+		color_change_anim_time = color_change_anim_duration
+		await get_tree().create_timer(color_change_anim_duration).timeout
 		for road in roads.values():
 			road.update_color()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	produce_ships(delta)
-	animate()
+	animate(delta)
 	update_text()
 	pass
 	
@@ -80,8 +87,12 @@ func produce_ships(delta: float) -> void:
 		else:
 			current_ship_production = 0
 
-func animate()->void :
+
+func animate(delta)->void :
 	scale = Vector2(1 + 0.1* sqrt(float(number_of_ships + current_ship_production) / float(max_ships)), 1 + 0.1* sqrt(float(number_of_ships + current_ship_production) / float(max_ships)))
+	if(color_change_anim_time > 0):
+		$PlanetSprite.material.set_shader_parameter('transition_time',color_change_anim_duration - color_change_anim_duration)
+		color_change_anim_time -= delta
 
 func update_text() -> void:
 	$TextEdit.text = str(number_of_ships) + " / " + str(max_ships)
@@ -107,6 +118,8 @@ func hit(aAlliance : PlanetType.Alliance) -> void:
 	if(number_of_ships < 0):
 		change_alliance.emit(alliance, aAlliance)
 		self.alliance = aAlliance
+		if(shield != null):
+			shield.alliance = aAlliance
 		change_color_alliance(alliance)
 		for road in roads.values():
 			road.start_color_transition()

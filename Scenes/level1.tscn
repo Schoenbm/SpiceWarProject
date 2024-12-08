@@ -12,135 +12,154 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n5uqb"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2vgia"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_41vea"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o3puj"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8exhw"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_raa41"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_honop"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_26ovx"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0snnh"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ie2j"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_42nse"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ld24q"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cewct"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dc3d"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_42eh0"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ubh0"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0f1k3"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f0hst"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kirl3"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [node name="three_cells" type="Node2D"]
 position = Vector2(-2, 2)

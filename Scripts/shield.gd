@@ -36,16 +36,18 @@ func reboot(delta : float):
 	if(time_elapsed_before_reboot < 0.5): # le 0.5 est du au fait que c'est la valeur max de fade_state
 		$ShieldSprite.material.set_shader_parameter('fade_state', time_elapsed_before_reboot)  
 		
-	if(time_elapsed_before_reboot > shield_max_capacity):
+	if(time_elapsed_before_reboot > shield_reboot_time):
 		activated = true
 		time_elapsed_before_reboot = 0
 	elif(time_elapsed_before_reboot > shield_max_capacity - 0.5): # Ici aussi
 		$ShieldSprite.material.set_shader_parameter('fade_state', shield_max_capacity - time_elapsed_before_reboot)
 
-	
+
 func hit(damage):
 	shield_capacity = ( max(0, shield_capacity - damage))
 	$ShieldSprite.material.set_shader_parameter('charged',false)
+	$ShieldSprite.material.set_shader_parameter('hit', true)
+	$Timer.start()
 	if(shield_capacity == 0):
 		time_elapsed_before_reboot = 0;
 		time_elapsed_between_charges = 0;
@@ -53,3 +55,6 @@ func hit(damage):
 
 func is_active() -> bool:
 	return shield_capacity < shield_max_capacity
+	
+func _on_timer_timeout():
+		$ShieldSprite.material.set_shader_parameter('hit', false)

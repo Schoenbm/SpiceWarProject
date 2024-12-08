@@ -11,10 +11,11 @@ shader = ExtResource("1_gxgjq")
 shader_parameter/blink_speed = 3.0
 shader_parameter/charged = false
 shader_parameter/fade_state = 0.0
-shader_parameter/blink_charged_amp = 0.1
-shader_parameter/blink_charging_amp = 0.17
-shader_parameter/blink_charged_base = 0.37
-shader_parameter/blink_charging_base = 0.3
+shader_parameter/hit = false
+shader_parameter/blink_charged_amp = 0.12
+shader_parameter/blink_charging_amp = 0.07
+shader_parameter/blink_charged_base = 0.25
+shader_parameter/blink_charging_base = 0.1
 shader_parameter/ring_color = Color(1, 1, 1, 1)
 shader_parameter/ring_frequency = 5.0
 shader_parameter/ring_portion = 0.9
@@ -39,3 +40,8 @@ texture = SubResource("CompressedTexture2D_jw1x2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0kdb2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

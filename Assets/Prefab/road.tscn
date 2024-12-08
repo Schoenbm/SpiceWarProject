@@ -15,7 +15,7 @@ shader_parameter/transition_time = 9.0
 shader_parameter/transition_end_time = 10.0
 shader_parameter/frequency = 30.0
 shader_parameter/speed = 0.6
-shader_parameter/bandwith = 0.9
+shader_parameter/bandwith = 0.8
 shader_parameter/wobble = true
 shader_parameter/wobble_speed = 0.7
 shader_parameter/merge_zone_half_width = 0.361
@@ -24,13 +24,13 @@ shader_parameter/merge_zone_half_width = 0.361
 script = ExtResource("1_urb34")
 flow_rate = 0.2
 attack_animation_speed = 4.0
-wobble_animation_speed = 1.0
+wobble_animation_speed = 2.0
 wobble_animation_frequency = 10.0
 transition_color_max_time = 0.3
 
 [node name="RoadTexture" type="Sprite2D" parent="."]
 z_index = -5
 material = SubResource("ShaderMaterial_wfu6b")
-scale = Vector2(3, 0.05)
+scale = Vector2(3, 0.08)
 texture = ExtResource("2_tdfsd")
 offset = Vector2(64, 0)

@@ -6,6 +6,7 @@ uniform bool charged = false;
 
 uniform float fade_state = 0;
 /* tout est visible a 0, invisible a 0.5*/
+uniform bool hit = false;
 
 uniform float blink_charged_amp = 0;
 uniform float blink_charging_amp = 0.05;
@@ -34,9 +35,12 @@ void fragment() {
 	else{
 		COLOR.a = circle_mask.r * (blink_charging_amp * sin(TIME * blink_speed + 1.5)+ blink_charging_base + 0.05 * matrices.r);
 	}
+	
 
 	if (rings > 0.0)
-		COLOR.a = COLOR.a + circle_mask.r * ((COLOR.a + 0.05) * 0.7 * matrices.r);
+		COLOR.a = COLOR.a + circle_mask.r * ((COLOR.a + 0.3) * 0.7 * matrices.r);
+	if(hit)
+		COLOR.a = circle_mask.r *  ( COLOR.a + 0.2);
 
 	COLOR.a = COLOR.a * smoothstep(fade_state,fade_state * 1.2,dist);
 

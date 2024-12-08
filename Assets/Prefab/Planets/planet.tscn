@@ -1,29 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://br4o8xqbdn12j"]
+[gd_scene load_steps=7 format=3 uid="uid://br4o8xqbdn12j"]
 
 [ext_resource type="Script" path="res://Scripts/planet.gd" id="1_c1och"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="1_gdd4u"]
 [ext_resource type="Texture2D" uid="uid://bhm7yurck1f4q" path="res://Assets/Sprites/ship2.png" id="3_nw3pg"]
 [ext_resource type="Texture2D" uid="uid://7k6f2bb1jxuk" path="res://Assets/Sprites/permanent_cursor.png" id="4_51aq3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_awsqw"]
-resource_local_to_scene = true
-shader = ExtResource("1_gdd4u")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yang"]
 radius = 24.1868
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjrm6"]
+resource_local_to_scene = true
 shader = ExtResource("1_gdd4u")
-shader_parameter/red = null
-shader_parameter/blue = null
-shader_parameter/green = null
+shader_parameter/previous_color = Vector3(0.6, 0.6, 0.6)
+shader_parameter/color = Vector3(1, 0, 0)
+shader_parameter/transition_time = 0.1
+shader_parameter/transition_duration = 0.3
 
 [node name="Planet" type="Area2D"]
 z_index = 1
-material = SubResource("ShaderMaterial_awsqw")
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_c1och")
@@ -56,8 +50,8 @@ texture = ExtResource("3_nw3pg")
 
 [node name="PermanentCursor" type="Sprite2D" parent="PermanentCursorPivot"]
 z_index = -1
-position = Vector2(29, 0)
-scale = Vector2(0.065, 0.065)
+position = Vector2(27, -1)
+scale = Vector2(0.12, 0.11)
 texture = ExtResource("4_51aq3")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

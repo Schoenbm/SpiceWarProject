@@ -1,15 +1,21 @@
 shader_type canvas_item;
-uniform float red;
-uniform float blue;
-uniform float green;
+
+uniform vec3 previous_color;
+uniform vec3 color;
+
+uniform float transition_time;
+uniform float transition_duration;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	// Called for every pixel the material is visible on.
-	//COLOR.rgb = vec3(red,blue,green);
+	if((transition_time / (2.0 *transition_duration)) < distance(UV,vec2(0.5,0.5)))
+		COLOR.rgb =  previous_color;
+	else{
+		COLOR.rgb = color;
+	}
 }
 
 //void light() {

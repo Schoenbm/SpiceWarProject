@@ -8,16 +8,18 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_88qt5"]
 resource_local_to_scene = true
 shader = ExtResource("3_j1wl8")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v68p5"]
 resource_local_to_scene = true
 shader = ExtResource("3_j1wl8")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
 
 [node name="Level" instance=ExtResource("1_yo6wn")]
 
@@ -25,12 +27,13 @@ shader_parameter/green = 0.5
 material = SubResource("ShaderMaterial_88qt5")
 position = Vector2(837, 326)
 ship_speed_production = 0.0
-number_of_ships = 10
 alliance = 1
 
 [node name="Planet" parent="GameManager/AllPlanets" index="1" instance=ExtResource("4_uccvu")]
 material = SubResource("ShaderMaterial_v68p5")
 position = Vector2(646, 313)
-ship_speed_production = 2.0
 auto_find_neighbors = true
 radius_neighbors = 300
+
+[node name="Player" parent="GameManager" index="2"]
+bound = Vector2(2000, 2000)

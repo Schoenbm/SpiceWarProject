@@ -16,6 +16,7 @@ shader_parameter/green = 0.5
 material = SubResource("ShaderMaterial_vrjwx")
 
 [node name="Shield" parent="." index="0" instance=ExtResource("3_gs5ru")]
+z_index = 1
 position = Vector2(-1, -1)
 scale = Vector2(0.5, 0.5)
 
