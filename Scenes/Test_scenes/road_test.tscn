@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="1_wu3yk"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_37bgv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnl8u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d58nt"]
 resource_local_to_scene = true
 shader = ExtResource("2_37bgv")
 shader_parameter/previous_color = null
@@ -12,7 +12,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ms7qr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75jpn"]
 resource_local_to_scene = true
 shader = ExtResource("2_37bgv")
 shader_parameter/previous_color = null
@@ -28,11 +28,11 @@ position = Vector2(198, 333)
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Planet" parent="Node2D" node_paths=PackedStringArray("input_neighbors") instance=ExtResource("1_doape")]
-material = SubResource("ShaderMaterial_hnl8u")
+material = SubResource("ShaderMaterial_d58nt")
 position = Vector2(109, 359)
 input_neighbors = [NodePath("../Planet2")]
 
 [node name="Planet2" parent="Node2D" instance=ExtResource("1_doape")]
-material = SubResource("ShaderMaterial_ms7qr")
+material = SubResource("ShaderMaterial_75jpn")
 position = Vector2(288, 281)
 alliance = 1

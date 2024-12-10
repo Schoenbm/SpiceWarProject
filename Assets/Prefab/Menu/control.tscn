@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm6iunrfkxsp4"]
+
+[ext_resource type="Texture2D" uid="uid://bmdcnjqk5qwn5" path="res://Assets/Sprites/accel.png" id="1_1v8ga"]
+[ext_resource type="Texture2D" uid="uid://bg14umaeng1hn" path="res://Assets/Sprites/new_ship.png" id="2_fmldu"]
+[ext_resource type="Texture2D" uid="uid://4ak7hjulijxj" path="res://Assets/Sprites/—Pngtree—vector shield icon_3785558.png" id="3_wakga"]
+
+[sub_resource type="Theme" id="Theme_xhy1j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l21q1"]
+bg_color = Color(0.8, 0.866667, 0.980392, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 5
+border_color = Color(0.431373, 0.560784, 0.8, 1)
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+shadow_size = 3
+shadow_offset = Vector2(0, 4)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PopupMenu" type="PopupMenu" parent="UI"]
+title = "Evolution"
+position = Vector2i(0, 346)
+size = Vector2i(411, 200)
+visible = true
+theme = SubResource("Theme_xhy1j")
+
+[node name="AccelerationButton" type="Button" parent="UI/PopupMenu"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_l21q1")
+
+[node name="Icon" type="TextureRect" parent="UI/PopupMenu/AccelerationButton"]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 37.0
+offset_bottom = 35.0
+texture = ExtResource("1_1v8ga")
+expand_mode = 1
+
+[node name="CostText" type="Label" parent="UI/PopupMenu/AccelerationButton"]
+layout_mode = 0
+offset_left = 2.205
+offset_top = 58.255
+offset_right = 68.205
+offset_bottom = 81.255
+text = "10
+"
+
+[node name="Ressources" type="TextureRect" parent="UI/PopupMenu/AccelerationButton"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 60.0
+offset_right = 48.0
+offset_bottom = 80.0
+texture = ExtResource("2_fmldu")
+expand_mode = 1
+
+[node name="ShieldButton" type="Button" parent="UI/PopupMenu"]
+offset_left = 110.0
+offset_top = 30.0
+offset_right = 160.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_l21q1")
+
+[node name="Icon" type="TextureRect" parent="UI/PopupMenu/ShieldButton"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 43.0
+offset_bottom = 41.0
+texture = ExtResource("3_wakga")
+expand_mode = 1
+
+[node name="CostText" type="Label" parent="UI/PopupMenu/ShieldButton"]
+layout_mode = 0
+offset_left = 2.205
+offset_top = 58.255
+offset_right = 68.205
+offset_bottom = 81.255
+text = "10
+"
+
+[node name="Ressources" type="TextureRect" parent="UI/PopupMenu/ShieldButton"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 60.0
+offset_right = 48.0
+offset_bottom = 80.0
+texture = ExtResource("2_fmldu")
+expand_mode = 1

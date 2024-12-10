@@ -37,14 +37,8 @@ func _ready() -> void:
 #PLANETE OU SHIP DETECTE
 func _on_area_entered(area: Area2D) -> void:
 	if (area == destination_planet && alliance == destination_planet.alliance):
-		if(destination_planet.addShip()): 
-			destroy("")
-		else: # DEMI TOUR SI PLANETE PLEINE
-			var temp_planet : Planet
-			temp_planet = sending_planet
-			sending_planet = destination_planet
-			destination_planet = temp_planet
-			direction = -1 * direction
+		destination_planet.addShip()
+		destroy("")
 	elif(area == destination_planet) : #Enemy planet 
 		destination_planet.hit(alliance)
 		destroy("planet")

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://br4o8xqbdn12j"]
+[gd_scene load_steps=20 format=3 uid="uid://br4o8xqbdn12j"]
 
 [ext_resource type="Script" path="res://Scripts/planet.gd" id="1_c1och"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="1_gdd4u"]
 [ext_resource type="Texture2D" uid="uid://bhm7yurck1f4q" path="res://Assets/Sprites/ship2.png" id="3_nw3pg"]
-[ext_resource type="Texture2D" uid="uid://7k6f2bb1jxuk" path="res://Assets/Sprites/permanent_cursor.png" id="4_51aq3"]
+[ext_resource type="Texture2D" uid="uid://bg14umaeng1hn" path="res://Assets/Sprites/new_ship.png" id="4_1od3o"]
+[ext_resource type="Texture2D" uid="uid://cnt1y1ji64ih6" path="res://Assets/Sprites/Particles/circle_particle.png" id="5_001pd"]
+[ext_resource type="Texture2D" uid="uid://dgby0camk5lc1" path="res://Assets/Sprites/Particles/particle_rectangle.png" id="6_ixttc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yang"]
 radius = 24.1868
@@ -11,13 +13,73 @@ radius = 24.1868
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjrm6"]
 resource_local_to_scene = true
 shader = ExtResource("1_gdd4u")
-shader_parameter/previous_color = Vector3(0.6, 0.6, 0.6)
+shader_parameter/previous_color = Vector3(1, 1, 1)
 shader_parameter/color = Vector3(1, 0, 0)
-shader_parameter/transition_time = 0.1
+shader_parameter/transition_time = 0.0
 shader_parameter/transition_duration = 0.3
+
+[sub_resource type="Curve" id="Curve_sr2qk"]
+_data = [Vector2(0.109453, 1), 0.0, 0.0, 0, 0, Vector2(0.80597, 0.527472), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_upgtn"]
+curve = SubResource("Curve_sr2qk")
+
+[sub_resource type="Curve" id="Curve_cqwr3"]
+_data = [Vector2(0.223881, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rufaq"]
+_data = [Vector2(0.0547264, 1), 0.0, 0.0, 0, 0, Vector2(0.661692, 0.769231), 0.0, 0.0, 0, 0, Vector2(0.985075, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_pvqaf"]
+curve_x = SubResource("Curve_cqwr3")
+curve_y = SubResource("Curve_rufaq")
+
+[sub_resource type="Curve" id="Curve_cwrxv"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rnkpk"]
+curve = SubResource("Curve_cwrxv")
+
+[sub_resource type="Curve" id="Curve_rp1lg"]
+_data = [Vector2(0.079602, 0), 0.0, 0.0, 0, 0, Vector2(0.179104, 0.527472), 0.0, 0.0, 0, 0, Vector2(0.437811, 0.989011), 0.0, 0.0, 0, 0, Vector2(0.970149, 0), -4.21678, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_c5kgq"]
+curve = SubResource("Curve_rp1lg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3ynhf"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0.4, 0.3, 1)
+spread = 180.0
+initial_velocity_max = 59.08
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_pvqaf")
+orbit_velocity_curve = SubResource("CurveTexture_rnkpk")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_c5kgq")
+alpha_curve = SubResource("CurveTexture_upgtn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uuj7l"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 21.1
+initial_velocity_max = 101.27
+gravity = Vector3(0, 0, 0)
 
 [node name="Planet" type="Area2D"]
 z_index = 1
+scale = Vector2(0.65, 0.65)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_c1och")
@@ -52,6 +114,26 @@ texture = ExtResource("3_nw3pg")
 z_index = -1
 position = Vector2(27, -1)
 scale = Vector2(0.12, 0.11)
-texture = ExtResource("4_51aq3")
+texture = ExtResource("4_1od3o")
+
+[node name="CircleParticles" type="GPUParticles2D" parent="."]
+z_index = -2
+emitting = false
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_3ynhf")
+texture = ExtResource("5_001pd")
+lifetime = 1.5
+one_shot = true
+preprocess = 0.5
+explosiveness = 1.0
+
+[node name="BarParticles" type="GPUParticles2D" parent="."]
+z_index = 2
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_uuj7l")
+texture = ExtResource("6_ixttc")
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

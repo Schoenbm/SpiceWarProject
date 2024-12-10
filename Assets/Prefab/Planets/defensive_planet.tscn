@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://deh2o6x4w83v7"]
+[gd_scene load_steps=7 format=3 uid="uid://deh2o6x4w83v7"]
 
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_jeql6"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_qxyjn"]
@@ -8,9 +8,18 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vrjwx"]
 resource_local_to_scene = true
 shader = ExtResource("2_qxyjn")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktnjs"]
+resource_local_to_scene = true
+shader = ExtResource("2_qxyjn")
+shader_parameter/previous_color = Vector3(1, 1, 1)
+shader_parameter/color = Vector3(1, 0, 0)
+shader_parameter/transition_time = 0.0
+shader_parameter/transition_duration = 0.3
 
 [node name="DefensivePlanet" instance=ExtResource("1_jeql6")]
 material = SubResource("ShaderMaterial_vrjwx")
@@ -19,6 +28,9 @@ material = SubResource("ShaderMaterial_vrjwx")
 z_index = 1
 position = Vector2(-1, -1)
 scale = Vector2(0.5, 0.5)
+
+[node name="PlanetSprite" parent="." index="3"]
+material = SubResource("ShaderMaterial_ktnjs")
 
 [node name="ShieldIcon" type="Sprite2D" parent="." index="5"]
 modulate = Color(1, 1, 1, 0.486)

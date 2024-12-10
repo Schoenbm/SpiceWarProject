@@ -1,19 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://it3melxh4rf1"]
+[gd_scene load_steps=7 format=3 uid="uid://it3melxh4rf1"]
 
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_j255c"]
 [ext_resource type="Shader" path="res://Assets/Material/acceleration_planet.gdshader" id="2_j865n"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_kaxst"]
 [ext_resource type="Texture2D" uid="uid://bmdcnjqk5qwn5" path="res://Assets/Sprites/accel.png" id="3_klgbm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpxyc"]
+resource_local_to_scene = true
+shader = ExtResource("2_kaxst")
+shader_parameter/previous_color = Vector3(1, 1, 1)
+shader_parameter/color = Vector3(1, 0, 0)
+shader_parameter/transition_time = 0.0
+shader_parameter/transition_duration = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_romdm"]
 shader = ExtResource("2_j865n")
 shader_parameter/frequency = 25.0
 shader_parameter/speed = 10.0
 shader_parameter/bandwith = 0.15
+shader_parameter/bandwith_smooth = 0.3
 
 [node name="AccelerationPlanet" instance=ExtResource("1_j255c")]
-material = null
 ship_speed_production = 0.0
 acceleration_ships = 2
+
+[node name="PlanetSprite" parent="." index="2"]
+material = SubResource("ShaderMaterial_xpxyc")
 
 [node name="Accel" type="Sprite2D" parent="." index="4"]
 material = SubResource("ShaderMaterial_romdm")

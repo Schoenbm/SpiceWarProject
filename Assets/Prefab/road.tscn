@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj34rc65maxaq"]
+[gd_scene load_steps=9 format=3 uid="uid://bj34rc65maxaq"]
 
 [ext_resource type="Script" path="res://Scripts/road.gd" id="1_urb34"]
 [ext_resource type="Shader" path="res://Assets/Material/road.gdshader" id="2_g7rkg"]
 [ext_resource type="Texture2D" uid="uid://dttjwufrj75p3" path="res://Assets/Sprites/road_texture.png" id="2_tdfsd"]
+[ext_resource type="Texture2D" uid="uid://bhm7yurck1f4q" path="res://Assets/Sprites/ship2.png" id="4_2ne15"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wfu6b"]
 resource_local_to_scene = true
@@ -20,17 +21,54 @@ shader_parameter/wobble = true
 shader_parameter/wobble_speed = 0.7
 shader_parameter/merge_zone_half_width = 0.361
 
+[sub_resource type="Curve" id="Curve_2jvj8"]
+_data = [Vector2(0.0447761, 0), 0.0, 0.0, 0, 0, Vector2(0.273632, 1), 0.0, 0.0, 0, 0, Vector2(0.800995, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_bo4qr"]
+curve = SubResource("Curve_2jvj8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y85jl"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(200, 0, 0)
+emission_shape_scale = Vector3(200, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -20.0
+angle_max = 20.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.1
+scale_over_velocity_min = 67.51
+scale_over_velocity_max = 421.94
+alpha_curve = SubResource("CurveTexture_bo4qr")
+
 [node name="Road" type="Node2D"]
 script = ExtResource("1_urb34")
 flow_rate = 0.2
-attack_animation_speed = 4.0
+attack_animation_speed = 5.0
 wobble_animation_speed = 2.0
-wobble_animation_frequency = 10.0
+wobble_animation_frequency = 16.0
 transition_color_max_time = 0.3
 
 [node name="RoadTexture" type="Sprite2D" parent="."]
 z_index = -5
 material = SubResource("ShaderMaterial_wfu6b")
-scale = Vector2(3, 0.08)
+scale = Vector2(3, 0.06)
 texture = ExtResource("2_tdfsd")
 offset = Vector2(64, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="RoadTexture"]
+z_index = -1
+scale = Vector2(0.333333, 16.6667)
+emitting = false
+amount = 7
+process_material = SubResource("ParticleProcessMaterial_y85jl")
+texture = ExtResource("4_2ne15")
+one_shot = true
+explosiveness = 1.0

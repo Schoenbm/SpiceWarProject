@@ -33,7 +33,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3puj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpanp"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -41,7 +41,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8exhw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jaarc"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -49,7 +49,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_raa41"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3grm"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -57,7 +57,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_honop"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyews"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -65,7 +65,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_26ovx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjiy8"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -73,7 +73,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0snnh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76ykw"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -81,7 +81,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ie2j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e72wd"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -89,7 +89,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_42nse"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rissf"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -97,7 +97,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ld24q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gb88p"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -105,7 +105,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cewct"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4w2k"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -113,7 +113,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0dc3d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5607v"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -153,7 +153,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kirl3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hivj"]
 resource_local_to_scene = true
 shader = ExtResource("4_ml1c1")
 shader_parameter/previous_color = null
@@ -174,89 +174,92 @@ material = SubResource("ShaderMaterial_n5uqb")
 position = Vector2(972, 845)
 auto_find_neighbors = true
 radius_neighbors = 200
+color_change_anim_duration = 0.15
 
 [node name="GeneratorPlanet" parent="Planets" instance=ExtResource("5_bsql3")]
 material = SubResource("ShaderMaterial_2vgia")
 position = Vector2(847, 912)
 radius_neighbors = 200
+color_change_anim_duration = 0.15
 
 [node name="GeneratorPlanet2" parent="Planets" instance=ExtResource("5_bsql3")]
 material = SubResource("ShaderMaterial_41vea")
 position = Vector2(1133, 902)
 radius_neighbors = 200
+color_change_anim_duration = 0.15
 
 [node name="Planet" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_o3puj")
+material = SubResource("ShaderMaterial_fpanp")
 position = Vector2(902, 747)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet2" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_8exhw")
+material = SubResource("ShaderMaterial_jaarc")
 position = Vector2(1024, 747)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet3" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_raa41")
+material = SubResource("ShaderMaterial_v3grm")
 position = Vector2(958, 601)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet4" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_honop")
+material = SubResource("ShaderMaterial_pyews")
 position = Vector2(1096, 562)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet5" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_26ovx")
+material = SubResource("ShaderMaterial_wjiy8")
 position = Vector2(1188, 413)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet6" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_0snnh")
+material = SubResource("ShaderMaterial_76ykw")
 position = Vector2(734, 424)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet7" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_7ie2j")
+material = SubResource("ShaderMaterial_e72wd")
 position = Vector2(841, 291)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet8" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_42nse")
+material = SubResource("ShaderMaterial_rissf")
 position = Vector2(1119, 281)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet9" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_ld24q")
+material = SubResource("ShaderMaterial_gb88p")
 position = Vector2(1076, 102)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet10" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_cewct")
+material = SubResource("ShaderMaterial_d4w2k")
 position = Vector2(984, 241)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 4
 
 [node name="Planet11" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_0dc3d")
+material = SubResource("ShaderMaterial_5607v")
 position = Vector2(783, 558)
 auto_find_neighbors = true
 radius_neighbors = 200
@@ -267,6 +270,7 @@ material = SubResource("ShaderMaterial_42eh0")
 position = Vector2(1085, -184)
 radius_neighbors = 200
 alliance = 1
+color_change_anim_duration = 0.15
 
 [node name="DefensivePlanet2" parent="Planets" instance=ExtResource("3_47dnc")]
 material = SubResource("ShaderMaterial_5ubh0")
@@ -274,21 +278,24 @@ position = Vector2(981, -36)
 auto_find_neighbors = true
 radius_neighbors = 200
 alliance = 1
+color_change_anim_duration = 0.15
 
 [node name="GeneratorPlanet4" parent="Planets" instance=ExtResource("5_bsql3")]
 material = SubResource("ShaderMaterial_0f1k3")
 position = Vector2(933, -192)
 radius_neighbors = 200
 alliance = 1
+color_change_anim_duration = 0.15
 
 [node name="GeneratorPlanet5" parent="Planets" instance=ExtResource("5_bsql3")]
 material = SubResource("ShaderMaterial_f0hst")
 position = Vector2(813, -114)
 radius_neighbors = 200
 alliance = 1
+color_change_anim_duration = 0.15
 
 [node name="Planet12" parent="Planets" instance=ExtResource("6_ivlrr")]
-material = SubResource("ShaderMaterial_kirl3")
+material = SubResource("ShaderMaterial_4hivj")
 position = Vector2(1171, -71)
 auto_find_neighbors = true
 radius_neighbors = 200
@@ -297,12 +304,14 @@ alliance = 1
 [node name="AccelerationPlanet" parent="Planets" instance=ExtResource("7_glf0x")]
 position = Vector2(919, 97)
 alliance = 4
+color_change_anim_duration = 0.15
 
 [node name="AccelerationPlanet2" parent="Planets" instance=ExtResource("7_glf0x")]
 position = Vector2(952, 418)
 auto_find_neighbors = true
 radius_neighbors = 300
 alliance = 4
+color_change_anim_duration = 0.15
 
 [node name="BgColor" type="Sprite2D" parent="."]
 z_index = -10

@@ -104,9 +104,13 @@ func prepareRoadSprite():
 	$RoadTexture.material.set_shader_parameter('transition_end_time', transition_color_max_time)
 
 
-func update_color():
+func update_color(particules_effect : bool):
 	$RoadTexture.material.set_shader_parameter('temp_begin_color', PlanetType.get_alliance_color(planet1.alliance))
 	$RoadTexture.material.set_shader_parameter('temp_end_color', PlanetType.get_alliance_color(planet2.alliance))
+	if(particules_effect && planet1.alliance == planet2.alliance):
+		$RoadTexture/GPUParticles2D.modulate = PlanetType.get_alliance_color(planet1.alliance)
+		$RoadTexture/GPUParticles2D.emitting = true
+		
 	
 func start_color_transition():
 	transition_color_time = 0

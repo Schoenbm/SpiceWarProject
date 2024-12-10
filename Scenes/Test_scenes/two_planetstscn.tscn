@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqprnpwh2utsv"]
+
+[ext_resource type="PackedScene" uid="uid://k06bpausbfuq" path="res://Scenes/sample_level.tscn" id="1_6muim"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="2_u48fy"]
+
+[node name="Level" instance=ExtResource("1_6muim")]
+
+[node name="Planet" parent="GameManager/AllPlanets" index="0" instance=ExtResource("2_u48fy")]
+position = Vector2(592, 602)
+
+[node name="Planet2" parent="GameManager/AllPlanets" index="1" instance=ExtResource("2_u48fy")]
+position = Vector2(802, 540)
+ship_speed_production = 0.0
+auto_find_neighbors = true
+radius_neighbors = 500
+alliance = 4
+
+[node name="Background" parent="." index="1"]
+position = Vector2(1810, 1532)

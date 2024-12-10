@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://pj6qvxrb3t2x"]
+[gd_scene load_steps=5 format=3 uid="uid://pj6qvxrb3t2x"]
 
-[ext_resource type="Texture2D" uid="uid://bnwni1trbwc5p" path="res://Assets/Sprites/background2.png" id="1_q7j5j"]
+[ext_resource type="Shader" path="res://Assets/Material/background.gdshader" id="1_mcmep"]
+[ext_resource type="Texture2D" uid="uid://dttjwufrj75p3" path="res://Assets/Sprites/road_texture.png" id="2_01otv"]
+[ext_resource type="Texture2D" uid="uid://d53vsuofo5n5" path="res://Assets/Sprites/background_texture.png" id="2_08a7x"]
 
-[node name="Background2" type="Sprite2D"]
-modulate = Color(0.537681, 0.524398, 0.537664, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_43p0g"]
+shader = ExtResource("1_mcmep")
+shader_parameter/deeper_space = ExtResource("2_08a7x")
+
+[node name="Background" type="Sprite2D"]
+modulate = Color(0.0588235, 0.0705882, 0.329412, 1)
 z_index = -10
-position = Vector2(489, 353)
-scale = Vector2(4, 4)
-texture = ExtResource("1_q7j5j")
+material = SubResource("ShaderMaterial_43p0g")
+position = Vector2(2242.13, 1306.53)
+scale = Vector2(50.373, 44.9171)
+texture = ExtResource("2_01otv")

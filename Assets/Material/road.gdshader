@@ -39,7 +39,7 @@ void fragment() {
 	if(bands > 0.0)
 		COLOR.a = 0.0;
 	else
-		COLOR.a = 0.6;
+		COLOR.a = 0.9;
 
 
 	begin_color_coef = smoothstep(0.5 + merge_zone_half_width, 0.5 - merge_zone_half_width,dist);

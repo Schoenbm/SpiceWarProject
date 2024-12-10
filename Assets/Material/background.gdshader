@@ -1,21 +1,15 @@
 shader_type canvas_item;
-
-uniform vec3 previous_color;
-uniform vec3 color;
-
-uniform float transition_time;
-uniform float transition_duration;
+uniform sampler2D deeper_space : filter_linear_mipmap,repeat_enable;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	if((transition_time / (2.0 *transition_duration)) > 0.51 - distance(UV,vec2(0.5,0.5)))
-		COLOR.rgb =  previous_color;
-	else{
-		COLOR.rgb = color;
-	}
+	vec4 noise = texture(deeper_space,UV + 0.005 * TIME);
+	COLOR.rgb = COLOR.rgb;
+	
+	// Called for every pixel the material is visible on.
 }
 
 //void light() {
