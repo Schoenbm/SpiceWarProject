@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdhjc40snegk6"
-path="res://.godot/imported/shield.png-1bf5fb3ebf158fdd741932ea72d4193b.ctex"
+uid="uid://b05sfq3sqv3sr"
+path="res://.godot/imported/slidebar_knob.png-d00cad48419ec6920baf475416d9282f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpritesKrita/shield.png"
-dest_files=["res://.godot/imported/shield.png-1bf5fb3ebf158fdd741932ea72d4193b.ctex"]
+source_file="res://Assets/Sprites/Icons/slidebar_knob.png"
+dest_files=["res://.godot/imported/slidebar_knob.png-d00cad48419ec6920baf475416d9282f.ctex"]
 
 [params]
 

@@ -16,6 +16,10 @@ void fragment() {
 	else{
 		COLOR.rgb = color;
 	}
+
+	float dist = distance(UV, vec2(0.5,0.5));
+	dist = smoothstep(0.51, 0.48,dist);
+	COLOR.a = COLOR.a * dist;
 }
 
 //void light() {

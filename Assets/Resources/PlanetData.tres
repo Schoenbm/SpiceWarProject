@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PlanetCost" load_steps=2 format=3 uid="uid://b2wgemv1e5e8f"]
+
+[ext_resource type="Script" path="res://Assets/Resources/planetdata.gd" id="1_rjtj1"]
+
+[resource]
+script = ExtResource("1_rjtj1")
+types_name = {
+0: "accelerator",
+1: "generator",
+2: "laboratory",
+3: "rafinery",
+4: "normal",
+5: "defensive"
+}
+types_cost = {
+0: 10,
+1: 15,
+2: 15,
+3: 20,
+4: 0,
+5: 10
+}

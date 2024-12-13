@@ -16,34 +16,70 @@ var window_size
 var previous_distance = 0
 var delta_distance = 0
 
+var planet_data  = load("res://Assets/Resources/PlanetData.tres")
+
+@export var long_touch : float
+var touch_time : float
+
 @export var bound : Vector2
 var active_planet : Planet
 var cursor
 
+var short_touch : bool
+var choose_attack_mode : bool 
+var upgrade_menu_oppened : bool
+
+@export var context_menu : ContextMenu
+
 func _ready() -> void:
+	touch_time = long_touch
+	upgrade_menu_oppened = false
+	choose_attack_mode = false
+	short_touch = false
 	cursor = $Cursor
 	cursor.hide()
 	window_size = get_viewport().size
 	visible_width = window_size.x / zoom.x
 	visible_height = window_size.y / zoom.y
-	print(str(visible_height) + " " + str(visible_width))
 
 func clamp_pos():
 	position.x = clamp(position.x, visible_width / 2, bound.x - visible_width / 2)
 	position.y = clamp(position.y, visible_height / 2, bound.y - visible_height / 2)
 	
-	
-func _input(event):	
+func _process(delta: float) -> void:
+	if(touch_time < long_touch && active_planet != null):
+		touch_time += delta
+		if(touch_time >= long_touch):
+			activate_attack_mode(true)
+
+
+func _unhandled_input(event):
+	if(upgrade_menu_oppened):
+		if(!event.is_pressed()):
+			return
+		upgrade_menu_oppened = false
+		active_planet = null
+		context_menu.player_close_context_menu()
+		
 	if event is	InputEventScreenTouch :
 			update_active_touches(event)
-			update_initial_distance(event)	
-			if(active_planet != null && event.is_released()): # TODO REFACTORISER
-				select_planet()
-			check_area(event)
+			update_initial_distance(event)
+			update_timer_long_touch(event)
+			if(active_planet != null && choose_attack_mode && event.is_released()): # TODO REFACTORISER
+				confirm_attack()
+				activate_attack_mode(false)
+				short_touch = false
+			if(active_planet != null && short_touch && event.is_released()):
+				context_menu.player_open_context_menu(active_planet)
+				upgrade_menu_oppened = true
+				short_touch = false
+			if(active_planet != null && event.is_released()):
+				active_planet == null
+			find_active_planet_in_areas(event)
 			
 	if event is	InputEventScreenDrag :
 			update_active_touches(event)
-			if(active_planet != null):
+			if(active_planet != null && choose_attack_mode):
 				preselect_planet()
 			if(len(active_touches_pos) == 1) && active_planet == null:
 				drag_screen(event)
@@ -87,7 +123,7 @@ func emule_touch(bol):
 	touch_1.pressed = bol  # Doigt appuyé
 	Input.parse_input_event(touch_1)
 
-func check_area(event):
+func find_active_planet_in_areas(event):
 	if(event.pressed):
 		var space_state = get_world_2d().direct_space_state
 		var physics_query = PhysicsPointQueryParameters2D.new()
@@ -99,12 +135,9 @@ func check_area(event):
 
 		for result in results:
 			if(result.collider is Planet && result.collider.alliance == self.alliance):
-				result.collider.enable_overlay(true)
 				active_planet = result.collider
-				cursor.show()
 	else:
-		if(active_planet != null):
-			active_planet.enable_overlay(false)
+		if(active_planet != null && choose_attack_mode):
 			active_planet = null
 
 func get_finger_pos() -> Vector2:
@@ -117,6 +150,31 @@ func preselect_planet():
 	cursor.global_position = active_planet.preselected_neighbor.position
 
 
-func select_planet():
-	active_planet.selectNeighbor()
+func confirm_attack():
+	active_planet.confirm_attack_on_preselected_neighbor()
 	cursor.hide()
+	
+
+func _on_ui_try_upgrade(planet_type: PlanetData.Types) -> void:
+	if(active_planet != null && active_planet.try_upgrade(planet_data.get_cost(planet_type), planet_type)):
+		print("upgraded")
+	else :
+		print(active_planet != null)
+
+func activate_attack_mode(bol : bool) :
+	if(bol):
+		cursor.show()
+	else :
+		cursor.hide()
+	active_planet.enable_overlay(bol)
+	choose_attack_mode = bol
+
+func update_timer_long_touch(event : InputEventScreenTouch):
+	if(len(active_touches_pos) == 1 && event.pressed ):
+		touch_time = 0
+	elif(len(active_touches_pos) == 0 && touch_time < long_touch && event.is_released()):
+		short_touch = true
+		touch_time = long_touch
+	else:
+		touch_time = long_touch
+		

@@ -29,7 +29,7 @@ z_index = 1
 position = Vector2(-1, -1)
 scale = Vector2(0.5, 0.5)
 
-[node name="PlanetSprite" parent="." index="3"]
+[node name="PlanetSprite" parent="." index="2"]
 material = SubResource("ShaderMaterial_ktnjs")
 
 [node name="ShieldIcon" type="Sprite2D" parent="." index="5"]

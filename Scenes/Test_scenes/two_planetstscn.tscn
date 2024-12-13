@@ -17,3 +17,5 @@ alliance = 4
 
 [node name="Background" parent="." index="1"]
 position = Vector2(1810, 1532)
+
+[editable path="UpgradeMenu"]

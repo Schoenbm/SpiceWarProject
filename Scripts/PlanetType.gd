@@ -8,6 +8,8 @@ enum Alliance{
 	NEUTRAL
 }
 
+
+
 static var alliances_colors = {
 	Alliance.RED: Color(0.8, 0.3, 0.3),    # Rouge
 	Alliance.BLUE: Color(0.3, 0.3, 0.8),   # Bleu

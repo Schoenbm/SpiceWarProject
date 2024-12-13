@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://k06bpausbfuq"]
+[gd_scene load_steps=5 format=3 uid="uid://k06bpausbfuq"]
 
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="1_tkvlp"]
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="2_4t0s1"]
 [ext_resource type="PackedScene" uid="uid://pj6qvxrb3t2x" path="res://Assets/Prefab/background.tscn" id="3_8pr8n"]
+[ext_resource type="PackedScene" uid="uid://dm6iunrfkxsp4" path="res://Assets/Prefab/Menu/control.tscn" id="4_uhs2l"]
 
 [node name="Level" type="Node2D"]
 
@@ -13,8 +14,23 @@ script = ExtResource("2_4t0s1")
 
 [node name="AllPlanets" type="Node2D" parent="GameManager"]
 
-[node name="Player" parent="GameManager" instance=ExtResource("1_tkvlp")]
+[node name="Player" parent="GameManager" node_paths=PackedStringArray("context_menu") instance=ExtResource("1_tkvlp")]
+long_touch = 0.5
 bound = Vector2(2000, 2000)
+context_menu = NodePath("../../UpgradeMenu/UI")
 
 [node name="Background" parent="." instance=ExtResource("3_8pr8n")]
-position = Vector2(3791, 4824)
+position = Vector2(3198, 2920)
+
+[node name="UpgradeMenu" parent="." instance=ExtResource("4_uhs2l")]
+offset_left = 760.0
+offset_top = 577.0
+offset_right = 760.0
+offset_bottom = 577.0
+
+[node name="UI" parent="UpgradeMenu" index="0"]
+follow_viewport_enabled = false
+
+[connection signal="try_upgrade" from="UpgradeMenu/UI" to="GameManager/Player" method="_on_ui_try_upgrade"]
+
+[editable path="UpgradeMenu"]

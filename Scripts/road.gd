@@ -128,3 +128,14 @@ func manage_planet_attack(planet : Planet, isAttacking : bool):
 		$RoadTexture.material.set_shader_parameter('wobble', true )	
 	else:
 		$RoadTexture.material.set_shader_parameter('wobble', false )	
+
+func change_planet(previous_planet : Planet, new_planet : Planet):
+	
+	if(previous_planet == planet1):
+		planet1 = new_planet
+	else:
+		planet2 = new_planet
+	
+	for child in get_children():
+		if(child is Ship):
+			child.destination_planet = new_planet

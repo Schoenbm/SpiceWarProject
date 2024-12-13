@@ -35,7 +35,7 @@ void fragment() {
 	else{
 		COLOR.a = circle_mask.r * (blink_charging_amp * sin(TIME * blink_speed + 1.5)+ blink_charging_base + 0.05 * matrices.r);
 	}
-	
+
 
 	if (rings > 0.0)
 		COLOR.a = COLOR.a + circle_mask.r * ((COLOR.a + 0.3) * 0.7 * matrices.r);
@@ -44,6 +44,8 @@ void fragment() {
 
 	COLOR.a = COLOR.a * smoothstep(fade_state,fade_state * 1.2,dist);
 
+	dist = smoothstep(0.51, 0.49,dist);
+	COLOR.a = COLOR.a * dist;
 }
 
 //void light() {

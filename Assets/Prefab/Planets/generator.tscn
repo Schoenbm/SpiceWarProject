@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx3yqljwof8cr"]
+[gd_scene load_steps=8 format=3 uid="uid://bx3yqljwof8cr"]
 
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_a7ab7"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_8aai7"]
@@ -8,9 +8,18 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65ghs"]
 resource_local_to_scene = true
 shader = ExtResource("2_8aai7")
-shader_parameter/red = 1.0
-shader_parameter/blue = 1.0
-shader_parameter/green = 0.5
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4n43x"]
+resource_local_to_scene = true
+shader = ExtResource("2_8aai7")
+shader_parameter/previous_color = Vector3(1, 1, 1)
+shader_parameter/color = Vector3(1, 0, 0)
+shader_parameter/transition_time = 0.0
+shader_parameter/transition_duration = 0.3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gswyf"]
 shader = ExtResource("3_yk1ab")
@@ -20,7 +29,11 @@ shader_parameter/bandwith = 0.95
 
 [node name="GeneratorPlanet" instance=ExtResource("1_a7ab7")]
 material = SubResource("ShaderMaterial_65ghs")
+ship_speed_production = 1.75
 auto_find_neighbors = true
+
+[node name="PlanetSprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_4n43x")
 
 [node name="Bolt" type="Sprite2D" parent="." index="4"]
 z_index = 1

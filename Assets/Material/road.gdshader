@@ -31,15 +31,15 @@ void fragment() {
 		bands = sin(TIME * speed +  frequency * dist );
 	}
 
-	bands = step(bandwith, bands);
+	bands = smoothstep(bandwith, bandwith -0.05, bands);
 
 	float begin_color_coef;
 	float end_color_coef;
 
-	if(bands > 0.0)
+	if(bands < 0.0)
 		COLOR.a = 0.0;
 	else
-		COLOR.a = 0.9;
+		COLOR.a = 1.0 - bands;
 
 
 	begin_color_coef = smoothstep(0.5 + merge_zone_half_width, 0.5 - merge_zone_half_width,dist);
@@ -51,7 +51,9 @@ void fragment() {
 	else
 		COLOR.rgb = begin_color_coef * temp_begin_color + end_color_coef * temp_end_color + vec3(0.25,0.25,0.25);
 
-
+	float borders = abs(UV.y - 0.5);
+	borders = smoothstep(0.51, 0.48,borders);
+	COLOR.a = COLOR.a * borders;
 }
 
 //void light() {

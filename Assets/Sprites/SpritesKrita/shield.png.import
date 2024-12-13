@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bneywhi2vuuek"
-path="res://.godot/imported/circle_vectoriel.svg-81d188667d8a67bb2a077e3576635388.ctex"
+uid="uid://cdhjc40snegk6"
+path="res://.godot/imported/shield.png-a1c55d4e1925f636876a499c1fb0ab5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpritesKrita/circle_vectoriel.svg"
-dest_files=["res://.godot/imported/circle_vectoriel.svg-81d188667d8a67bb2a077e3576635388.ctex"]
+source_file="res://Assets/Sprites/SpritesKrita/shield.png"
+dest_files=["res://.godot/imported/shield.png-a1c55d4e1925f636876a499c1fb0ab5b.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
