@@ -12,14 +12,20 @@
 position = Vector2(713, 504)
 ship_speed_production = 10.0
 number_of_ships = 2
+auto_find_neighbors = false
+radius_neighbors = 64
 input_neighbors = [NodePath("../AccelerationPlanet")]
-type = 4
+alliance = 0
+color_change_anim_duration = 0.15
 
 [node name="AccelerationPlanet" parent="Level/GameManager/AllPlanets" index="1" instance=ExtResource("3_5s8f2")]
 position = Vector2(803, 486)
-
-[node name="Player" parent="Level/GameManager" index="2"]
-long_touch = 1.0
+auto_find_neighbors = false
+radius_neighbors = 64
+send_ship_cd = 0.0
+alliance = 0
+color_change_anim_duration = 0.15
+skill = null
 
 [node name="UpgradeMenu" parent="Level" index="2"]
 offset_left = 0.0
@@ -29,6 +35,8 @@ offset_bottom = 0.0
 
 [node name="UI" parent="Level/UpgradeMenu" index="0"]
 layer = 2
+
+[connection signal="pressed" from="Level/UpgradeMenu/UI/SpellButton" to="Level/UpgradeMenu/UI" method="_on_spell_button_pressed"]
 
 [editable path="Level"]
 [editable path="Level/UpgradeMenu"]

@@ -1,0 +1,70 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://f3bibifu3v0e"]
+
+[ext_resource type="FontFile" uid="uid://wkc04qutggra" path="res://Assets/UI/Font/Hemi Head Bd It.otf" id="1_rfpq5"]
+[ext_resource type="StyleBox" uid="uid://b6v5xrhq1awu5" path="res://Assets/UI/StyleBox/Button_disabled.tres" id="2_7apt1"]
+[ext_resource type="Texture2D" uid="uid://dttjwufrj75p3" path="res://Assets/Sprites/road_texture.png" id="2_wthsp"]
+[ext_resource type="StyleBox" uid="uid://bj76gvunp3kun" path="res://Assets/UI/StyleBox/Button_focus.tres" id="3_amgb2"]
+[ext_resource type="StyleBox" uid="uid://clyn8r01ydqj1" path="res://Assets/UI/StyleBox/Button_normal.tres" id="4_xmo8o"]
+[ext_resource type="StyleBox" uid="uid://0xhampr0gwp" path="res://Assets/UI/StyleBox/Button_selected.tres" id="5_f6o4s"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_k1t8u"]
+color = Color(0.760784, 0.494118, 0.137255, 1)
+grow_begin = 22.0
+grow_end = 17.0
+thickness = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a05wu"]
+bg_color = Color(0.137255, 0.533333, 0.760784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6ryx"]
+bg_color = Color(0.137255, 0.533333, 0.760784, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jx1j4"]
+color = Color(0.176471, 0.231373, 0.258824, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4btoy"]
+texture = ExtResource("2_wthsp")
+modulate_color = Color(0.254902, 0.576471, 0.576471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btmfd"]
+bg_color = Color(0.219608, 0.403922, 0.509804, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yo1cw"]
+color = Color(0.760784, 0.494118, 0.137255, 1)
+grow_begin = 10.0
+grow_end = 10.0
+thickness = 3
+vertical = true
+
+[resource]
+BoxContainer/constants/separation = 20
+Button/colors/font_color = Color(0.760784, 0.494118, 0.137255, 1)
+Button/colors/font_disabled_color = Color(1, 0.494118, 0.137255, 0.529412)
+Button/colors/font_focus_color = Color(0.760784, 0.494118, 0.137255, 1)
+Button/colors/font_hover_color = Color(0.760784, 0.494118, 0.137255, 1)
+Button/colors/font_hover_pressed_color = Color(0.760784, 0.494118, 0.137255, 1)
+Button/colors/font_pressed_color = Color(0.760784, 0.494118, 0.137255, 1)
+Button/colors/icon_focus_color = Color(0.760784, 0.494118, 0.137255, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_rfpq5")
+Button/styles/disabled = ExtResource("2_7apt1")
+Button/styles/focus = ExtResource("3_amgb2")
+Button/styles/hover = ExtResource("4_xmo8o")
+Button/styles/normal = ExtResource("4_xmo8o")
+Button/styles/pressed = ExtResource("5_f6o4s")
+HSeparator/styles/separator = SubResource("StyleBoxLine_k1t8u")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_a05wu")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_o6ryx")
+HSlider/styles/slider = SubResource("StyleBoxLine_jx1j4")
+Label/colors/font_color = Color(0.760784, 0.494118, 0.137255, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.360784)
+Label/constants/outline_size = 6
+Label/constants/shadow_outline_size = 10
+Label/fonts/font = ExtResource("1_rfpq5")
+Panel/styles/panel = SubResource("StyleBoxTexture_4btoy")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_btmfd")
+TextEdit/fonts/font = ExtResource("1_rfpq5")
+VSeparator/styles/separator = SubResource("StyleBoxLine_yo1cw")

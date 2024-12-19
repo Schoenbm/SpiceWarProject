@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RegenRandom" load_steps=2 format=3 uid="uid://lm08md2qy5sm"]
+
+[ext_resource type="Script" path="res://Scripts/Skills/RegenRandom.gd" id="1_romjl"]
+
+[resource]
+script = ExtResource("1_romjl")
+time = 10.0
+boost = 2.0
+spice_cost = 10.0

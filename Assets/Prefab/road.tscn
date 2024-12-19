@@ -53,7 +53,7 @@ script = ExtResource("1_urb34")
 flow_rate = 0.2
 attack_animation_speed = 5.0
 wobble_animation_speed = 2.0
-wobble_animation_frequency = 16.0
+wobble_animation_frequency = 10.0
 transition_color_max_time = 0.3
 
 [node name="RoadTexture" type="Sprite2D" parent="."]

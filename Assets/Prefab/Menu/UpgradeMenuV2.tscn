@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4hijmmuljww3"]
+
+[ext_resource type="Theme" uid="uid://f3bibifu3v0e" path="res://Assets/UI/GameTheme.tres" id="1_3pkok"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+position = Vector2i(0, 531)
+size = Vector2i(411, 200)
+visible = true
+unfocusable = true
+theme = ExtResource("1_3pkok")
+
+[node name="Control" type="Control" parent="PopupMenu"]
+custom_minimum_size = Vector2(411, 200)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupMenu/Control"]
+custom_minimum_size = Vector2(411, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UpgradesText" type="MarginContainer" parent="PopupMenu/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 1.6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 0
+
+[node name="UpgradeLabe" type="Label" parent="PopupMenu/Control/VBoxContainer/UpgradesText"]
+layout_mode = 2
+text = "UPGRADES"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PopupMenu/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupMenu/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Upgrade" type="VBoxContainer" parent="PopupMenu/Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(411, 0)
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="PopupMenu/Control/VBoxContainer/HBoxContainer/Upgrade"]
+custom_minimum_size = Vector2(411, 30)
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/Control/VBoxContainer/HBoxContainer/Upgrade/Buttons"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.6
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="GeneratorButton" type="Button" parent="PopupMenu/Control/VBoxContainer/HBoxContainer/Upgrade/Buttons/MarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_3pkok")
+text = "azaz"
+
+[node name="HSeparator" type="HSeparator" parent="PopupMenu/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PopupMenu/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

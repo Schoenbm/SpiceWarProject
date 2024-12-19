@@ -22,7 +22,10 @@ shader_parameter/bandwith_smooth = 0.3
 
 [node name="AccelerationPlanet" instance=ExtResource("1_j255c")]
 ship_speed_production = 0.25
+number_of_ships = 0
+send_ship_cd = 0.5
 acceleration_ships = 2
+type = 0
 
 [node name="PlanetSprite" parent="." index="1"]
 material = SubResource("ShaderMaterial_xpxyc")

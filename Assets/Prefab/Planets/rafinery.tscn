@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://diutowwgb1dwt"]
+
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_71rbo"]
+[ext_resource type="Script" path="res://Scripts/Rafinery.gd" id="2_6datp"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="3_s6ra8"]
+[ext_resource type="Texture2D" uid="uid://cq66xdmuxcy78" path="res://Assets/Sprites/Icons/rafinery.png" id="4_ua0jt"]
+[ext_resource type="Texture2D" uid="uid://cnt1y1ji64ih6" path="res://Assets/Sprites/Particles/circle_particle.png" id="5_dia1x"]
+
+[sub_resource type="Curve" id="Curve_yuxvf"]
+_data = [Vector2(0, 0.795868), 0.0, 0.0, 0, 0, Vector2(0.838235, 0.934066), 0.479492, 0.479492, 0, 0, Vector2(0.970954, 0.806612), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yn1wc"]
+resource_local_to_scene = true
+shader = ExtResource("3_s6ra8")
+shader_parameter/previous_color = Vector3(1, 1, 1)
+shader_parameter/color = Vector3(1, 0, 0)
+shader_parameter/transition_time = 0.0
+shader_parameter/transition_duration = 0.3
+
+[sub_resource type="Curve" id="Curve_jc8kn"]
+_data = [Vector2(0.223881, 1), 0.0, 0.0, 0, 0, Vector2(0.78607, 0.923077), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p5him"]
+curve = SubResource("Curve_jc8kn")
+
+[sub_resource type="Curve" id="Curve_faeek"]
+_data = [Vector2(0.0298507, 0.0659339), 0.0, 0.0, 0, 0, Vector2(0.41791, 0.879121), 0.0, 0.0, 0, 0, Vector2(0.766169, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_rab6s"]
+curve = SubResource("Curve_faeek")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rpjsv"]
+lifetime_randomness = 0.15
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(1, 1, 10)
+emission_ring_height = 1.0
+emission_ring_radius = 25.0
+emission_ring_inner_radius = 30.0
+spread = 180.0
+initial_velocity_min = 0.2
+initial_velocity_max = 25.64
+gravity = Vector3(0, 0, 0)
+scale_min = 0.35
+scale_max = 0.35
+scale_curve = SubResource("CurveTexture_rab6s")
+color = Color(0.851768, 0.85177, 0.851768, 1)
+alpha_curve = SubResource("CurveTexture_p5him")
+
+[node name="Rafinery" instance=ExtResource("1_71rbo")]
+scale = Vector2(0.85, 0.85)
+script = ExtResource("2_6datp")
+anim_curve = SubResource("Curve_yuxvf")
+production_speed = 1.0
+production_total_duration = 1.0
+ship_speed_production = 0.0
+number_of_ships = 0
+auto_find_neighbors = false
+radius_neighbors = 64
+type = 3
+alliance = 0
+
+[node name="PlanetSprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_yn1wc")
+
+[node name="Rafinery" type="Sprite2D" parent="." index="6"]
+modulate = Color(1, 1, 1, 0.792157)
+z_index = 1
+position = Vector2(-4.76837e-07, -1.53846)
+scale = Vector2(0.843407, 0.887363)
+texture = ExtResource("4_ua0jt")
+
+[node name="Smoke" type="GPUParticles2D" parent="." index="7"]
+z_index = -1
+position = Vector2(1.17646, 1.17648)
+emitting = false
+amount = 105
+process_material = SubResource("ParticleProcessMaterial_rpjsv")
+texture = ExtResource("5_dia1x")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0

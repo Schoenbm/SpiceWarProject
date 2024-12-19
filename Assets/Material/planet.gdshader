@@ -11,11 +11,11 @@ void vertex() {
 }
 
 void fragment() {
-	if((transition_time / (2.0 *transition_duration)) > 0.51 - distance(UV,vec2(0.5,0.5)))
-		COLOR.rgb =  previous_color;
-	else{
-		COLOR.rgb = color;
-	}
+	//if((transition_time / (2.0 *transition_duration)) > 0.51 - distance(UV,vec2(0.5,0.5)))
+		//COLOR.rgb =  previous_color;
+	//else{
+	COLOR.rgb = color;
+	//}
 
 	float dist = distance(UV, vec2(0.5,0.5));
 	dist = smoothstep(0.51, 0.48,dist);

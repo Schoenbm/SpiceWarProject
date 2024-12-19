@@ -28,9 +28,6 @@ func _ready() -> void:
 			number_players += 1
 			number_planets_by_alliance[planet.alliance] = 1
 			
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_planet_change_alliance(previous_alliance: Variant, current_alliance: Variant) -> void:

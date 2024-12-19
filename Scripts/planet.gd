@@ -20,6 +20,8 @@ var selected_road : Planet
 
 @export var shield : Shield
 
+@export var send_ship_cd : float
+@export var can_send_ship : bool
 @export var acceleration_ships = 1
 var roads = {}
 
@@ -27,6 +29,8 @@ var roads = {}
 @export var alliance : PlanetType.Alliance
 @export var color_change_anim_duration = 0.15
 var color_change_anim_time = 0
+
+@export var radius = 40
 
 var player : Player
 
@@ -39,14 +43,22 @@ const defensive_planet_prefab : PackedScene = preload("res://Assets/Prefab/Plane
 const generator_prefab : PackedScene = preload("res://Assets/Prefab/Planets/generator.tscn")
 const accelerator_prefab : PackedScene = preload("res://Assets/Prefab/Planets/acceleration_planet.tscn")
 #const laboratory_prefab : PackedScene = preload("res://Assets/Prefab/Planets/laboratory.tscn")
-#const rafinnery_prefab : PackedScene = preload("res://Assets/Prefab/Planets/rafinery.tscn")
+const rafinery_prefab : PackedScene = preload("res://Assets/Prefab/Planets/rafinery.tscn")
 
+#------------------------------------------------------------------------
 
+@export var skill : Skill
+var can_use_skill : bool
+var send_random : bool
 
 func _ready() -> void:
+	$Timer.wait_time = send_ship_cd
+	can_send_ship = true
 	base_scale = scale.x
 	selected_neighbor = self
 	preselected_neighbor = self
+	send_random = false
+	can_use_skill = true
 	
 # Called when the node enters the scene tree for the first time.
 func setup(aPlayer) -> void:
@@ -82,19 +94,28 @@ func change_color_alliance(pAlliance, first_time):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	produce_ships(delta)
-	animate(delta)
-	send_ship()
+	if(alliance != PlanetType.Alliance.NEUTRAL):
+		produce_ships(delta)
+		try_send_ship()
 	update_text()
+	animate(delta)
 	pass
 	
 
-func send_ship() -> void : 
-	if(len(neighbors) > 0 && number_of_ships > send_ship_threshold && selected_neighbor != self && alliance != PlanetType.Alliance.NEUTRAL): # SI LE threshold EST ATTEINT ENVOI SHIP
-		if(roads[selected_neighbor.name].send_ship(self)):
-			number_of_ships -=1
+func try_send_ship() -> void : 
+	if(len(neighbors) > 0 && number_of_ships > send_ship_threshold && can_send_ship): # SI LE threshold EST ATTEINT ENVOI SHIP
+		if(send_random):
+			print("PAN")
+			send_ship(roads.values().pick_random())
+		elif (selected_neighbor != self):
+			send_ship(roads[selected_neighbor.name])
 
 
+func send_ship(road : Road):
+	road.send_ship(self)
+	number_of_ships -=1
+	can_send_ship = false
+	
 func produce_ships(delta: float) -> void:
 	current_ship_production += delta * ship_speed_production
 	if(current_ship_production >= 1):
@@ -129,11 +150,9 @@ func hit(aAlliance : PlanetType.Alliance) -> void:
 	number_of_ships -= 1
 	if(number_of_ships < 0):
 		change_alliance.emit(alliance, aAlliance)
-		$CircleParticles.emitting = true
-		$CircleParticles.modulate = PlanetType.get_alliance_color(aAlliance)
-		$BarParticles.emitting = true
 		$PlanetSprite.material.set_shader_parameter('previous_color',PlanetType.get_alliance_color(alliance)) #TODO on previent que cetait l'alliance davant au shader, pe faire ça ailleurs
 		self.alliance = aAlliance
+		particles_effect()
 		if(shield != null):
 			shield.alliance = aAlliance
 		change_color_alliance(alliance, false)
@@ -141,6 +160,11 @@ func hit(aAlliance : PlanetType.Alliance) -> void:
 			road.start_color_transition()
 		number_of_ships = 1
 
+func particles_effect():
+	$CircleParticles.modulate = PlanetType.get_alliance_color(alliance)
+	$CircleParticles.emitting = true
+	$BarParticles.emitting = true
+	
 func enable_overlay(bol):
 	if(bol):
 		var overlay = OverlayPlanet.create_overlay(player)
@@ -161,7 +185,7 @@ func preselectClosestNeighbor(touch_pos):
 		if(min_distance > neighbor.global_position.distance_to(touch_pos)):
 			closest_neighbor = neighbor
 			min_distance = neighbor.global_position.distance_to(touch_pos)
-	if(global_position.distance_to(touch_pos) > 40):
+	if(global_position.distance_to(touch_pos) > radius):
 		preselected_neighbor = closest_neighbor
 
 #Selectionne le voisin attaqué et montre qu'il est attaqué, previent les deux routes du changement
@@ -173,7 +197,9 @@ func confirm_attack_on_preselected_neighbor():
 		roads.get(selected_neighbor.name).manage_planet_attack(self,true)
 		$PermanentCursorPivot.look_at(selected_neighbor.position)
 		$PermanentCursorPivot.show()
+		$Timer.start()
 	else:
+		$Timer.stop()
 		$PermanentCursorPivot.hide()
 		selected_neighbor = self
 
@@ -207,6 +233,7 @@ func upgrade_planet(planet_name : PlanetData.Types) -> void :
 		PlanetData.Types.GENERATOR : new_planet = generator_prefab.instantiate()
 		PlanetData.Types.DEFENSIVE : new_planet = defensive_planet_prefab.instantiate()
 		PlanetData.Types.ACCELERATOR : new_planet = accelerator_prefab.instantiate()
+		PlanetData.Types.RAFINERY : new_planet = rafinery_prefab.instantiate()
 		"_" : 
 			print("names dont match") 
 			return
@@ -220,6 +247,7 @@ func upgrade_planet(planet_name : PlanetData.Types) -> void :
 	new_planet.name = self.name 
 	
 	new_planet.setup(player)
+
 	for neighbor in neighbors.values() :
 		neighbor.add_neighbor(new_planet)
 		neighbor.change_selected_neighbor(new_planet)
@@ -228,7 +256,12 @@ func upgrade_planet(planet_name : PlanetData.Types) -> void :
 	
 	name = "GLORIOUS_EVOLUTION" 
 	add_sibling(new_planet)
-	player.active_planet = new_planet
+	player.update_active_planet_upgrade(new_planet)
+	new_planet.particles_effect()
+	
+	if(selected_neighbor != self):
+		new_planet.preselected_neighbor = preselected_neighbor
+		new_planet.confirm_attack_on_preselected_neighbor()
 	self.queue_free()
 	
 	
@@ -246,7 +279,22 @@ func add_neighbor(new_planet : Planet):
 
 func change_selected_neighbor(new_planet : Planet):
 	if(selected_neighbor.name == new_planet.name):
-		print("same name")
 		selected_neighbor = new_planet
 		preselected_neighbor = new_planet
-	print(new_planet.name + " " + selected_neighbor.name)
+		
+	
+func skill_in_use(bol):
+	can_use_skill = !bol
+
+
+func _on_timer_timeout() -> void:
+	can_send_ship = true
+
+func change_cooldown_ships(cd : float):
+	$Timer.wait_time = cd
+
+func enable_ship_timer(bol):
+	if(bol):
+		$Timer.start()
+	else:
+		$Timer.stop()

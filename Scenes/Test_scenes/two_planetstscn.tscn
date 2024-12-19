@@ -7,15 +7,18 @@
 
 [node name="Planet" parent="GameManager/AllPlanets" index="0" instance=ExtResource("2_u48fy")]
 position = Vector2(592, 602)
+ship_speed_production = 1.0
+number_of_ships = 0
 
 [node name="Planet2" parent="GameManager/AllPlanets" index="1" instance=ExtResource("2_u48fy")]
 position = Vector2(802, 540)
 ship_speed_production = 0.0
-auto_find_neighbors = true
+number_of_ships = 0
 radius_neighbors = 500
-alliance = 4
 
 [node name="Background" parent="." index="1"]
 position = Vector2(1810, 1532)
+
+[connection signal="pressed" from="UpgradeMenu/UI/SpellButton" to="UpgradeMenu/UI" method="_on_spell_button_pressed"]
 
 [editable path="UpgradeMenu"]

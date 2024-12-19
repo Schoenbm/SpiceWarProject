@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkgeun5sswfuc"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_5dgp3"]
+[ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="2_uwqc4"]
+[ext_resource type="PackedScene" uid="uid://pj6qvxrb3t2x" path="res://Assets/Prefab/background.tscn" id="3_65sx6"]
+[ext_resource type="PackedScene" uid="uid://dm6iunrfkxsp4" path="res://Assets/Prefab/Menu/upgrademenu.tscn" id="4_ge87b"]
+[ext_resource type="PackedScene" uid="uid://b88pa33kir0yp" path="res://Assets/Prefab/Menu/game_ui.tscn" id="5_a3xmy"]
+[ext_resource type="PackedScene" uid="uid://bx3yqljwof8cr" path="res://Assets/Prefab/Planets/generator.tscn" id="6_k6jno"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="7_7pst5"]
+[ext_resource type="Resource" uid="uid://doc7ra6ndv11c" path="res://Assets/Resources/Skills/EmptySkill/EmptySkill.tres" id="7_x6t1u"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="8_p15rw"]
+[ext_resource type="PackedScene" uid="uid://deh2o6x4w83v7" path="res://Assets/Prefab/Planets/defensive_planet.tscn" id="9_drumi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ydkmk"]
+resource_local_to_scene = true
+shader = ExtResource("7_7pst5")
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yyvck"]
+resource_local_to_scene = true
+shader = ExtResource("7_7pst5")
+shader_parameter/previous_color = null
+shader_parameter/color = null
+shader_parameter/transition_time = null
+shader_parameter/transition_duration = null
+
+[node name="Level" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("1_5dgp3")
+
+[node name="AllRoads" type="Node2D" parent="GameManager"]
+
+[node name="AllPlanets" type="Node2D" parent="GameManager"]
+
+[node name="GeneratorPlanet" parent="GameManager/AllPlanets" instance=ExtResource("6_k6jno")]
+material = SubResource("ShaderMaterial_ydkmk")
+position = Vector2(688, 731)
+ship_speed_production = 6.0
+alliance = 0
+
+[node name="Planet" parent="GameManager/AllPlanets" instance=ExtResource("8_p15rw")]
+position = Vector2(798, 740)
+alliance = 0
+skill = ExtResource("7_x6t1u")
+
+[node name="Planet2" parent="GameManager/AllPlanets" instance=ExtResource("8_p15rw")]
+position = Vector2(745, 675)
+alliance = 0
+
+[node name="DefensivePlanet" parent="GameManager/AllPlanets" instance=ExtResource("9_drumi")]
+material = SubResource("ShaderMaterial_yyvck")
+position = Vector2(813, 659)
+alliance = 0
+skill = ExtResource("7_x6t1u")
+
+[node name="Player" parent="GameManager" node_paths=PackedStringArray("context_menu") instance=ExtResource("2_uwqc4")]
+bound = Vector2(2000, 2000)
+context_menu = NodePath("../../UpgradeMenu/UI")
+
+[node name="Background" parent="." instance=ExtResource("3_65sx6")]
+position = Vector2(3198, 2920)
+
+[node name="UpgradeMenu" parent="." instance=ExtResource("4_ge87b")]
+offset_left = 760.0
+offset_top = 577.0
+offset_right = 760.0
+offset_bottom = 577.0
+
+[node name="UI" parent="UpgradeMenu" index="0" node_paths=PackedStringArray("player")]
+follow_viewport_enabled = false
+player = NodePath("../../GameManager/Player")
+
+[node name="GameUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_a3xmy")]
+player = NodePath("../GameManager/Player")
+
+[connection signal="pressed" from="UpgradeMenu/UI/SpellButton" to="UpgradeMenu/UI" method="_on_spell_button_pressed"]
+
+[editable path="UpgradeMenu"]

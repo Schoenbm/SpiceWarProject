@@ -1,16 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://br4o8xqbdn12j"]
+[gd_scene load_steps=20 format=3 uid="uid://br4o8xqbdn12j"]
 
 [ext_resource type="Script" path="res://Scripts/planet.gd" id="1_c1och"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="1_gdd4u"]
-[ext_resource type="Script" path="res://Scripts/Skills/EmptySkill.gd" id="2_c7e0e"]
 [ext_resource type="Texture2D" uid="uid://bhm7yurck1f4q" path="res://Assets/Sprites/ship2.png" id="3_nw3pg"]
 [ext_resource type="Texture2D" uid="uid://bg14umaeng1hn" path="res://Assets/Sprites/new_ship.png" id="4_1od3o"]
 [ext_resource type="Texture2D" uid="uid://cnt1y1ji64ih6" path="res://Assets/Sprites/Particles/circle_particle.png" id="5_001pd"]
 [ext_resource type="Texture2D" uid="uid://dgby0camk5lc1" path="res://Assets/Sprites/Particles/particle_rectangle.png" id="6_ixttc"]
-
-[sub_resource type="Resource" id="Resource_ldbqp"]
-script = ExtResource("2_c7e0e")
-spice_cost = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yang"]
 radius = 24.1868
@@ -92,11 +87,9 @@ ship_speed_production = 6.0
 number_of_ships = 1
 auto_find_neighbors = true
 radius_neighbors = 100
-send_ship_cd = 0.35
 type = 4
 alliance = 4
 color_change_anim_duration = 0.0
-skill = SubResource("Resource_ldbqp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3yang")
@@ -146,7 +139,4 @@ theme_override_constants/shadow_offset_y = 1
 text = "0"
 horizontal_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
-
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

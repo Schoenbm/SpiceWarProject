@@ -16,27 +16,28 @@ var window_size
 var previous_distance = 0
 var delta_distance = 0
 
-var planet_data  = load("res://Assets/Resources/PlanetData.tres")
+var spices = 0
 
-@export var long_touch : float
-var touch_time : float
+var planet_data  = load("res://Assets/Resources/PlanetData.tres")
 
 @export var bound : Vector2
 var active_planet : Planet
 var cursor
 
-var short_touch : bool
 var choose_attack_mode : bool 
 var upgrade_menu_oppened : bool
 
 @export var context_menu : ContextMenu
 
+@export var spell_cooldown : float
+var can_use_spell : bool
+
 func _ready() -> void:
-	touch_time = long_touch
+	can_use_spell = true
 	upgrade_menu_oppened = false
 	choose_attack_mode = false
-	short_touch = false
 	cursor = $Cursor
+	$SpellCD.wait_time = spell_cooldown
 	cursor.hide()
 	window_size = get_viewport().size
 	visible_width = window_size.x / zoom.x
@@ -46,12 +47,6 @@ func clamp_pos():
 	position.x = clamp(position.x, visible_width / 2, bound.x - visible_width / 2)
 	position.y = clamp(position.y, visible_height / 2, bound.y - visible_height / 2)
 	
-func _process(delta: float) -> void:
-	if(touch_time < long_touch && active_planet != null):
-		touch_time += delta
-		if(touch_time >= long_touch):
-			activate_attack_mode(true)
-
 
 func _unhandled_input(event):
 	if(upgrade_menu_oppened):
@@ -64,23 +59,27 @@ func _unhandled_input(event):
 	if event is	InputEventScreenTouch :
 			update_active_touches(event)
 			update_initial_distance(event)
-			update_timer_long_touch(event)
-			if(active_planet != null && choose_attack_mode && event.is_released()): # TODO REFACTORISER
-				confirm_attack()
-				activate_attack_mode(false)
-				short_touch = false
-			if(active_planet != null && short_touch && event.is_released()):
-				context_menu.player_open_context_menu(active_planet)
-				upgrade_menu_oppened = true
-				short_touch = false
-			if(active_planet != null && event.is_released()):
-				active_planet == null
-			find_active_planet_in_areas(event)
 			
+			if(active_planet != null && event.is_released()):
+				if(choose_attack_mode):
+					confirm_attack()
+					activate_attack_mode(false)
+				else:
+					context_menu.player_open_context_menu(active_planet)
+					upgrade_menu_oppened = true
+					
+			elif(event.is_pressed()):
+				active_planet = null
+				find_active_planet_in_areas(event)
+				
 	if event is	InputEventScreenDrag :
 			update_active_touches(event)
+			
+			if(active_planet != null && get_event_positition(event).distance_to(active_planet.position) > active_planet.radius && !choose_attack_mode):
+				activate_attack_mode(true)
 			if(active_planet != null && choose_attack_mode):
 				preselect_planet()
+			
 			if(len(active_touches_pos) == 1) && active_planet == null:
 				drag_screen(event)
 			elif(len(active_touches_pos) == 2) && active_planet == null:
@@ -129,16 +128,17 @@ func find_active_planet_in_areas(event):
 		var physics_query = PhysicsPointQueryParameters2D.new()
 		physics_query.collide_with_areas = true
 		physics_query.collide_with_bodies = false
-		physics_query.position = get_viewport().canvas_transform.affine_inverse() * event.position
+		physics_query.position = get_event_positition(event)
 		physics_query.collision_mask = 0b10
 		var results = space_state.intersect_point(physics_query)
 
 		for result in results:
 			if(result.collider is Planet && result.collider.alliance == self.alliance):
+				print("find planet")
 				active_planet = result.collider
 	else:
-		if(active_planet != null && choose_attack_mode):
-			active_planet = null
+		print("lool")
+		active_planet = null
 
 func get_finger_pos() -> Vector2:
 	if(len(active_touches_pos) == 1):
@@ -155,11 +155,6 @@ func confirm_attack():
 	cursor.hide()
 	
 
-func _on_ui_try_upgrade(planet_type: PlanetData.Types) -> void:
-	if(active_planet != null && active_planet.try_upgrade(planet_data.get_cost(planet_type), planet_type)):
-		print("upgraded")
-	else :
-		print(active_planet != null)
 
 func activate_attack_mode(bol : bool) :
 	if(bol):
@@ -169,12 +164,26 @@ func activate_attack_mode(bol : bool) :
 	active_planet.enable_overlay(bol)
 	choose_attack_mode = bol
 
-func update_timer_long_touch(event : InputEventScreenTouch):
-	if(len(active_touches_pos) == 1 && event.pressed ):
-		touch_time = 0
-	elif(len(active_touches_pos) == 0 && touch_time < long_touch && event.is_released()):
-		short_touch = true
-		touch_time = long_touch
+func get_event_positition(event):
+	return  get_viewport().canvas_transform.affine_inverse() * event.position
+
+func update_active_planet_upgrade(upgraded_planet):
+	active_planet = upgraded_planet
+	context_menu.update_planet(upgraded_planet)
+
+func try_spell():
+	if(can_use_spell && active_planet != null && active_planet.can_use_skill && active_planet.skill.buy_skill(spices)):
+		spices -= active_planet.skill.spice_cost
+		active_planet.skill.use_skill(active_planet)
+		enable_spell(false)
+		$SpellCD.start()
 	else:
-		touch_time = long_touch
-		
+		print("can't spell : " + str(can_use_spell) + str(active_planet != null) +  str(active_planet.can_use_skill) + str(active_planet.skill.buy_skill(spices)))
+	
+func _on_timer_timeout() -> void:
+	print("cd over")
+	enable_spell(true)
+	
+func enable_spell(bol : bool):
+	context_menu.enable_spell_button(bol)
+	can_use_spell = bol

@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://dm6iunrfkxsp4"]
+[gd_scene load_steps=13 format=3 uid="uid://dm6iunrfkxsp4"]
 
-[ext_resource type="Script" path="res://Scripts/upgrade_menu.gd" id="1_7nhke"]
-[ext_resource type="Texture2D" uid="uid://dq61t5kydujje" path="res://Assets/Sprites/Icons/acceleration_icon.png" id="1_15oca"]
-[ext_resource type="Theme" uid="uid://eo5p87uidknn" path="res://Assets/UI/theme.tres" id="1_mk111"]
-[ext_resource type="Texture2D" uid="uid://bg14umaeng1hn" path="res://Assets/Sprites/new_ship.png" id="2_fmldu"]
-[ext_resource type="LabelSettings" uid="uid://0sbqmy8y504a" path="res://Assets/UI/Text.tres" id="3_etmen"]
-[ext_resource type="Texture2D" uid="uid://di742xqj1wtk6" path="res://Assets/Sprites/Icons/shield.png" id="3_wgwb3"]
-[ext_resource type="Texture2D" uid="uid://i2xq61qtowg" path="res://Assets/Sprites/Icons/bolt.png" id="4_piopx"]
-[ext_resource type="Texture2D" uid="uid://cq66xdmuxcy78" path="res://Assets/Sprites/Icons/rafinery.png" id="5_ko2l3"]
-[ext_resource type="Texture2D" uid="uid://cyy7t4n3034tp" path="res://Assets/Sprites/lab_icon.png" id="6_wv11v"]
-[ext_resource type="Texture2D" uid="uid://dttjwufrj75p3" path="res://Assets/Sprites/road_texture.png" id="8_p2mh7"]
-[ext_resource type="LabelSettings" uid="uid://dkbci8bsiy8k2" path="res://Assets/UI/label.tres" id="9_xkpg8"]
+[ext_resource type="Script" path="res://Scripts/upgrade_menu.gd" id="1_bp72e"]
+[ext_resource type="Theme" uid="uid://f3bibifu3v0e" path="res://Assets/UI/GameTheme.tres" id="1_xbxcg"]
+[ext_resource type="Theme" uid="uid://eo5p87uidknn" path="res://Assets/UI/theme.tres" id="2_ouosi"]
+[ext_resource type="Texture2D" uid="uid://dq61t5kydujje" path="res://Assets/Sprites/Icons/acceleration_icon.png" id="3_fs6c1"]
+[ext_resource type="LabelSettings" uid="uid://0sbqmy8y504a" path="res://Assets/UI/Text.tres" id="4_acp5i"]
+[ext_resource type="Texture2D" uid="uid://bg14umaeng1hn" path="res://Assets/Sprites/new_ship.png" id="5_580bs"]
+[ext_resource type="Texture2D" uid="uid://di742xqj1wtk6" path="res://Assets/Sprites/Icons/shield.png" id="6_svd72"]
+[ext_resource type="Texture2D" uid="uid://i2xq61qtowg" path="res://Assets/Sprites/Icons/bolt.png" id="7_ikus7"]
+[ext_resource type="Texture2D" uid="uid://cq66xdmuxcy78" path="res://Assets/Sprites/Icons/rafinery.png" id="8_bpcux"]
+[ext_resource type="Texture2D" uid="uid://cyy7t4n3034tp" path="res://Assets/Sprites/lab_icon.png" id="9_0vebt"]
+[ext_resource type="Texture2D" uid="uid://dttjwufrj75p3" path="res://Assets/Sprites/road_texture.png" id="10_aej48"]
+[ext_resource type="LabelSettings" uid="uid://dkbci8bsiy8k2" path="res://Assets/UI/label.tres" id="11_oy83b"]
 
 [node name="UpgradeMenu" type="Control"]
 layout_mode = 3
@@ -20,12 +21,13 @@ anchor_bottom = 1.0
 offset_top = 517.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_xbxcg")
 
 [node name="UI" type="CanvasLayer" parent="."]
 offset = Vector2(0, 531)
 transform = Transform2D(1, 0, 0, 1, 0, 531)
 follow_viewport_enabled = true
-script = ExtResource("1_7nhke")
+script = ExtResource("1_bp72e")
 popup_anim_duration = 0.2
 
 [node name="AccelerationButton" type="Button" parent="UI"]
@@ -37,10 +39,10 @@ anchor_bottom = 0.109
 offset_left = -1.071
 offset_top = -7.971
 offset_right = -0.802002
-offset_bottom = -7.679
+offset_bottom = -6.679
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("1_mk111")
+theme = ExtResource("2_ouosi")
 
 [node name="Icon" type="TextureRect" parent="UI/AccelerationButton"]
 modulate = Color(1, 1, 1, 0.6)
@@ -50,7 +52,7 @@ anchor_left = 0.22
 anchor_top = 0.24
 anchor_right = 0.72
 anchor_bottom = 0.74
-texture = ExtResource("1_15oca")
+texture = ExtResource("3_fs6c1")
 expand_mode = 1
 
 [node name="CostText" type="Label" parent="UI/AccelerationButton"]
@@ -66,7 +68,7 @@ offset_right = 18.205
 offset_bottom = 0.00498962
 text = "10
 "
-label_settings = ExtResource("3_etmen")
+label_settings = ExtResource("4_acp5i")
 
 [node name="Ressources" type="TextureRect" parent="UI/AccelerationButton"]
 layout_mode = 1
@@ -76,7 +78,7 @@ anchor_top = 1.2
 anchor_right = 1.0
 anchor_bottom = 1.6
 offset_right = -2.0
-texture = ExtResource("2_fmldu")
+texture = ExtResource("5_580bs")
 expand_mode = 1
 
 [node name="ShieldButton" type="Button" parent="UI"]
@@ -88,10 +90,10 @@ anchor_bottom = 0.109
 offset_left = 0.0169907
 offset_top = -5.778
 offset_right = -0.947006
-offset_bottom = -7.679
+offset_bottom = -6.679
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("1_mk111")
+theme = ExtResource("2_ouosi")
 
 [node name="Icon" type="TextureRect" parent="UI/ShieldButton"]
 modulate = Color(1, 1, 1, 0.643137)
@@ -101,7 +103,7 @@ anchor_left = 0.24
 anchor_top = 0.2
 anchor_right = 0.74
 anchor_bottom = 0.8
-texture = ExtResource("3_wgwb3")
+texture = ExtResource("6_svd72")
 expand_mode = 1
 
 [node name="CostText" type="Label" parent="UI/ShieldButton"]
@@ -116,7 +118,7 @@ offset_right = 43.205
 offset_bottom = 0.00498962
 text = "10
 "
-label_settings = ExtResource("3_etmen")
+label_settings = ExtResource("4_acp5i")
 
 [node name="Ressources" type="TextureRect" parent="UI/ShieldButton"]
 layout_mode = 1
@@ -125,7 +127,7 @@ anchor_left = 0.56
 anchor_top = 1.2
 anchor_right = 0.96
 anchor_bottom = 1.6
-texture = ExtResource("2_fmldu")
+texture = ExtResource("5_580bs")
 expand_mode = 1
 
 [node name="GeneratorButton" type="Button" parent="UI"]
@@ -137,10 +139,10 @@ anchor_bottom = 0.109
 offset_left = -0.950012
 offset_top = -7.971
 offset_right = -1.09201
-offset_bottom = -7.679
+offset_bottom = -6.679
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("1_mk111")
+theme = ExtResource("2_ouosi")
 
 [node name="Icon" type="TextureRect" parent="UI/GeneratorButton"]
 modulate = Color(1, 1, 1, 0.690196)
@@ -150,7 +152,7 @@ anchor_left = 0.24
 anchor_top = 0.16
 anchor_right = 0.74
 anchor_bottom = 0.86
-texture = ExtResource("4_piopx")
+texture = ExtResource("7_ikus7")
 expand_mode = 1
 
 [node name="CostText" type="Label" parent="UI/GeneratorButton"]
@@ -166,7 +168,7 @@ offset_right = 43.205
 offset_bottom = 0.00498962
 text = "10
 "
-label_settings = ExtResource("3_etmen")
+label_settings = ExtResource("4_acp5i")
 
 [node name="Ressources" type="TextureRect" parent="UI/GeneratorButton"]
 layout_mode = 1
@@ -175,7 +177,7 @@ anchor_left = 0.56
 anchor_top = 1.2
 anchor_right = 0.96
 anchor_bottom = 1.6
-texture = ExtResource("2_fmldu")
+texture = ExtResource("5_580bs")
 expand_mode = 1
 
 [node name="RafineryButton" type="Button" parent="UI"]
@@ -187,10 +189,10 @@ anchor_bottom = 0.109
 offset_left = -1.09503
 offset_top = -7.971
 offset_right = -0.826019
-offset_bottom = -7.679
+offset_bottom = -6.679
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("1_mk111")
+theme = ExtResource("2_ouosi")
 
 [node name="Icon" type="TextureRect" parent="UI/RafineryButton"]
 modulate = Color(1, 1, 1, 0.682353)
@@ -200,7 +202,7 @@ anchor_left = 0.2
 anchor_top = 0.16
 anchor_right = 0.76
 anchor_bottom = 0.72
-texture = ExtResource("5_ko2l3")
+texture = ExtResource("8_bpcux")
 expand_mode = 1
 
 [node name="CostText" type="Label" parent="UI/RafineryButton"]
@@ -216,7 +218,7 @@ offset_right = 0.00499725
 offset_bottom = 0.00498962
 text = "10
 "
-label_settings = ExtResource("3_etmen")
+label_settings = ExtResource("4_acp5i")
 
 [node name="Ressources" type="TextureRect" parent="UI/RafineryButton"]
 layout_mode = 1
@@ -226,7 +228,7 @@ anchor_top = 1.2
 anchor_right = 1.0
 anchor_bottom = 1.6
 offset_right = -2.0
-texture = ExtResource("2_fmldu")
+texture = ExtResource("5_580bs")
 expand_mode = 1
 
 [node name="LaboratoryButton" type="Button" parent="UI"]
@@ -238,10 +240,10 @@ anchor_bottom = 0.109
 offset_left = -0.82901
 offset_top = -7.971
 offset_right = -0.971008
-offset_bottom = -7.679
+offset_bottom = -6.679
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("1_mk111")
+theme = ExtResource("2_ouosi")
 
 [node name="Icon" type="TextureRect" parent="UI/LaboratoryButton"]
 modulate = Color(1, 1, 1, 0.67451)
@@ -251,7 +253,7 @@ anchor_left = 0.24
 anchor_top = 0.2
 anchor_right = 0.74
 anchor_bottom = 0.7
-texture = ExtResource("6_wv11v")
+texture = ExtResource("9_0vebt")
 expand_mode = 1
 
 [node name="CostText" type="Label" parent="UI/LaboratoryButton"]
@@ -267,7 +269,7 @@ offset_right = 0.00499725
 offset_bottom = 0.00498962
 text = "10
 "
-label_settings = ExtResource("3_etmen")
+label_settings = ExtResource("4_acp5i")
 
 [node name="Ressources" type="TextureRect" parent="UI/LaboratoryButton"]
 layout_mode = 1
@@ -277,7 +279,7 @@ anchor_top = 1.2
 anchor_right = 1.0
 anchor_bottom = 1.6
 offset_right = -2.0
-texture = ExtResource("2_fmldu")
+texture = ExtResource("5_580bs")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI"]
@@ -292,7 +294,7 @@ offset_bottom = -0.294006
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("8_p2mh7")
+texture = ExtResource("10_aej48")
 
 [node name="ThresholdSlider" type="HSlider" parent="UI"]
 anchors_preset = -1
@@ -304,7 +306,7 @@ offset_left = -0.0310211
 offset_top = 0.296997
 offset_right = -0.20401
 offset_bottom = 6.06299
-theme = ExtResource("1_mk111")
+theme = ExtResource("2_ouosi")
 
 [node name="Label" type="Label" parent="UI/ThresholdSlider"]
 layout_mode = 1
@@ -315,7 +317,7 @@ offset_left = -1.0
 offset_right = 0.072999
 offset_bottom = 4.0
 text = "0"
-label_settings = ExtResource("3_etmen")
+label_settings = ExtResource("4_acp5i")
 
 [node name="Label2" type="Label" parent="UI/ThresholdSlider"]
 layout_mode = 1
@@ -329,7 +331,7 @@ offset_top = -0.00799942
 offset_right = 0.0939789
 offset_bottom = 0.0079999
 text = "100"
-label_settings = ExtResource("3_etmen")
+label_settings = ExtResource("4_acp5i")
 
 [node name="Treshold" type="Label" parent="UI/ThresholdSlider"]
 layout_mode = 1
@@ -344,7 +346,7 @@ offset_right = -0.0019989
 offset_bottom = -0.00799996
 text = "5
 "
-label_settings = ExtResource("3_etmen")
+label_settings = ExtResource("4_acp5i")
 
 [node name="Label4" type="Label" parent="UI/ThresholdSlider"]
 layout_mode = 1
@@ -357,7 +359,7 @@ offset_left = -0.0460014
 offset_right = -0.0620117
 offset_bottom = 0.00799561
 text = "SEND TRESHOLD"
-label_settings = ExtResource("9_xkpg8")
+label_settings = ExtResource("11_oy83b")
 
 [node name="SpellButton" type="Button" parent="UI"]
 anchors_preset = -1
@@ -369,7 +371,7 @@ offset_left = 2.081
 offset_top = -1.69701
 offset_right = 2.03
 offset_bottom = -1.67401
-theme = ExtResource("1_mk111")
+theme = ExtResource("2_ouosi")
 
 [node name="Spell" type="Label" parent="UI/SpellButton"]
 layout_mode = 1
@@ -384,7 +386,7 @@ offset_right = 5.979
 offset_bottom = 3.018
 text = "SPELL
 "
-label_settings = ExtResource("9_xkpg8")
+label_settings = ExtResource("11_oy83b")
 
 [node name="Cost" type="Label" parent="UI/SpellButton"]
 layout_mode = 1
@@ -398,7 +400,7 @@ offset_top = -1.023
 offset_right = 3.965
 offset_bottom = -1.004
 text = "10 ¤"
-label_settings = ExtResource("3_etmen")
+label_settings = ExtResource("4_acp5i")
 
 [node name="Label" type="Label" parent="UI"]
 anchors_preset = -1
@@ -411,7 +413,7 @@ offset_top = -11.731
 offset_right = 0.153992
 offset_bottom = 0.304
 text = "EVOLUTIONS"
-label_settings = ExtResource("9_xkpg8")
+label_settings = ExtResource("11_oy83b")
 
 [node name="Lines" type="Node" parent="UI"]
 
@@ -426,7 +428,7 @@ offset_top = -0.555946
 offset_bottom = 127.444
 grow_horizontal = 2
 scale = Vector2(1, 0.02)
-texture = ExtResource("8_p2mh7")
+texture = ExtResource("10_aej48")
 
 [node name="BottomLine" type="TextureRect" parent="UI/Lines"]
 modulate = Color(0.160784, 0.156863, 0.211765, 1)
@@ -441,7 +443,7 @@ offset_top = -2.563
 offset_bottom = 125.437
 grow_horizontal = 2
 scale = Vector2(1, 0.02)
-texture = ExtResource("8_p2mh7")
+texture = ExtResource("10_aej48")
 
 [node name="TopLineShadow" type="TextureRect" parent="UI/Lines"]
 modulate = Color(0.160784, 0.156863, 0.211765, 1)
@@ -454,7 +456,7 @@ offset_top = -1.22803
 offset_bottom = 125.31
 grow_horizontal = 2
 scale = Vector2(1, 0.02)
-texture = ExtResource("8_p2mh7")
+texture = ExtResource("10_aej48")
 
 [node name="VLineBotMenu" type="TextureRect" parent="UI/Lines"]
 modulate = Color(0.160784, 0.156863, 0.211765, 1)
@@ -470,7 +472,7 @@ offset_right = 126.532
 offset_bottom = 4312.36
 grow_horizontal = 2
 scale = Vector2(0.025, 0.02)
-texture = ExtResource("8_p2mh7")
+texture = ExtResource("10_aej48")
 
 [node name="TopLine" type="TextureRect" parent="UI/Lines"]
 modulate = Color(0.886275, 0.670588, 0.458824, 1)
@@ -483,7 +485,7 @@ offset_top = -0.110999
 offset_bottom = 125.696
 grow_horizontal = 2
 scale = Vector2(1, 0.0340098)
-texture = ExtResource("8_p2mh7")
+texture = ExtResource("10_aej48")
 
 [node name="VLineLeft" type="TextureRect" parent="UI/Lines"]
 modulate = Color(0.160784, 0.156863, 0.211765, 1)
@@ -497,7 +499,7 @@ offset_right = 126.356
 offset_bottom = 10143.2
 grow_horizontal = 2
 scale = Vector2(0.025, 0.02)
-texture = ExtResource("8_p2mh7")
+texture = ExtResource("10_aej48")
 
 [node name="VLineRight" type="TextureRect" parent="UI/Lines"]
 modulate = Color(0.160784, 0.156863, 0.211765, 1)
@@ -513,10 +515,9 @@ offset_right = 125.0
 offset_bottom = 10143.2
 grow_horizontal = 2
 scale = Vector2(0.025, 0.02)
-texture = ExtResource("8_p2mh7")
+texture = ExtResource("10_aej48")
 
 [connection signal="pressed" from="UI/AccelerationButton" to="UI" method="_on_acceleration_button_pressed"]
 [connection signal="pressed" from="UI/ShieldButton" to="UI" method="_on_shield_button_pressed"]
 [connection signal="pressed" from="UI/GeneratorButton" to="UI" method="_on_generator_button_pressed"]
 [connection signal="pressed" from="UI/RafineryButton" to="UI" method="_on_rafinery_button_pressed"]
-[connection signal="pressed" from="UI/LaboratoryButton" to="UI" method="_on_laboratory_button_pressed"]

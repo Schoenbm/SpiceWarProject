@@ -75,3 +75,10 @@ func desactive_ship() -> void:
 		collision_layer = 0
 		collision_mask = 0
 		await get_tree().create_timer(lifetime_particles).timeout
+
+
+func change_planet(new_planet):
+	if(new_planet.name == sending_planet.name):
+		sending_planet = new_planet
+	else:
+		destination_planet = new_planet

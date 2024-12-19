@@ -23,6 +23,9 @@ shader_parameter/transition_duration = 0.3
 
 [node name="DefensivePlanet" instance=ExtResource("1_jeql6")]
 material = SubResource("ShaderMaterial_vrjwx")
+ship_speed_production = 1.0
+number_of_ships = 0
+type = 5
 
 [node name="Shield" parent="." index="0" instance=ExtResource("3_gs5ru")]
 z_index = 1

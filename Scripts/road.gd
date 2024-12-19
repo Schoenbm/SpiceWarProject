@@ -58,33 +58,19 @@ func transition_color(delta : float) -> void:
 
 
 #renvoie true si le ship est bien enboyé
-func send_ship(sender : Planet) -> bool:
-	if(check_flow_rate_by_planet(sender)): # Road full et débit ok? 
-		current_ships_number+=1
-		var destination : Planet
-		if(sender == planet1):
-			destination = planet2
-		else:
-			destination = planet1
-		var new_ship = Ship.create_ship(destination,sender)
-		new_ship.name = "ship" + PlanetType.get_alliance_name(sender.alliance) + str(current_ships_number) #TODO EURK
-		add_child(new_ship)
-		put_flow_on_cd(sender)
-		return true
-	return false
-
-
-
-func put_flow_on_cd(planet : Planet):
-	if(planet == planet1):
-		flow_cd_planet1 = flow_rate / planet.acceleration_ships # Plus les vaisseaux sont accelerees, moins ça prends du temps de tirer
+func send_ship(sender : Planet):
+	current_ships_number+=1
+	var destination : Planet
+	if(sender == planet1):
+		destination = planet2
 	else:
-		flow_cd_planet2 = flow_rate / planet.acceleration_ships
+		destination = planet1
+	var new_ship = Ship.create_ship(destination,sender)
+	new_ship.speed *= sender.acceleration_ships
+	new_ship.name = "ship" + PlanetType.get_alliance_name(sender.alliance) + str(current_ships_number) #TODO EURK
+	add_child(new_ship)
 
-func check_flow_rate_by_planet(planet : Planet) -> bool:
-	if(planet == planet1):
-		return(flow_cd_planet1 <= 0)
-	return(flow_cd_planet2 <= 0)
+
 
 func get_current_ships(alliance:) -> int:
 		return current_ships_number
@@ -130,7 +116,6 @@ func manage_planet_attack(planet : Planet, isAttacking : bool):
 		$RoadTexture.material.set_shader_parameter('wobble', false )	
 
 func change_planet(previous_planet : Planet, new_planet : Planet):
-	
 	if(previous_planet == planet1):
 		planet1 = new_planet
 	else:
@@ -138,4 +123,4 @@ func change_planet(previous_planet : Planet, new_planet : Planet):
 	
 	for child in get_children():
 		if(child is Ship):
-			child.destination_planet = new_planet
+			child.change_planet(new_planet)

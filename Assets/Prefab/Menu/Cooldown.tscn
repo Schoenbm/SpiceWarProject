@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bytk32cejxfbh"]
+
+[ext_resource type="Shader" path="res://cooldown.gdshader" id="1_m3vh5"]
+[ext_resource type="Texture2D" uid="uid://b8iqpfxsg0lus" path="res://Assets/Sprites/ship.png" id="2_14a3c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_peu0n"]
+shader = ExtResource("1_m3vh5")
+shader_parameter/total_time = 1.0
+shader_parameter/time = 0.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_peu0n")
+position = Vector2(655, 300)
+texture = ExtResource("2_14a3c")

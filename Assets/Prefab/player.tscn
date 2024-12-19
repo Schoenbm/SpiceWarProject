@@ -6,8 +6,15 @@
 [node name="Player" type="Camera2D"]
 position = Vector2(760, 577)
 script = ExtResource("1_leqkc")
+spell_cooldown = 5.0
 
 [node name="Cursor" type="Sprite2D" parent="."]
 z_index = 5
 scale = Vector2(0.02, 0.02)
 texture = ExtResource("2_gthsx")
+
+[node name="SpellCD" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="SpellCD" to="." method="_on_timer_timeout"]
