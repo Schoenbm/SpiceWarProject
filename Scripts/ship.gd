@@ -3,18 +3,26 @@ extends Area2D
 class_name Ship
 
 var speed = 100
+@export var damage = 1
+@export var shield_damage = 1
 var sending_planet : Planet
 var destination_planet : Planet
 var direction : Vector2
-const my_scene : PackedScene = preload("res://Assets/Prefab/ship.tscn")
-
+const ship_scene : PackedScene = preload("res://Assets/Prefab/ship.tscn")
+const ionized_scene : PackedScene = preload("res://Assets/Prefab/ionized_ship.tscn")
+var ionized : bool
 var alliance : PlanetType.Alliance
 
 var stop_moving
 var lifetime_particles : float 
 
-static func create_ship(destination : Planet, sender : Planet) -> Ship:
-	var new_ship = my_scene.instantiate()
+static func create_ship(destination : Planet, sender : Planet, pIonized : bool) -> Ship:
+	var new_ship
+	if !pIonized:
+		new_ship = ship_scene.instantiate()
+	else:
+		new_ship = ionized_scene.instantiate()
+	new_ship.ionized = pIonized
 	new_ship.sending_planet = sender
 	new_ship.destination_planet = destination
 	new_ship.direction = (destination.global_position - sender.global_position).normalized()
@@ -37,15 +45,15 @@ func _ready() -> void:
 #PLANETE OU SHIP DETECTE
 func _on_area_entered(area: Area2D) -> void:
 	if (area == destination_planet && alliance == destination_planet.alliance):
-		destination_planet.addShip()
+		destination_planet.addShip(ionized)
 		destroy("")
 	elif(area == destination_planet) : #Enemy planet 
-		destination_planet.hit(alliance)
+		destination_planet.hit(damage, alliance)
 		destroy("planet")
 	elif(area.has_method("create_ship") && area.alliance != self.alliance): # vaisseau enemi
 		destroy("ship")
 	elif(area.has_method("reboot") && area.activated && area.alliance != self.alliance): #shield
-		area.hit(1)
+		area.hit(shield_damage)
 		destroy("shield")
 		
 func destroy(particules : String ) -> void :

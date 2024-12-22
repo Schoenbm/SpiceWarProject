@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_5xx6m")
+boost = 2.0
+slow = 2.0
 spice_cost = 0.0

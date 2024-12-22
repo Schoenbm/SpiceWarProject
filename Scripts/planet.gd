@@ -7,6 +7,7 @@ signal change_alliance(previous_alliance, current_alliance)
 @export var ship_speed_production = 1.0 # nombre de cell par sec
 var current_ship_production = 0
 @export var number_of_ships = 0
+var number_of_ionized_ships = 0
 
 @export var send_ship_threshold = 5
 @export var auto_find_neighbors = false
@@ -31,7 +32,6 @@ var roads = {}
 var color_change_anim_time = 0
 
 @export var radius = 40
-
 var player : Player
 
 var current_overlay : OverlayPlanet
@@ -50,6 +50,7 @@ const rafinery_prefab : PackedScene = preload("res://Assets/Prefab/Planets/rafin
 @export var skill : Skill
 var can_use_skill : bool
 var send_random : bool
+var send_all : bool
 
 func _ready() -> void:
 	$Timer.wait_time = send_ship_cd
@@ -71,17 +72,20 @@ func setup(aPlayer) -> void:
 	
 	for neighbor in input_neighbors:
 		if(!roads.has(neighbor.name)):
-			roads[neighbor.name] = Road.create_road(self,neighbor)
-			neighbor.setup_road(roads[neighbor.name], self)
-			roads[neighbor.name].add_to_group("Roads")
-			add_sibling.call_deferred(roads[neighbor.name]) #TODO pourquoi j'ai fais en call deferred
-			neighbors[neighbor.name] = neighbor
+			make_road(neighbor)
 	input_neighbors.clear()
 	$PlanetSprite.material.set_shader_parameter('previous_color',PlanetType.get_alliance_color(alliance))
 	change_color_alliance(alliance, true)
 
-
-
+func has_neighbor(neighbor : Planet) -> bool:
+	return !roads.has(neighbor.name)
+	
+func make_road(neighbor):
+	roads[neighbor.name] = Road.create_road(self,neighbor)
+	neighbor.setup_road(roads[neighbor.name], self)
+	roads[neighbor.name].add_to_group("Roads")
+	add_sibling.call_deferred(roads[neighbor.name]) #TODO pourquoi j'ai fais en call deferred
+	neighbors[neighbor.name] = neighbor
 
 func change_color_alliance(pAlliance, first_time):
 	$PlanetSprite.material.set_shader_parameter('color',PlanetType.get_alliance_color(pAlliance))
@@ -103,19 +107,22 @@ func _process(delta: float) -> void:
 	
 
 func try_send_ship() -> void : 
-	if(len(neighbors) > 0 && number_of_ships > send_ship_threshold && can_send_ship): # SI LE threshold EST ATTEINT ENVOI SHIP
-		if(send_random):
-			print("PAN")
+	if(len(neighbors) > 0 && can_send_ship): # SI LE threshold EST ATTEINT ENVOI SHIP
+		if(send_random && number_of_ships > send_ship_threshold):
 			send_ship(roads.values().pick_random())
-		elif (selected_neighbor != self):
+		elif(send_all):
+			for road in roads.values():
+				send_ship(road)
+		elif (selected_neighbor != self && number_of_ships > send_ship_threshold):
 			send_ship(roads[selected_neighbor.name])
 
 
 func send_ship(road : Road):
-	road.send_ship(self)
-	number_of_ships -=1
-	can_send_ship = false
-	
+	if(number_of_ships >= 1):
+		road.send_ship(self, number_of_ionized_ships > 0)
+		reduce_ships_number(1)
+		can_send_ship = false	
+
 func produce_ships(delta: float) -> void:
 	current_ship_production += delta * ship_speed_production
 	if(current_ship_production >= 1):
@@ -131,6 +138,10 @@ func animate(delta)->void :
 
 
 func update_text() -> void:
+	if(number_of_ionized_ships > 0):
+		$IonizedLabel.text = "(" + str(number_of_ionized_ships) + ")"	
+	else:
+		$IonizedLabel.text = ""	
 	$TextEdit.text = str(number_of_ships)
 	
 func setup_road(new_road : Road, neighbor : Planet ) -> void:
@@ -139,15 +150,26 @@ func setup_road(new_road : Road, neighbor : Planet ) -> void:
 	if(!neighbors.has(neighbor.name)):
 		neighbors[neighbor.name] = neighbor
 	
-func addShip():
+func addShip(ionized : bool):
 	number_of_ships +=1
+	if(ionized):
+		ionize_ship()
+
+func ionize_ship() -> bool:
+	if(number_of_ships > number_of_ionized_ships):
+		if($IonizedShipsTimer.is_stopped()):
+			$IonizedShipsTimer.start()
+			print("started")
+		number_of_ionized_ships += 1
+		return true
+	return false
 	
-func hit(aAlliance : PlanetType.Alliance) -> void:
+func hit(damage : int, aAlliance : PlanetType.Alliance) -> void:
 	if(shield != null && shield.activated):
-		shield.hit(1)
+		shield.hit(damage)
 		return
 		
-	number_of_ships -= 1
+	reduce_ships_number(damage)
 	if(number_of_ships < 0):
 		change_alliance.emit(alliance, aAlliance)
 		$PlanetSprite.material.set_shader_parameter('previous_color',PlanetType.get_alliance_color(alliance)) #TODO on previent que cetait l'alliance davant au shader, pe faire ça ailleurs
@@ -158,7 +180,7 @@ func hit(aAlliance : PlanetType.Alliance) -> void:
 		change_color_alliance(alliance, false)
 		for road in roads.values():
 			road.start_color_transition()
-		number_of_ships = 1
+		number_of_ships = 0
 
 func particles_effect():
 	$CircleParticles.modulate = PlanetType.get_alliance_color(alliance)
@@ -267,7 +289,7 @@ func upgrade_planet(planet_name : PlanetData.Types) -> void :
 	
 func try_upgrade(cost : int, planet_type : PlanetData.Types) -> bool:
 	if(number_of_ships >= cost):
-		number_of_ships -= cost
+		reduce_ships_number(cost)
 		upgrade_planet(planet_type)
 		return true
 	return false
@@ -298,3 +320,15 @@ func enable_ship_timer(bol):
 		$Timer.start()
 	else:
 		$Timer.stop()
+
+
+func _on_ionized_ships_timeout() -> void:
+	number_of_ionized_ships -= 1
+	if(number_of_ionized_ships <= 0):
+		number_of_ionized_ships = 0
+		$IonizedShipsTimer.stop()
+
+func reduce_ships_number(amount : int):
+	number_of_ships -= amount
+	if(number_of_ionized_ships > 0):
+		number_of_ionized_ships = max( 0,number_of_ionized_ships - amount)

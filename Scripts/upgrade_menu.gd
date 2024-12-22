@@ -61,11 +61,11 @@ func _on_generator_button_pressed() -> void:
 
 
 func _on_rafinery_button_pressed() -> void:
-	active_planet.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.LABORATORY), PlanetData.Types.RAFINERY)
+	active_planet.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.RAFINERY), PlanetData.Types.RAFINERY)
 
 
 func _on_laboratory_button_pressed() -> void:
-	active_planet.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.RAFINERY), PlanetData.Types.LABORATORY)
+	active_planet.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.LABORATORY), PlanetData.Types.LABORATORY)
 
 
 func _on_spell_button_pressed() -> void:

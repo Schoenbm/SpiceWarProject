@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkgeun5sswfuc"]
+[gd_scene load_steps=14 format=3 uid="uid://bkgeun5sswfuc"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_5dgp3"]
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="2_uwqc4"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b88pa33kir0yp" path="res://Assets/Prefab/Menu/game_ui.tscn" id="5_a3xmy"]
 [ext_resource type="PackedScene" uid="uid://bx3yqljwof8cr" path="res://Assets/Prefab/Planets/generator.tscn" id="6_k6jno"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="7_7pst5"]
+[ext_resource type="PackedScene" uid="uid://diutowwgb1dwt" path="res://Assets/Prefab/Planets/rafinery.tscn" id="7_toh1l"]
 [ext_resource type="Resource" uid="uid://doc7ra6ndv11c" path="res://Assets/Resources/Skills/EmptySkill/EmptySkill.tres" id="7_x6t1u"]
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="8_p15rw"]
 [ext_resource type="PackedScene" uid="uid://deh2o6x4w83v7" path="res://Assets/Prefab/Planets/defensive_planet.tscn" id="9_drumi"]
@@ -39,30 +40,33 @@ script = ExtResource("1_5dgp3")
 [node name="GeneratorPlanet" parent="GameManager/AllPlanets" instance=ExtResource("6_k6jno")]
 material = SubResource("ShaderMaterial_ydkmk")
 position = Vector2(688, 731)
-ship_speed_production = 6.0
-alliance = 0
+ship_speed_production = 0.0
+number_of_ships = 50
+alliance = 1
 
 [node name="Planet" parent="GameManager/AllPlanets" instance=ExtResource("8_p15rw")]
-position = Vector2(798, 740)
+position = Vector2(859, 828)
+ship_speed_production = 5.0
+radius_neighbors = 5140
 alliance = 0
 skill = ExtResource("7_x6t1u")
-
-[node name="Planet2" parent="GameManager/AllPlanets" instance=ExtResource("8_p15rw")]
-position = Vector2(745, 675)
-alliance = 0
 
 [node name="DefensivePlanet" parent="GameManager/AllPlanets" instance=ExtResource("9_drumi")]
 material = SubResource("ShaderMaterial_yyvck")
 position = Vector2(813, 659)
+ship_speed_production = 2.0
 alliance = 0
-skill = ExtResource("7_x6t1u")
+
+[node name="Rafinery" parent="GameManager/AllPlanets" instance=ExtResource("7_toh1l")]
+position = Vector2(793, 858)
+production_speed = 5.0
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("context_menu") instance=ExtResource("2_uwqc4")]
 bound = Vector2(2000, 2000)
 context_menu = NodePath("../../UpgradeMenu/UI")
 
 [node name="Background" parent="." instance=ExtResource("3_65sx6")]
-position = Vector2(3198, 2920)
+position = Vector2(3015, 2947)
 
 [node name="UpgradeMenu" parent="." instance=ExtResource("4_ge87b")]
 offset_left = 760.0

@@ -19,6 +19,4 @@ radius_neighbors = 500
 [node name="Background" parent="." index="1"]
 position = Vector2(1810, 1532)
 
-[connection signal="pressed" from="UpgradeMenu/UI/SpellButton" to="UpgradeMenu/UI" method="_on_spell_button_pressed"]
-
 [editable path="UpgradeMenu"]

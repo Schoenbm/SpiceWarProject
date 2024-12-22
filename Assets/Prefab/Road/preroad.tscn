@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmux8nkev6y74"]
+
+[ext_resource type="Script" path="res://preroad.gd" id="1_4aayb"]
+[ext_resource type="Texture2D" uid="uid://b8iqpfxsg0lus" path="res://Assets/Sprites/ship.png" id="2_vv583"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qirnv"]
+radius = 128.876
+
+[node name="Preroad" type="Node2D"]
+script = ExtResource("1_4aayb")
+radius = 200
+
+[node name="Line2D" type="Line2D" parent="."]
+scale = Vector2(1.6, 1.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.117647, 0.345098, 0.839216, 0.231373)
+texture = ExtResource("2_vv583")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qirnv")

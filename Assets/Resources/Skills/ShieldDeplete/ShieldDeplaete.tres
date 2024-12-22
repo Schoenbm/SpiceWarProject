@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DepleteShield" load_steps=2 format=3 uid="uid://cwg64t2ehfouh"]
+
+[ext_resource type="Script" path="res://Scripts/Skills/DepleteShield.gd" id="1_ri5tf"]
+
+[resource]
+script = ExtResource("1_ri5tf")
+delay_rate = 0.2
+spice_cost = 10.0

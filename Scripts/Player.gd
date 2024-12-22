@@ -55,19 +55,21 @@ func _unhandled_input(event):
 		upgrade_menu_oppened = false
 		active_planet = null
 		context_menu.player_close_context_menu()
-		
+	
 	if event is	InputEventScreenTouch :
 			update_active_touches(event)
 			update_initial_distance(event)
-			
-			if(active_planet != null && event.is_released()):
+			if(event.double_tap):
+				if(active_planet !=null):
+					find_active_planet_in_areas(event)
+					active_planet.selected_neighbor = active_planet
+			elif(active_planet != null && event.is_released()):
 				if(choose_attack_mode):
 					confirm_attack()
 					activate_attack_mode(false)
 				else:
 					context_menu.player_open_context_menu(active_planet)
 					upgrade_menu_oppened = true
-					
 			elif(event.is_pressed()):
 				active_planet = null
 				find_active_planet_in_areas(event)

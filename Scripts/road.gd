@@ -23,7 +23,7 @@ var transition_locked = false #Pour eviter des calculs inutiles
 
 var planet1_attacking = false;
 var planet2_attacking = false;
-const my_scene: PackedScene = preload("res://Assets/Prefab/road.tscn")
+const my_scene: PackedScene = preload("res://Assets/Prefab/Road/road.tscn")
 
 
 static func create_road(P1: Planet, P2: Planet) -> Road :
@@ -58,14 +58,16 @@ func transition_color(delta : float) -> void:
 
 
 #renvoie true si le ship est bien enboyé
-func send_ship(sender : Planet):
+func send_ship(sender : Planet, ionized : bool):
 	current_ships_number+=1
 	var destination : Planet
 	if(sender == planet1):
 		destination = planet2
 	else:
 		destination = planet1
-	var new_ship = Ship.create_ship(destination,sender)
+	
+	
+	var new_ship = Ship.create_ship(destination,sender, ionized)
 	new_ship.speed *= sender.acceleration_ships
 	new_ship.name = "ship" + PlanetType.get_alliance_name(sender.alliance) + str(current_ships_number) #TODO EURK
 	add_child(new_ship)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://deh2o6x4w83v7"]
+[gd_scene load_steps=8 format=3 uid="uid://deh2o6x4w83v7"]
 
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_jeql6"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_qxyjn"]
 [ext_resource type="PackedScene" uid="uid://dvudvtb5iwuml" path="res://Assets/Prefab/Planets/Shield/shield.tscn" id="3_gs5ru"]
+[ext_resource type="Resource" uid="uid://cwg64t2ehfouh" path="res://Assets/Resources/Skills/ShieldDeplete/ShieldDeplaete.tres" id="3_pb6qw"]
 [ext_resource type="Texture2D" uid="uid://4ak7hjulijxj" path="res://Assets/Sprites/—Pngtree—vector shield icon_3785558.png" id="7_avgox"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vrjwx"]
@@ -21,11 +22,13 @@ shader_parameter/color = Vector3(1, 0, 0)
 shader_parameter/transition_time = 0.0
 shader_parameter/transition_duration = 0.3
 
-[node name="DefensivePlanet" instance=ExtResource("1_jeql6")]
+[node name="DefensivePlanet" node_paths=PackedStringArray("shield") instance=ExtResource("1_jeql6")]
 material = SubResource("ShaderMaterial_vrjwx")
 ship_speed_production = 1.0
 number_of_ships = 0
+shield = NodePath("Shield")
 type = 5
+skill = ExtResource("3_pb6qw")
 
 [node name="Shield" parent="." index="0" instance=ExtResource("3_gs5ru")]
 z_index = 1

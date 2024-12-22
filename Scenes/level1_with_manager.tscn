@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://dec7ghi2rj7xw" path="res://Assets/Resources/Skills/Skill.tres" id="6_3fxti"]
 [ext_resource type="PackedScene" uid="uid://it3melxh4rf1" path="res://Assets/Prefab/Planets/acceleration_planet.tscn" id="6_d7mt4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_86n8f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68ndf"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -32,7 +32,7 @@ shader_parameter/color = Vector3(1, 0, 0)
 shader_parameter/transition_time = 0.0
 shader_parameter/transition_duration = 0.3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gsbja"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lf0f0"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -48,7 +48,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7sw5q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1wau"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -64,7 +64,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s4gnu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hfw8c"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -112,7 +112,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ea326"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71fto"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -128,7 +128,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g07cg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbum6"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -136,7 +136,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0hpwq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wyqre"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -168,7 +168,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fr5u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvcnx"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -176,7 +176,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_54ho0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yk6mu"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -184,7 +184,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j07s8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_co0nd"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -192,7 +192,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_htvf7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6b4ce"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -200,7 +200,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sthwp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rgs32"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -208,7 +208,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmn2m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlfhy"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -216,7 +216,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpg8k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhgqq"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -224,7 +224,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbd8f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l716k"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -232,7 +232,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5q2yv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l34gt"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -240,7 +240,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2h871"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5iawm"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -248,7 +248,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfi2u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jpli7"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -256,7 +256,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ukepi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwei3"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -264,7 +264,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8323g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5hrp"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -272,7 +272,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_edfrj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqjb3"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -296,7 +296,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0f8kp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81oha"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -304,7 +304,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovsi2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nomhm"]
 resource_local_to_scene = true
 shader = ExtResource("3_xtvx4")
 shader_parameter/previous_color = null
@@ -315,7 +315,7 @@ shader_parameter/transition_duration = null
 [node name="Level" instance=ExtResource("1_wswcx")]
 
 [node name="Planet2" parent="GameManager/AllPlanets" index="0" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_86n8f")
+material = SubResource("ShaderMaterial_68ndf")
 position = Vector2(597, 2133)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -339,7 +339,7 @@ metadata/_edit_group_ = true
 metadata/_edit_group_ = true
 
 [node name="Planet" parent="GameManager/AllPlanets" index="2" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_gsbja")
+material = SubResource("ShaderMaterial_lf0f0")
 position = Vector2(684, 2255)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -357,7 +357,7 @@ color_change_anim_duration = 0.3
 skill = ExtResource("6_3fxti")
 
 [node name="Planet3" parent="GameManager/AllPlanets" index="4" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_7sw5q")
+material = SubResource("ShaderMaterial_d1wau")
 position = Vector2(622, 599)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -373,7 +373,7 @@ alliance = 1
 color_change_anim_duration = 0.3
 
 [node name="Planet4" parent="GameManager/AllPlanets" index="6" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_s4gnu")
+material = SubResource("ShaderMaterial_hfw8c")
 position = Vector2(725, 487)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -434,7 +434,7 @@ color_change_anim_duration = 0.3
 skill = ExtResource("6_3fxti")
 
 [node name="Planet5" parent="GameManager/AllPlanets" index="13" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_ea326")
+material = SubResource("ShaderMaterial_71fto")
 position = Vector2(736, 1849)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -448,14 +448,14 @@ send_ship_cd = 0.0
 color_change_anim_duration = 0.3
 
 [node name="Planet6" parent="GameManager/AllPlanets" index="15" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_g07cg")
+material = SubResource("ShaderMaterial_wbum6")
 position = Vector2(490, 1517)
 ship_speed_production = 0.4
 number_of_ships = 0
 radius_neighbors = 200
 
 [node name="Planet7" parent="GameManager/AllPlanets" index="16" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_0hpwq")
+material = SubResource("ShaderMaterial_wyqre")
 position = Vector2(771, 1539)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -494,28 +494,28 @@ color_change_anim_duration = 0.3
 skill = ExtResource("6_3fxti")
 
 [node name="Planet8" parent="GameManager/AllPlanets" index="21" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_5fr5u")
+material = SubResource("ShaderMaterial_dvcnx")
 position = Vector2(622, 1157)
 ship_speed_production = 0.4
 number_of_ships = 0
 radius_neighbors = 200
 
 [node name="Planet9" parent="GameManager/AllPlanets" index="22" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_54ho0")
+material = SubResource("ShaderMaterial_yk6mu")
 position = Vector2(454, 1054)
 ship_speed_production = 0.4
 number_of_ships = 0
 radius_neighbors = 200
 
 [node name="Planet10" parent="GameManager/AllPlanets" index="23" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_j07s8")
+material = SubResource("ShaderMaterial_co0nd")
 position = Vector2(785, 1051)
 ship_speed_production = 0.4
 number_of_ships = 0
 radius_neighbors = 200
 
 [node name="Planet11" parent="GameManager/AllPlanets" index="24" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_htvf7")
+material = SubResource("ShaderMaterial_6b4ce")
 position = Vector2(892, 1697)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -523,7 +523,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet12" parent="GameManager/AllPlanets" index="25" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_sthwp")
+material = SubResource("ShaderMaterial_rgs32")
 position = Vector2(982, 1571)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -531,7 +531,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet13" parent="GameManager/AllPlanets" index="26" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_pmn2m")
+material = SubResource("ShaderMaterial_jlfhy")
 position = Vector2(1033, 1784)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -539,7 +539,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet14" parent="GameManager/AllPlanets" index="27" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_cpg8k")
+material = SubResource("ShaderMaterial_hhgqq")
 position = Vector2(1132, 1646)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -547,7 +547,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet15" parent="GameManager/AllPlanets" index="28" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_vbd8f")
+material = SubResource("ShaderMaterial_l716k")
 position = Vector2(1099, 1434)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -555,7 +555,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet16" parent="GameManager/AllPlanets" index="29" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_5q2yv")
+material = SubResource("ShaderMaterial_l34gt")
 position = Vector2(892, 1416)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -563,7 +563,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet17" parent="GameManager/AllPlanets" index="30" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_2h871")
+material = SubResource("ShaderMaterial_5iawm")
 position = Vector2(1246, 1511)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -571,7 +571,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet18" parent="GameManager/AllPlanets" index="31" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_kfi2u")
+material = SubResource("ShaderMaterial_jpli7")
 position = Vector2(1294, 1700)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -579,7 +579,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet19" parent="GameManager/AllPlanets" index="32" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_ukepi")
+material = SubResource("ShaderMaterial_lwei3")
 position = Vector2(1210, 1838)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -587,7 +587,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet20" parent="GameManager/AllPlanets" index="33" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_8323g")
+material = SubResource("ShaderMaterial_d5hrp")
 position = Vector2(997, 1272)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -595,7 +595,7 @@ radius_neighbors = 200
 alliance = 2
 
 [node name="Planet21" parent="GameManager/AllPlanets" index="34" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_edfrj")
+material = SubResource("ShaderMaterial_hqjb3")
 position = Vector2(1231, 1326)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -627,13 +627,13 @@ color_change_anim_duration = 0.3
 skill = ExtResource("6_3fxti")
 
 [node name="Planet22" parent="GameManager/AllPlanets" index="38" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_0f8kp")
+material = SubResource("ShaderMaterial_81oha")
 position = Vector2(395, 1660)
 ship_speed_production = 0.4
 number_of_ships = 0
 
 [node name="Planet23" parent="GameManager/AllPlanets" index="39" instance=ExtResource("2_mivig")]
-material = SubResource("ShaderMaterial_ovsi2")
+material = SubResource("ShaderMaterial_nomhm")
 position = Vector2(346, 1402)
 ship_speed_production = 0.4
 number_of_ships = 0
@@ -650,8 +650,6 @@ metadata/_edit_group_ = true
 
 [node name="ThresholdSlider" parent="UpgradeMenu/UI" index="6"]
 step = 5.0
-
-[connection signal="pressed" from="UpgradeMenu/UI/SpellButton" to="UpgradeMenu/UI" method="_on_spell_button_pressed"]
 
 [editable path="GameManager/AllPlanets/GeneratorPlanet"]
 [editable path="UpgradeMenu"]

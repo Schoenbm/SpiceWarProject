@@ -13,6 +13,7 @@ var roads
 var number_planets : int
 var number_planets_by_alliance = {}
 # Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	planets = get_node("AllPlanets")
 	roads = get_node("AllRoads")
