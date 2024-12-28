@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dm6iunrfkxsp4"]
 
 [ext_resource type="Script" path="res://Scripts/upgrade_menu.gd" id="1_bp72e"]
-[ext_resource type="Theme" uid="uid://f3bibifu3v0e" path="res://Assets/UI/GameTheme.tres" id="1_xbxcg"]
+[ext_resource type="Theme" uid="uid://cn78xuuxh7qik" path="res://Assets/UI/GameTheme.tres" id="1_xbxcg"]
 [ext_resource type="Theme" uid="uid://eo5p87uidknn" path="res://Assets/UI/theme.tres" id="2_ouosi"]
 [ext_resource type="Texture2D" uid="uid://dq61t5kydujje" path="res://Assets/Sprites/Icons/acceleration_icon.png" id="3_fs6c1"]
 [ext_resource type="LabelSettings" uid="uid://0sbqmy8y504a" path="res://Assets/UI/Text.tres" id="4_acp5i"]

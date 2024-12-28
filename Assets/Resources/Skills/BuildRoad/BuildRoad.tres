@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BuildRoad" load_steps=2 format=3 uid="uid://cpy4tvd32wkyh"]
+
+[ext_resource type="Script" path="res://Scripts/Skills/BuildRoad.gd" id="1_ymeap"]
+
+[resource]
+script = ExtResource("1_ymeap")
+range = 200
+spice_cost = 20.0

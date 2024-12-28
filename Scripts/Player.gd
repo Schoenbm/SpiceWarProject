@@ -9,6 +9,7 @@ var active_touches_pos = {}
 const MIN_ZOOM = 0.25
 const MAX_ZOOM = 2
 
+var drag_speed = 1
 var visible_width
 var visible_height
 var window_size
@@ -114,7 +115,7 @@ func zoom_screen(event):
 	clamp_pos()
 
 func drag_screen(event):
-	position -= event.screen_relative
+	position -= event.screen_relative *  drag_speed
 	clamp_pos()
 
 func emule_touch(bol):
@@ -189,3 +190,10 @@ func _on_timer_timeout() -> void:
 func enable_spell(bol : bool):
 	context_menu.enable_spell_button(bol)
 	can_use_spell = bol
+
+func enable_preroad(range : int):
+	$Preroad.use_on(active_planet, range)
+
+func refund_skill(cost : int):
+	spices += cost
+	enable_spell(true)

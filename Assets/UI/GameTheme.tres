@@ -1,9 +1,9 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://f3bibifu3v0e"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cn78xuuxh7qik"]
 
 [ext_resource type="FontFile" uid="uid://wkc04qutggra" path="res://Assets/UI/Font/Hemi Head Bd It.otf" id="1_rfpq5"]
 [ext_resource type="StyleBox" uid="uid://b6v5xrhq1awu5" path="res://Assets/UI/StyleBox/Button_disabled.tres" id="2_7apt1"]
 [ext_resource type="Texture2D" uid="uid://dttjwufrj75p3" path="res://Assets/Sprites/road_texture.png" id="2_wthsp"]
-[ext_resource type="StyleBox" uid="uid://bj76gvunp3kun" path="res://Assets/UI/StyleBox/Button_focus.tres" id="3_amgb2"]
+[ext_resource type="StyleBox" path="res://Assets/UI/StyleBox/Button_focus.tres" id="3_amgb2"]
 [ext_resource type="StyleBox" uid="uid://clyn8r01ydqj1" path="res://Assets/UI/StyleBox/Button_normal.tres" id="4_xmo8o"]
 [ext_resource type="StyleBox" uid="uid://0xhampr0gwp" path="res://Assets/UI/StyleBox/Button_selected.tres" id="5_f6o4s"]
 

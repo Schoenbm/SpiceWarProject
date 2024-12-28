@@ -24,7 +24,6 @@ shader_parameter/matrices_texture = ExtResource("3_k6dkl")
 shader_parameter/circle_texture = ExtResource("2_rtpp2")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jw1x2"]
-load_path = "res://.godot/imported/shield.png-1bf5fb3ebf158fdd741932ea72d4193b.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kdb2"]
 radius = 113.004

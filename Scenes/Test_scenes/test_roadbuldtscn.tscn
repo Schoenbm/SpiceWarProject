@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://42i2r34ccfvo"]
+
+[ext_resource type="PackedScene" uid="uid://k06bpausbfuq" path="res://Scenes/sample_level.tscn" id="1_s0m4w"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="2_2x6lv"]
+[ext_resource type="PackedScene" uid="uid://diutowwgb1dwt" path="res://Assets/Prefab/Planets/rafinery.tscn" id="4_831mb"]
+[ext_resource type="PackedScene" uid="uid://it3melxh4rf1" path="res://Assets/Prefab/Planets/acceleration_planet.tscn" id="4_wygfq"]
+
+[node name="Level" instance=ExtResource("1_s0m4w")]
+
+[node name="Planet" parent="GameManager/AllPlanets" index="0" instance=ExtResource("2_2x6lv")]
+position = Vector2(817, 348)
+alliance = 0
+
+[node name="Planet2" parent="GameManager/AllPlanets" index="1" instance=ExtResource("2_2x6lv")]
+position = Vector2(695, 428)
+alliance = 0
+
+[node name="AccelerationPlanet" parent="GameManager/AllPlanets" index="2" instance=ExtResource("4_wygfq")]
+position = Vector2(620, 363)
+alliance = 0
+
+[node name="Rafinery" parent="GameManager/AllPlanets" index="3" instance=ExtResource("4_831mb")]
+position = Vector2(604, 603)
+production_speed = 20.0
+number_of_ships = 20
+
+[node name="Background" parent="." index="1"]
+position = Vector2(2894, 2692)
+
+[connection signal="pressed" from="UpgradeMenu/UI/SpellButton" to="UpgradeMenu/UI" method="_on_spell_button_pressed"]
+
+[editable path="UpgradeMenu"]

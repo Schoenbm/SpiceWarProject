@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6grjvn04a2dv"]
+[gd_scene load_steps=4 format=3 uid="uid://c6grjvn04a2dv"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_leqkc"]
 [ext_resource type="Texture2D" uid="uid://wfr426dleqpv" path="res://Assets/Sprites/curstor.png" id="2_gthsx"]
+[ext_resource type="PackedScene" uid="uid://cmux8nkev6y74" path="res://Assets/Prefab/Road/preroad.tscn" id="3_2nt2y"]
 
 [node name="Player" type="Camera2D"]
+z_index = 5
 position = Vector2(760, 577)
 script = ExtResource("1_leqkc")
 spell_cooldown = 5.0
@@ -16,5 +18,8 @@ texture = ExtResource("2_gthsx")
 [node name="SpellCD" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="Preroad" parent="." instance=ExtResource("3_2nt2y")]
+clamp_radius = 30
 
 [connection signal="timeout" from="SpellCD" to="." method="_on_timer_timeout"]

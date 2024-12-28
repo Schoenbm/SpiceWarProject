@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://it3melxh4rf1"]
+[gd_scene load_steps=8 format=3 uid="uid://it3melxh4rf1"]
 
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_j255c"]
 [ext_resource type="Shader" path="res://Assets/Material/acceleration_planet.gdshader" id="2_j865n"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_kaxst"]
+[ext_resource type="Resource" uid="uid://cpy4tvd32wkyh" path="res://Assets/Resources/Skills/BuildRoad/BuildRoad.tres" id="2_oknnk"]
 [ext_resource type="Texture2D" uid="uid://bmdcnjqk5qwn5" path="res://Assets/Sprites/accel.png" id="3_klgbm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xpxyc"]
@@ -26,6 +27,7 @@ number_of_ships = 0
 send_ship_cd = 0.5
 acceleration_ships = 2
 type = 0
+skill = ExtResource("2_oknnk")
 
 [node name="PlanetSprite" parent="." index="1"]
 material = SubResource("ShaderMaterial_xpxyc")

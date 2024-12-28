@@ -52,6 +52,8 @@ var can_use_skill : bool
 var send_random : bool
 var send_all : bool
 
+signal self_updated(planet: Planet)
+
 func _ready() -> void:
 	$Timer.wait_time = send_ship_cd
 	can_send_ship = true
@@ -78,7 +80,7 @@ func setup(aPlayer) -> void:
 	change_color_alliance(alliance, true)
 
 func has_neighbor(neighbor : Planet) -> bool:
-	return !roads.has(neighbor.name)
+	return roads.has(neighbor.name)
 	
 func make_road(neighbor):
 	roads[neighbor.name] = Road.create_road(self,neighbor)
@@ -276,6 +278,8 @@ func upgrade_planet(planet_name : PlanetData.Types) -> void :
 	for road in new_planet.roads.values() :
 		road.change_planet(self, new_planet)
 	
+	self_updated.emit(new_planet)
+	
 	name = "GLORIOUS_EVOLUTION" 
 	add_sibling(new_planet)
 	player.update_active_planet_upgrade(new_planet)
@@ -332,3 +336,7 @@ func reduce_ships_number(amount : int):
 	number_of_ships -= amount
 	if(number_of_ionized_ships > 0):
 		number_of_ionized_ships = max( 0,number_of_ionized_ships - amount)
+
+func update_color_of_road_to_neighbor(neighbor_name : String):
+	if(roads.has(neighbor_name)):
+		roads[neighbor_name].update_color(true)

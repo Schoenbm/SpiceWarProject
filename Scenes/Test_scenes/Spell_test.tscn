@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkgeun5sswfuc"]
+[gd_scene load_steps=14 format=3 uid="uid://dsw20d7k56sai"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_5dgp3"]
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="2_uwqc4"]
@@ -40,6 +40,8 @@ script = ExtResource("1_5dgp3")
 [node name="GeneratorPlanet" parent="GameManager/AllPlanets" instance=ExtResource("6_k6jno")]
 material = SubResource("ShaderMaterial_ydkmk")
 position = Vector2(688, 731)
+collision_layer = 2
+collision_mask = 3
 ship_speed_production = 0.0
 number_of_ships = 50
 alliance = 1
@@ -54,11 +56,15 @@ skill = ExtResource("7_x6t1u")
 [node name="DefensivePlanet" parent="GameManager/AllPlanets" instance=ExtResource("9_drumi")]
 material = SubResource("ShaderMaterial_yyvck")
 position = Vector2(813, 659)
+collision_layer = 2
+collision_mask = 3
 ship_speed_production = 2.0
 alliance = 0
 
 [node name="Rafinery" parent="GameManager/AllPlanets" instance=ExtResource("7_toh1l")]
 position = Vector2(793, 858)
+collision_layer = 2
+collision_mask = 3
 production_speed = 5.0
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("context_menu") instance=ExtResource("2_uwqc4")]

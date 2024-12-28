@@ -1,23 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmux8nkev6y74"]
+[gd_scene load_steps=6 format=3 uid="uid://cmux8nkev6y74"]
 
 [ext_resource type="Script" path="res://preroad.gd" id="1_4aayb"]
+[ext_resource type="Shader" path="res://Assets/Prefab/Road/ZonePreRoad.gdshader" id="2_em4eo"]
 [ext_resource type="Texture2D" uid="uid://b8iqpfxsg0lus" path="res://Assets/Sprites/ship.png" id="2_vv583"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qirnv"]
-radius = 128.876
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dedcw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_833sp"]
+shader = ExtResource("2_em4eo")
 
 [node name="Preroad" type="Node2D"]
+z_index = 5
 script = ExtResource("1_4aayb")
 radius = 200
+clamp_radius = 50
 
 [node name="Line2D" type="Line2D" parent="."]
-scale = Vector2(1.6, 1.6)
+material = SubResource("ShaderMaterial_dedcw")
+points = PackedVector2Array(0, 0, 98, -82)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.117647, 0.345098, 0.839216, 0.231373)
+material = SubResource("ShaderMaterial_833sp")
 texture = ExtResource("2_vv583")
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_qirnv")

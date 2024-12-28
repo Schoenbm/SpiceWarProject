@@ -20,6 +20,8 @@ color_change_anim_duration = 0.15
 
 [node name="AccelerationPlanet" parent="Level/GameManager/AllPlanets" index="1" instance=ExtResource("3_5s8f2")]
 position = Vector2(803, 486)
+collision_layer = 2
+collision_mask = 3
 auto_find_neighbors = false
 radius_neighbors = 64
 send_ship_cd = 0.0
