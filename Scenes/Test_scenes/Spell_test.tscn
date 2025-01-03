@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsw20d7k56sai"]
+[gd_scene load_steps=13 format=3 uid="uid://dsw20d7k56sai"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_5dgp3"]
 [ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="2_uwqc4"]
@@ -8,11 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bx3yqljwof8cr" path="res://Assets/Prefab/Planets/generator.tscn" id="6_k6jno"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="7_7pst5"]
 [ext_resource type="PackedScene" uid="uid://diutowwgb1dwt" path="res://Assets/Prefab/Planets/rafinery.tscn" id="7_toh1l"]
-[ext_resource type="Resource" uid="uid://doc7ra6ndv11c" path="res://Assets/Resources/Skills/EmptySkill/EmptySkill.tres" id="7_x6t1u"]
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="8_p15rw"]
 [ext_resource type="PackedScene" uid="uid://deh2o6x4w83v7" path="res://Assets/Prefab/Planets/defensive_planet.tscn" id="9_drumi"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ydkmk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ywbx"]
 resource_local_to_scene = true
 shader = ExtResource("7_7pst5")
 shader_parameter/previous_color = null
@@ -20,7 +19,7 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yyvck"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ccyj"]
 resource_local_to_scene = true
 shader = ExtResource("7_7pst5")
 shader_parameter/previous_color = null
@@ -37,35 +36,26 @@ script = ExtResource("1_5dgp3")
 
 [node name="AllPlanets" type="Node2D" parent="GameManager"]
 
+[node name="DefensivePlanet" parent="GameManager/AllPlanets" instance=ExtResource("9_drumi")]
+material = SubResource("ShaderMaterial_0ywbx")
+position = Vector2(725, 751)
+alliance = 0
+
 [node name="GeneratorPlanet" parent="GameManager/AllPlanets" instance=ExtResource("6_k6jno")]
-material = SubResource("ShaderMaterial_ydkmk")
-position = Vector2(688, 731)
-collision_layer = 2
-collision_mask = 3
-ship_speed_production = 0.0
-number_of_ships = 50
-alliance = 1
+material = SubResource("ShaderMaterial_8ccyj")
+position = Vector2(608, 797)
+alliance = 0
 
 [node name="Planet" parent="GameManager/AllPlanets" instance=ExtResource("8_p15rw")]
-position = Vector2(859, 828)
-ship_speed_production = 5.0
-radius_neighbors = 5140
-alliance = 0
-skill = ExtResource("7_x6t1u")
-
-[node name="DefensivePlanet" parent="GameManager/AllPlanets" instance=ExtResource("9_drumi")]
-material = SubResource("ShaderMaterial_yyvck")
-position = Vector2(813, 659)
-collision_layer = 2
-collision_mask = 3
-ship_speed_production = 2.0
-alliance = 0
+position = Vector2(681, 828)
 
 [node name="Rafinery" parent="GameManager/AllPlanets" instance=ExtResource("7_toh1l")]
-position = Vector2(793, 858)
-collision_layer = 2
-collision_mask = 3
-production_speed = 5.0
+position = Vector2(633, 732)
+spice_production_speed = 10.0
+number_of_ships = 10
+
+[node name="Planet2" parent="GameManager/AllPlanets" instance=ExtResource("8_p15rw")]
+position = Vector2(773, 813)
 
 [node name="Player" parent="GameManager" node_paths=PackedStringArray("context_menu") instance=ExtResource("2_uwqc4")]
 bound = Vector2(2000, 2000)

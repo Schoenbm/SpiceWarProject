@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://eo5p87uidknn"]
 
 [ext_resource type="StyleBox" uid="uid://b6v5xrhq1awu5" path="res://Assets/UI/StyleBox/Button_disabled.tres" id="1_0i5pj"]
-[ext_resource type="StyleBox" path="res://Assets/UI/StyleBox/Button_focus.tres" id="2_vgo5o"]
+[ext_resource type="StyleBox" uid="uid://bj76gvunp3kun" path="res://Assets/UI/StyleBox/Button_focus.tres" id="2_vgo5o"]
 [ext_resource type="StyleBox" uid="uid://clyn8r01ydqj1" path="res://Assets/UI/StyleBox/Button_normal.tres" id="2_ytglc"]
 [ext_resource type="StyleBox" uid="uid://0xhampr0gwp" path="res://Assets/UI/StyleBox/Button_selected.tres" id="3_1okka"]
 [ext_resource type="Texture2D" uid="uid://dttjwufrj75p3" path="res://Assets/Sprites/road_texture.png" id="5_x6lka"]

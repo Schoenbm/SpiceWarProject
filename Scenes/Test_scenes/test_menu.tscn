@@ -38,5 +38,8 @@ offset_bottom = 0.0
 [node name="UI" parent="Level/UpgradeMenu" index="0"]
 layer = 2
 
+[connection signal="input_event" from="Level/GameManager/AllPlanets/AccelerationPlanet" to="Level/GameManager/AllPlanets/AccelerationPlanet" method="_on_input_event"]
+[connection signal="pressed" from="Level/UpgradeMenu/UI/SpellButton" to="Level/UpgradeMenu/UI" method="_on_spell_button_pressed"]
+
 [editable path="Level"]
 [editable path="Level/UpgradeMenu"]

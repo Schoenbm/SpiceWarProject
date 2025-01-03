@@ -16,8 +16,12 @@ var active_planet : Planet
 
 var parent_control : Control
 
+@export var gm : GameManager
+
 var end_anim : bool
 func _ready():
+	if (gm == null):
+		gm = get_node("/root/Level/GameManager")
 	parent_control = get_parent()
 	base_offset = self.offset.y
 	hide_offset = self.offset.y + diff_offset
@@ -28,7 +32,7 @@ func _ready():
 	$RafineryButton/CostText.text = str(PLANET_DATA.get_cost(PlanetData.Types.RAFINERY))
 	$LaboratoryButton/CostText.text = str(PLANET_DATA.get_cost(PlanetData.Types.LABORATORY))
 
-	
+
 func popup(a_show : bool):
 	popup_anim_time = popup_anim_duration
 	show = a_show
@@ -49,23 +53,23 @@ func _process(delta):
 
 
 func _on_acceleration_button_pressed() -> void:
-	active_planet.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.ACCELERATOR),PlanetData.Types.ACCELERATOR)
+	gm.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.ACCELERATOR),PlanetData.Types.ACCELERATOR, active_planet)
 
 
 func _on_shield_button_pressed() -> void:
-	active_planet.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.DEFENSIVE),PlanetData.Types.DEFENSIVE)
+	gm.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.DEFENSIVE),PlanetData.Types.DEFENSIVE, active_planet)
 
 
 func _on_generator_button_pressed() -> void:
-	active_planet.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.GENERATOR), PlanetData.Types.GENERATOR)
+	gm.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.GENERATOR), PlanetData.Types.GENERATOR, active_planet)
 
 
 func _on_rafinery_button_pressed() -> void:
-	active_planet.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.RAFINERY), PlanetData.Types.RAFINERY)
+	gm.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.RAFINERY), PlanetData.Types.RAFINERY, active_planet)
 
 
 func _on_laboratory_button_pressed() -> void:
-	active_planet.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.LABORATORY), PlanetData.Types.LABORATORY)
+	gm.try_upgrade(PLANET_DATA.get_cost(PlanetData.Types.LABORATORY), PlanetData.Types.LABORATORY,active_planet)
 
 
 func _on_spell_button_pressed() -> void:
@@ -76,7 +80,9 @@ func player_open_context_menu(planet : Planet) -> void:
 	active_planet = planet
 	$ThresholdSlider.value = active_planet.send_ship_threshold
 	$ThresholdSlider/Treshold.text = str(active_planet.send_ship_threshold)
-	$SpellButton/Cost.text = str(active_planet.skill.spice_cost)
+	if(active_planet.skill != null):
+		$SpellButton/Cost.text = str(active_planet.skill.spice_cost)
+
 	update_menu_for_active_planet()
 	popup(true)
 
@@ -88,15 +94,19 @@ func update_menu_for_active_planet():
 	$GeneratorButton.disabled = false
 	$RafineryButton.disabled = false
 	$LaboratoryButton.disabled = false
+	$SpellButton.disabled = !active_planet.can_use_skill || !player.can_use_spell
 	
 	match active_planet.type :
 		PlanetData.Types.GENERATOR : $GeneratorButton.disabled = true
 		PlanetData.Types.DEFENSIVE : $ShieldButton.disabled = true
 		PlanetData.Types.ACCELERATOR : $AccelerationButton.disabled = true
-		PlanetData.Types.RAFINERY : $RafineryButton.disabled = true
+		PlanetData.Types.RAFINERY : 
+			$RafineryButton.disabled = true
+			$SpellButton.disabled = true
+			print("here")
 		PlanetData.Types.LABORATORY : $LaboratoryButton.disabled = true
 	
-	$SpellButton.disabled = !active_planet.can_use_skill || !player.can_use_spell
+
 		
 
 func player_close_context_menu() -> void:

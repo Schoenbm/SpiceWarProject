@@ -1,0 +1,708 @@
+[gd_scene load_steps=20 format=3 uid="uid://cubkhwlbjkhev"]
+
+[ext_resource type="StyleBox" uid="uid://d0mhgb3nldvs1" path="res://Assets/UI/greenwhite_window.tres" id="1_8vi0c"]
+[ext_resource type="Script" path="res://Assets/UI/research_menu.gd" id="1_51fs3"]
+[ext_resource type="LabelSettings" uid="uid://dkbci8bsiy8k2" path="res://Assets/UI/label.tres" id="2_q6c8t"]
+[ext_resource type="Texture2D" uid="uid://cq66xdmuxcy78" path="res://Assets/Sprites/Icons/rafinery.png" id="3_4mu5u"]
+[ext_resource type="Texture2D" uid="uid://dq61t5kydujje" path="res://Assets/Sprites/Icons/acceleration_icon.png" id="3_rb4jw"]
+[ext_resource type="Texture2D" uid="uid://kl0qxj6epjt0" path="res://Assets/Sprites/Icons/ship_icon.png" id="5_k55hh"]
+[ext_resource type="Texture2D" uid="uid://bm4wb1suqhdsb" path="res://Assets/Sprites/Icons/lab_icon.png" id="6_3yw40"]
+[ext_resource type="Theme" uid="uid://ketuy06ig7wh" path="res://Assets/UI/ResearchTheme.tres" id="6_qamgk"]
+[ext_resource type="FontFile" uid="uid://wkc04qutggra" path="res://Assets/UI/Font/Hemi Head Bd It.otf" id="7_4o055"]
+[ext_resource type="Texture2D" uid="uid://di742xqj1wtk6" path="res://Assets/Sprites/Icons/shield.png" id="9_ytddy"]
+[ext_resource type="Texture2D" uid="uid://i2xq61qtowg" path="res://Assets/Sprites/Icons/bolt.png" id="10_aqniq"]
+[ext_resource type="Texture2D" uid="uid://ctme05cwj1b6k" path="res://Assets/Sprites/Icons/network.png" id="11_m07hk"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jrohq"]
+color = Color(0.101961, 0.376471, 0.278431, 1)
+grow_begin = 4.0
+grow_end = 4.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdgrf"]
+bg_color = Color(0.101961, 0.611765, 0.278431, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0.431373, 0.698039, 0.635294, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rdi4q"]
+font_size = 10
+font_color = Color(0.964706, 0.72549, 0.47451, 1)
+outline_size = 5
+outline_color = Color(0.0901961, 0.117647, 0.301961, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.486275)
+shadow_offset = Vector2(1, 1.855)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oapr6"]
+bg_color = Color(0.101961, 0.376471, 0.278431, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0.427451)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gq768"]
+font_size = 9
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tpv6v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tkm7"]
+bg_color = Color(0.101961, 0.376471, 0.278431, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.431373, 0.698039, 0.635294, 1)
+
+[node name="ResearchMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_51fs3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.415
+anchor_right = 1.0
+anchor_bottom = 0.747
+offset_top = -0.365021
+offset_bottom = -0.0570068
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = ExtResource("1_8vi0c")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESEARCH"
+label_settings = ExtResource("2_q6c8t")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_jrohq")
+
+[node name="TiersAndEffects" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Accel" type="AspectRatioContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Accel" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Tier" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdgrf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Tier"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_rb4jw")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TIER 1
+"
+label_settings = SubResource("LabelSettings_rdi4q")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_rb4jw")
+expand_mode = 2
+
+[node name="Effect" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oapr6")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Effect"]
+layout_mode = 2
+text = "+size
++ max capacityz
+- reboot time "
+label_settings = SubResource("LabelSettings_gq768")
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Cost" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1tkm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_4mu5u")
+expand_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_k55hh")
+expand_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("6_3yw40")
+expand_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel/Accel"]
+layout_mode = 2
+theme = ExtResource("6_qamgk")
+theme_override_fonts/font = ExtResource("7_4o055")
+theme_override_font_sizes/font_size = 12
+text = "SEARCH
+"
+
+[node name="Accel2" type="AspectRatioContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Accel" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Tier" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdgrf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Tier"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ytddy")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TIER 1
+"
+label_settings = SubResource("LabelSettings_rdi4q")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ytddy")
+expand_mode = 2
+
+[node name="Effect" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oapr6")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Effect"]
+layout_mode = 2
+text = "+size
++ max capacityz
+- reboot time "
+label_settings = SubResource("LabelSettings_gq768")
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Cost" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1tkm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_4mu5u")
+expand_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_k55hh")
+expand_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("6_3yw40")
+expand_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel2/Accel"]
+layout_mode = 2
+theme = ExtResource("6_qamgk")
+theme_override_fonts/font = ExtResource("7_4o055")
+theme_override_font_sizes/font_size = 12
+text = "SEARCH
+"
+
+[node name="Accel3" type="AspectRatioContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Accel" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Tier" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdgrf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Tier"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_aqniq")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TIER 1
+"
+label_settings = SubResource("LabelSettings_rdi4q")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_aqniq")
+expand_mode = 2
+
+[node name="Effect" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oapr6")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Effect"]
+layout_mode = 2
+text = "+size
++ max capacityz
+- reboot time "
+label_settings = SubResource("LabelSettings_gq768")
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Cost" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1tkm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_4mu5u")
+expand_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_k55hh")
+expand_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("6_3yw40")
+expand_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel3/Accel"]
+layout_mode = 2
+theme = ExtResource("6_qamgk")
+theme_override_fonts/font = ExtResource("7_4o055")
+theme_override_font_sizes/font_size = 12
+text = "SEARCH
+"
+
+[node name="Accel4" type="AspectRatioContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Accel" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Tier" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdgrf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Tier"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_4mu5u")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TIER 1
+"
+label_settings = SubResource("LabelSettings_rdi4q")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_4mu5u")
+expand_mode = 2
+
+[node name="Effect" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oapr6")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Effect"]
+layout_mode = 2
+text = "+size
++ max capacityz
+- reboot time "
+label_settings = SubResource("LabelSettings_gq768")
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Cost" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1tkm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_4mu5u")
+expand_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_k55hh")
+expand_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("6_3yw40")
+expand_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel4/Accel"]
+layout_mode = 2
+theme = ExtResource("6_qamgk")
+theme_override_fonts/font = ExtResource("7_4o055")
+theme_override_font_sizes/font_size = 12
+text = "SEARCH
+"
+
+[node name="Accel5" type="AspectRatioContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Accel" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Tier" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdgrf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Tier"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_m07hk")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TIER 1
+"
+label_settings = SubResource("LabelSettings_rdi4q")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Tier/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_m07hk")
+expand_mode = 2
+
+[node name="Effect" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oapr6")
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Effect"]
+layout_mode = 2
+text = "+size
++ max capacityz
+- reboot time "
+label_settings = SubResource("LabelSettings_gq768")
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Cost" type="PanelContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1tkm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_4mu5u")
+expand_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_k55hh")
+expand_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost/VBoxContainer"]
+layout_mode = 2
+
+[node name="CellCost" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "10 :
+"
+
+[node name="ManaIcon" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel/Cost/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("6_3yw40")
+expand_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tpv6v")
+
+[node name="Button" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TiersAndEffects/Accel5/Accel"]
+layout_mode = 2
+theme = ExtResource("6_qamgk")
+theme_override_fonts/font = ExtResource("7_4o055")
+theme_override_font_sizes/font_size = 12
+text = "SEARCH
+"

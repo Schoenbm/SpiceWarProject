@@ -4,6 +4,7 @@ class_name Planet
 
 signal change_alliance(previous_alliance, current_alliance)
 
+
 @export var ship_speed_production = 1.0 # nombre de cell par sec
 var current_ship_production = 0
 @export var number_of_ships = 0
@@ -15,7 +16,6 @@ var number_of_ionized_ships = 0
 @export var input_neighbors: Array[Planet]
 var neighbors = {}
 
-var preselected_neighbor : Planet
 var selected_neighbor = self
 var selected_road : Planet
 
@@ -31,19 +31,12 @@ var roads = {}
 @export var color_change_anim_duration = 0.15
 var color_change_anim_time = 0
 
-@export var radius = 40
 var player : Player
 
 var current_overlay : OverlayPlanet
 
 var base_scale : float
 
-const planet_prefab : PackedScene = preload("res://Assets/Prefab/Planets/planet.tscn")
-const defensive_planet_prefab : PackedScene = preload("res://Assets/Prefab/Planets/defensive_planet.tscn")
-const generator_prefab : PackedScene = preload("res://Assets/Prefab/Planets/generator.tscn")
-const accelerator_prefab : PackedScene = preload("res://Assets/Prefab/Planets/acceleration_planet.tscn")
-#const laboratory_prefab : PackedScene = preload("res://Assets/Prefab/Planets/laboratory.tscn")
-const rafinery_prefab : PackedScene = preload("res://Assets/Prefab/Planets/rafinery.tscn")
 
 #------------------------------------------------------------------------
 
@@ -52,6 +45,9 @@ var can_use_skill : bool
 var send_random : bool
 var send_all : bool
 
+var magnet = false
+@export var magnet_force = 2.0
+
 signal self_updated(planet: Planet)
 
 func _ready() -> void:
@@ -59,7 +55,6 @@ func _ready() -> void:
 	can_send_ship = true
 	base_scale = scale.x
 	selected_neighbor = self
-	preselected_neighbor = self
 	send_random = false
 	can_use_skill = true
 	
@@ -197,33 +192,19 @@ func enable_overlay(bol):
 	else:
 		current_overlay.queue_free()
 
-func preselectClosestNeighbor(touch_pos):
-	preselected_neighbor = self
-	if(len(neighbors) == 0):
-		return
-		
-	var min_distance = neighbors.values()[0].global_position.distance_to(touch_pos)
-	var closest_neighbor = neighbors.values()[0]
-	
-	for neighbor in neighbors.values():
-		if(min_distance > neighbor.global_position.distance_to(touch_pos)):
-			closest_neighbor = neighbor
-			min_distance = neighbor.global_position.distance_to(touch_pos)
-	if(global_position.distance_to(touch_pos) > radius):
-		preselected_neighbor = closest_neighbor
 
 #Selectionne le voisin attaqué et montre qu'il est attaqué, previent les deux routes du changement
-func confirm_attack_on_preselected_neighbor():
-	if preselected_neighbor != self:
-		#if(selected_neighbor != self):
-			#roads.get(selected_neighbor.name).manage_planet_attack(self, false) # wtf why ?
-		selected_neighbor = preselected_neighbor
+func confirm_attack_on_planet(planet : Planet):
+	if planet != self:
+		if(selected_neighbor != self):
+			roads.get(selected_neighbor.name).manage_planet_attack(self,false)
+		selected_neighbor = planet
 		roads.get(selected_neighbor.name).manage_planet_attack(self,true)
 		$PermanentCursorPivot.look_at(selected_neighbor.position)
 		$PermanentCursorPivot.show()
-		$Timer.start()
+		enable_ship_timer(true)
 	else:
-		$Timer.stop()
+		enable_ship_timer(false)
 		$PermanentCursorPivot.hide()
 		selected_neighbor = self
 
@@ -251,16 +232,7 @@ func production_upgrade():
 	ship_speed_production *= 1.15
 
 
-func upgrade_planet(planet_name : PlanetData.Types) -> void :
-	var new_planet : Planet
-	match planet_name :
-		PlanetData.Types.GENERATOR : new_planet = generator_prefab.instantiate()
-		PlanetData.Types.DEFENSIVE : new_planet = defensive_planet_prefab.instantiate()
-		PlanetData.Types.ACCELERATOR : new_planet = accelerator_prefab.instantiate()
-		PlanetData.Types.RAFINERY : new_planet = rafinery_prefab.instantiate()
-		"_" : 
-			print("names dont match") 
-			return
+func upgrade_planet(new_planet : Planet) -> void :
 	new_planet.alliance = alliance
 	new_planet.number_of_ships = number_of_ships
 	new_planet.neighbors = neighbors
@@ -286,17 +258,9 @@ func upgrade_planet(planet_name : PlanetData.Types) -> void :
 	new_planet.particles_effect()
 	
 	if(selected_neighbor != self):
-		new_planet.preselected_neighbor = preselected_neighbor
-		new_planet.confirm_attack_on_preselected_neighbor()
+		new_planet.confirm_attack_on_planet(selected_neighbor)
 	self.queue_free()
 	
-	
-func try_upgrade(cost : int, planet_type : PlanetData.Types) -> bool:
-	if(number_of_ships >= cost):
-		reduce_ships_number(cost)
-		upgrade_planet(planet_type)
-		return true
-	return false
 	
 func add_neighbor(new_planet : Planet):
 	if(neighbors.has(new_planet.name)):
@@ -306,17 +270,21 @@ func add_neighbor(new_planet : Planet):
 func change_selected_neighbor(new_planet : Planet):
 	if(selected_neighbor.name == new_planet.name):
 		selected_neighbor = new_planet
-		preselected_neighbor = new_planet
 		
-	
+
 func skill_in_use(bol):
 	can_use_skill = !bol
 
-
+#TODO Faire mieux car deux comparaisons a chaque fin de timer
 func _on_timer_timeout() -> void:
 	can_send_ship = true
+	if(selected_neighbor.magnet && !send_all && !send_random && $Timer.wait_time == send_ship_cd):
+		$Timer.wait_time = send_ship_cd / magnet_force
+	elif ($Timer.wait_time != send_ship_cd):
+		$Timer.wait_time = send_ship_cd
 
 func change_cooldown_ships(cd : float):
+	send_ship_cd = cd
 	$Timer.wait_time = cd
 
 func enable_ship_timer(bol):
@@ -332,6 +300,9 @@ func _on_ionized_ships_timeout() -> void:
 		number_of_ionized_ships = 0
 		$IonizedShipsTimer.stop()
 
+func increase_durability_ionized_ships(coef : float):
+	$IonizedShipsTimer.wait_time *= coef
+	
 func reduce_ships_number(amount : int):
 	number_of_ships -= amount
 	if(number_of_ionized_ships > 0):

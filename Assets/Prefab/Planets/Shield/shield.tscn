@@ -3,6 +3,7 @@
 [ext_resource type="Shader" path="res://Assets/Material/shield.gdshader" id="1_gxgjq"]
 [ext_resource type="Texture2D" uid="uid://dmq3kcfkpg0ua" path="res://Assets/Sprites/Shader/circlemask.png" id="2_rtpp2"]
 [ext_resource type="Texture2D" uid="uid://crvnu0h7qc4ui" path="res://Assets/Sprites/Shader/HexEdgeSmol.png" id="3_k6dkl"]
+[ext_resource type="Texture2D" uid="uid://cdhjc40snegk6" path="res://Assets/Sprites/SpritesKrita/shield.png" id="5_s5gfq"]
 [ext_resource type="Script" path="res://Scripts/shield.gd" id="5_v8mls"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4d1fe"]
@@ -23,8 +24,6 @@ shader_parameter/move_speed = -3.0
 shader_parameter/matrices_texture = ExtResource("3_k6dkl")
 shader_parameter/circle_texture = ExtResource("2_rtpp2")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jw1x2"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kdb2"]
 radius = 113.004
 
@@ -35,7 +34,7 @@ script = ExtResource("5_v8mls")
 material = SubResource("ShaderMaterial_4d1fe")
 position = Vector2(-2.38419e-07, 4.76837e-07)
 scale = Vector2(0.1, 0.1)
-texture = SubResource("CompressedTexture2D_jw1x2")
+texture = ExtResource("5_s5gfq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0kdb2")

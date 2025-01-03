@@ -8,7 +8,7 @@ void vertex() {
 void fragment() {
 	vec4 noise = texture(deeper_space,UV + 0.005 * TIME);
 	COLOR.rgb = COLOR.rgb;
-	
+
 	// Called for every pixel the material is visible on.
 }
 

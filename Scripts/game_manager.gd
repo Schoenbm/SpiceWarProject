@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name GameManager
+
 var player : Player 
 var number_players
 
@@ -9,6 +11,13 @@ signal player_win
 var planets_node
 var planets : Dictionary
 var roads
+
+const planet_prefab : PackedScene = preload("res://Assets/Prefab/Planets/planet.tscn")
+const defensive_planet_prefab : PackedScene = preload("res://Assets/Prefab/Planets/defensive_planet.tscn")
+const generator_prefab : PackedScene = preload("res://Assets/Prefab/Planets/generator.tscn")
+const accelerator_prefab : PackedScene = preload("res://Assets/Prefab/Planets/acceleration_planet.tscn")
+#const laboratory_prefab : PackedScene = preload("res://Assets/Prefab/Planets/laboratory.tscn")
+const rafinery_prefab : PackedScene = preload("res://Assets/Prefab/Planets/rafinery.tscn")
 
 
 var number_planets : int
@@ -46,7 +55,6 @@ func _on_planet_change_alliance(previous_alliance: Variant, current_alliance: Va
 			print("u win u sly MONKEY")
 
 func get_planet_close_to(origin_planet, radius):
-	var bol = false
 	var close_planets : Array[Planet]
 	for planet in planets.values():
 		if(planet is Planet && planet.position.distance_to(origin_planet.position) < radius):	
@@ -62,7 +70,22 @@ func update_planet(planet):
 	else:
 		print(planet.name)
 
-
+func try_upgrade(cost : int, planet_type : PlanetData.Types, planet : Planet) -> bool:
+	if(planet.number_of_ships >= cost):
+		planet.reduce_ships_number(cost)
+		var new_planet : Planet
+		match planet_type :
+			PlanetData.Types.GENERATOR : new_planet = generator_prefab.instantiate()
+			PlanetData.Types.DEFENSIVE : new_planet = defensive_planet_prefab.instantiate()
+			PlanetData.Types.ACCELERATOR : new_planet = accelerator_prefab.instantiate()
+			PlanetData.Types.RAFINERY : new_planet = rafinery_prefab.instantiate()
+			"_" : 
+				print("names dont match") 
+				return false
+		planet.upgrade_planet(new_planet)
+		return true
+	return false
+	
 func _on_planet_self_updated(planet: Planet) -> void:
 	update_planet(planet)
 	print("planet updated in gm")

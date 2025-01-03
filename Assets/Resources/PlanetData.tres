@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlanetCost" load_steps=2 format=3 uid="uid://b2wgemv1e5e8f"]
+[gd_resource type="Resource" script_class="PlanetData" load_steps=2 format=3 uid="uid://b2wgemv1e5e8f"]
 
 [ext_resource type="Script" path="res://Assets/Resources/planetdata.gd" id="1_rjtj1"]
 
@@ -19,4 +19,12 @@ types_cost = {
 3: 20,
 4: 0,
 5: 10
+}
+production_speed = {
+0: 0.5,
+1: 1.75,
+2: 0,
+3: 0,
+4: 1,
+5: 1
 }

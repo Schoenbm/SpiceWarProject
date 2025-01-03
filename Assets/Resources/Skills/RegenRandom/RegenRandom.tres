@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_romjl")
 time = 10.0
-boost = 2.0
+ship_production_boost = 2.0
+probability_boost = 2.0
+send_ship_boost = 1.5
 spice_cost = 10.0

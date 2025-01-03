@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bx3yqljwof8cr"]
+[gd_scene load_steps=10 format=3 uid="uid://bx3yqljwof8cr"]
 
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_a7ab7"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_8aai7"]
 [ext_resource type="Texture2D" uid="uid://ccfgu3qqoyctk" path="res://Assets/Sprites/bolt.png" id="3_amsiw"]
-[ext_resource type="Resource" uid="uid://lm08md2qy5sm" path="res://Assets/Resources/Skills/RegenRandom/RegenRandom.tres" id="3_llbmg"]
+[ext_resource type="Script" path="res://Scripts/Planet/generator.gd" id="3_u3qnl"]
 [ext_resource type="Shader" path="res://Assets/Material/bolt.gdshader" id="3_yk1ab"]
+[ext_resource type="Resource" uid="uid://lm08md2qy5sm" path="res://Assets/Resources/Skills/RegenRandom/RegenRandom.tres" id="4_5psls"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65ghs"]
 resource_local_to_scene = true
@@ -30,10 +31,12 @@ shader_parameter/bandwith = 0.95
 
 [node name="GeneratorPlanet" instance=ExtResource("1_a7ab7")]
 material = SubResource("ShaderMaterial_65ghs")
+script = ExtResource("3_u3qnl")
+probability_ionization = 0.0
 ship_speed_production = 1.75
 number_of_ships = 0
 type = 1
-skill = ExtResource("3_llbmg")
+skill = ExtResource("4_5psls")
 
 [node name="PlanetSprite" parent="." index="1"]
 material = SubResource("ShaderMaterial_4n43x")
