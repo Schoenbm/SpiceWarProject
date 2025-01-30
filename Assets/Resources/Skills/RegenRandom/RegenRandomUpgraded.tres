@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_vrn86")
 time = 15.0
-boost = 2.5
-spice_cost = 10.0
+ship_production_boost = 2.0
+probability_boost = 2.5
+send_ship_boost = 2.0
+spice_cost = 8.0

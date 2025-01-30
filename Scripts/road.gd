@@ -7,11 +7,6 @@ var current_ships_number = 0
 @export var planet1 : Planet
 @export var planet2 : Planet
 
-@export var flow_rate : float
-var flow_cd_planet1 = 0
-var flow_cd_planet2 = 0
-
-
 
 @export var attack_animation_speed : float
 @export var wobble_animation_speed : float
@@ -26,6 +21,7 @@ var planet2_attacking = false;
 const my_scene: PackedScene = preload("res://Assets/Prefab/Road/road.tscn")
 
 
+
 static func create_road(P1: Planet, P2: Planet) -> Road :
 	var new_road : Road = my_scene.instantiate()
 	new_road.planet1 = P1
@@ -38,11 +34,7 @@ static func create_road(P1: Planet, P2: Planet) -> Road :
 func _ready() -> void:
 	prepareRoadSprite()
 
-func _process(delta : float) -> void:
-	if(flow_cd_planet1>0):
-		flow_cd_planet1-= delta
-	if(flow_cd_planet2>0):
-		flow_cd_planet2-= delta
+func _physics_process(delta : float) -> void:
 	transition_color(delta)
 
 	
@@ -58,19 +50,29 @@ func transition_color(delta : float) -> void:
 
 
 #renvoie true si le ship est bien enboyé
-func send_ship(sender : Planet, ionized : bool):
+func send_ship(sender : Planet, ionized : bool, ionized_bonus_damage, shield_ship : bool = false):
 	current_ships_number+=1
-	var destination : Planet
+	var data : Dictionary
 	if(sender == planet1):
-		destination = planet2
+		data["destination"] = planet2.planet_id
+		data["sender"] = planet1.planet_id
+		data["direction"] = (planet2.global_position - planet1.global_position).normalized()
+		data["position"] = planet1.global_position
+		data["alliance"] = planet1.alliance
 	else:
-		destination = planet1
+		data["sender"] = planet2.planet_id
+		data["destination"] = planet1.planet_id
+		data["direction"] = (planet1.global_position - planet2.global_position).normalized()
+		data["position"] = planet2.global_position
+		data["alliance"] = planet2.alliance
+	if(ionized):
+		data["ionized_bonus_damage"] = ionized_bonus_damage
+	data["acceleration_ships"] = sender.acceleration_ships
 	
+
+	var name = "ship" +"_"+ PlanetType.get_alliance_name(sender.alliance)+"_" + str(current_ships_number)
 	
-	var new_ship = Ship.create_ship(destination,sender, ionized)
-	new_ship.speed *= sender.acceleration_ships
-	new_ship.name = "ship" + PlanetType.get_alliance_name(sender.alliance) + str(current_ships_number) #TODO EURK
-	add_child(new_ship)
+	Ship.spawn(data, self, ionized, shield_ship, name)
 
 
 

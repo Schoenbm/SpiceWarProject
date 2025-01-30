@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c153l6fjaa5c"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/increase_flow_rate.gd" id="1_hbmif"]
+
+[resource]
+script = ExtResource("1_hbmif")
+values = Array[float]([1.25, 1.75, 2.25, 2.75])
+effect_description = "Acceleration : "
+on_player = false
+type = 0

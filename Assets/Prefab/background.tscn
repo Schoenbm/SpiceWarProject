@@ -1,17 +1,71 @@
-[gd_scene load_steps=5 format=3 uid="uid://pj6qvxrb3t2x"]
+[gd_scene load_steps=10 format=3 uid="uid://pj6qvxrb3t2x"]
 
 [ext_resource type="Shader" path="res://Assets/Material/background.gdshader" id="1_mcmep"]
 [ext_resource type="Texture2D" uid="uid://dttjwufrj75p3" path="res://Assets/Sprites/road_texture.png" id="2_01otv"]
-[ext_resource type="Texture2D" uid="uid://d53vsuofo5n5" path="res://Assets/Sprites/background_texture.png" id="2_08a7x"]
+[ext_resource type="Texture2D" uid="uid://bhm7yurck1f4q" path="res://Assets/Sprites/ship2.png" id="4_5tu4k"]
+[ext_resource type="Texture2D" uid="uid://dgby0camk5lc1" path="res://Assets/Sprites/Particles/particle_rectangle.png" id="5_25qh3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_43p0g"]
 shader = ExtResource("1_mcmep")
-shader_parameter/deeper_space = ExtResource("2_08a7x")
+
+[sub_resource type="Curve" id="Curve_j28h2"]
+_data = [Vector2(0.0182927, 0), 0.0, 0.0, 0, 0, Vector2(0.207317, 1), 0.0, 0.0, 0, 0, Vector2(0.817073, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_jocjg"]
+curve = SubResource("Curve_j28h2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g18oh"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(30, 30, 100)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 0.2
+initial_velocity_max = 0.4
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.08
+scale_curve = SubResource("CurveTexture_jocjg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ssv3g"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(15, 15, 100)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.6
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_jocjg")
 
 [node name="Background" type="Sprite2D"]
-modulate = Color(0.0588235, 0.0705882, 0.329412, 1)
+self_modulate = Color(0.12549, 0.101961, 0.243137, 1)
 z_index = -10
 material = SubResource("ShaderMaterial_43p0g")
-position = Vector2(2242.13, 1306.53)
-scale = Vector2(50.373, 44.9171)
+scale = Vector2(112.147, 100)
 texture = ExtResource("2_01otv")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.0196078, 0.0745098, 0.101961, 1)
+z_index = 1
+position = Vector2(12.9236, 14.293)
+scale = Vector2(0.624484, 0.622495)
+amount = 350
+process_material = SubResource("ParticleProcessMaterial_g18oh")
+texture = ExtResource("4_5tu4k")
+lifetime = 22.88
+preprocess = 10.0
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(11.8119, 12.9127)
+scale = Vector2(0.624484, 0.622495)
+amount = 180
+process_material = SubResource("ParticleProcessMaterial_ssv3g")
+texture = ExtResource("5_25qh3")
+lifetime = 22.88
+preprocess = 10.0

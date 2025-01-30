@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bp6fqa25xcjqq"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/increase_spell_range.gd" id="1_1xvqt"]
+
+[resource]
+script = ExtResource("1_1xvqt")
+values = Array[int]([400, 500, 600, 700])
+effect_description = "Spell Range :"
+on_player = false
+type = 0

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_71rbo"]
 [ext_resource type="Script" path="res://Scripts/Planet/rafinery.gd" id="2_qmuxb"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="3_s6ra8"]
-[ext_resource type="Texture2D" uid="uid://cq66xdmuxcy78" path="res://Assets/Sprites/Icons/rafinery.png" id="4_ua0jt"]
+[ext_resource type="Texture2D" uid="uid://bo6yhin7be626" path="res://Assets/Sprites/SpiceFactory.png" id="4_4mvnu"]
 [ext_resource type="Texture2D" uid="uid://cnt1y1ji64ih6" path="res://Assets/Sprites/Particles/circle_particle.png" id="5_dia1x"]
 
 [sub_resource type="Curve" id="Curve_7kynu"]
@@ -59,17 +59,14 @@ production_total_duration = 1.0
 ship_speed_production = 0.0
 type = 3
 alliance = 0
-skill = null
 
 [node name="PlanetSprite" parent="." index="1"]
 material = SubResource("ShaderMaterial_yn1wc")
 
 [node name="Rafinery" type="Sprite2D" parent="." index="6"]
-modulate = Color(1, 1, 1, 0.792157)
 z_index = 1
-position = Vector2(-4.76837e-07, -1.53846)
-scale = Vector2(0.843407, 0.887363)
-texture = ExtResource("4_ua0jt")
+scale = Vector2(0.191651, 0.191651)
+texture = ExtResource("4_4mvnu")
 
 [node name="Smoke" type="GPUParticles2D" parent="." index="7"]
 z_index = -1

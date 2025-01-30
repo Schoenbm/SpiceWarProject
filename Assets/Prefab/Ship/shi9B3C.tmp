@@ -1,0 +1,132 @@
+[gd_scene load_steps=16 format=3 uid="uid://cynp3uxkwtsbg"]
+
+[ext_resource type="Script" path="res://Scripts/ship.gd" id="1_yivuj"]
+[ext_resource type="Texture2D" uid="uid://bg14umaeng1hn" path="res://Assets/Sprites/new_ship.png" id="2_77xdg"]
+[ext_resource type="Texture2D" uid="uid://dgby0camk5lc1" path="res://Assets/Sprites/Particles/particle_rectangle.png" id="3_i7bo6"]
+[ext_resource type="Texture2D" uid="uid://dn4ri10jb8k13" path="res://Assets/Sprites/Particles/bolt_particle.png" id="4_argq8"]
+[ext_resource type="Texture2D" uid="uid://bp537gx1nk4di" path="res://Assets/Sprites/Particles/drop.png" id="5_e15tk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l058k"]
+radius = 1.0
+
+[sub_resource type="Curve" id="Curve_dlacm"]
+_data = [Vector2(0.0696517, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0659339), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u2q2g"]
+curve = SubResource("Curve_dlacm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0kxes"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.17
+alpha_curve = SubResource("CurveTexture_u2q2g")
+
+[sub_resource type="Curve" id="Curve_ayaud"]
+_data = [Vector2(0.0746269, 0.978022), 0.0, 0.0, 0, 0, Vector2(0.636816, 0.703297), 0.0, 0.0, 0, 0, Vector2(0.810945, 0.384615), 0.0, 0.0, 0, 0, Vector2(1, 0.0219779), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_uotr7"]
+curve = SubResource("Curve_ayaud")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e80v5"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -322.5
+angle_max = 59.4
+spread = 90.0
+initial_velocity_min = 2.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.14
+scale_max = 0.17
+color = Color(0, 0.72549, 0.780392, 1)
+alpha_curve = SubResource("CurveTexture_uotr7")
+turbulence_noise_strength = 3.67
+turbulence_noise_scale = 1.5
+
+[sub_resource type="Curve" id="Curve_54red"]
+_data = [Vector2(0.039801, 0.901099), 0.0, 0.0, 0, 0, Vector2(0.40796, 0.846154), 0.0, 0.0, 0, 0, Vector2(0.726368, 0.78022), 0.0, 0.0, 0, 0, Vector2(0.890547, 0.043956), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_bouxr"]
+curve = SubResource("Curve_54red")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gdn4"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(3, 3, 3)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(-1, -1.7, 0)
+spread = 33.477
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+gravity = Vector3(0, 10, 0)
+scale_min = 0.1
+scale_max = 0.1
+alpha_curve = SubResource("CurveTexture_bouxr")
+
+[node name="Ship" type="Area2D"]
+z_index = 2
+scale = Vector2(2, 2)
+collision_mask = 3
+script = ExtResource("1_yivuj")
+speed = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l058k")
+one_way_collision_margin = 0.0
+
+[node name="ShipSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.03125, 0.03125)
+texture = ExtResource("2_77xdg")
+
+[node name="ShipParticles" type="GPUParticles2D" parent="."]
+modulate = Color(0.644608, 0.217998, 0.606875, 1)
+position = Vector2(2, 0)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_0kxes")
+texture = ExtResource("3_i7bo6")
+lifetime = 1.6
+one_shot = true
+preprocess = 0.2
+speed_scale = 2.55
+explosiveness = 1.0
+local_coords = true
+trail_lifetime = 0.33
+
+[node name="ShieldParticles" type="GPUParticles2D" parent="."]
+position = Vector2(4, 0)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_e80v5")
+texture = ExtResource("4_argq8")
+lifetime = 1.5
+one_shot = true
+speed_scale = 2.55
+explosiveness = 1.0
+local_coords = true
+trail_lifetime = 0.33
+
+[node name="PlanetParticles" type="GPUParticles2D" parent="."]
+position = Vector2(4, 0)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_8gdn4")
+texture = ExtResource("5_e15tk")
+lifetime = 1.4
+one_shot = true
+speed_scale = 2.55
+explosiveness = 1.0
+local_coords = true
+trail_lifetime = 0.33
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

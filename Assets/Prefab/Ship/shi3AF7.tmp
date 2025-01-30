@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2e65omtywch0"]
+
+[ext_resource type="PackedScene" uid="uid://cynp3uxkwtsbg" path="res://Assets/Prefab/Ship/ship.tscn" id="1_kgeim"]
+[ext_resource type="Shader" path="res://shieldship.gdshader" id="2_rukf5"]
+[ext_resource type="Script" path="res://Scripts/shield_ship.gd" id="2_wmop4"]
+[ext_resource type="Texture2D" uid="uid://crvnu0h7qc4ui" path="res://Assets/Sprites/Shader/HexEdgeSmol.png" id="3_y64jx"]
+[ext_resource type="Texture2D" uid="uid://bhm7yurck1f4q" path="res://Assets/Sprites/ship2.png" id="4_bnsi8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81ghi"]
+shader = ExtResource("2_rukf5")
+shader_parameter/matrices_texture = ExtResource("3_y64jx")
+
+[node name="ShieldShip" instance=ExtResource("1_kgeim")]
+scale = Vector2(1.22404, 1.35616)
+script = ExtResource("2_wmop4")
+speed = 160
+damage = 0
+shield = true
+
+[node name="ShipSprite" parent="." index="1"]
+modulate = Color(0, 0.87451, 0.847059, 0.752941)
+material = SubResource("ShaderMaterial_81ghi")
+texture = ExtResource("4_bnsi8")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c3rrqs7tx4xp0"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/improve_spells.gd" id="1_pe6f6"]
+
+[resource]
+script = ExtResource("1_pe6f6")
+effect_description = "Upgrade Spells"
+on_player = false
+type = 4

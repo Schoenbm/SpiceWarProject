@@ -39,7 +39,6 @@ script = ExtResource("1_5dgp3")
 [node name="DefensivePlanet" parent="GameManager/AllPlanets" instance=ExtResource("9_drumi")]
 material = SubResource("ShaderMaterial_0ywbx")
 position = Vector2(725, 751)
-alliance = 0
 
 [node name="GeneratorPlanet" parent="GameManager/AllPlanets" instance=ExtResource("6_k6jno")]
 material = SubResource("ShaderMaterial_8ccyj")

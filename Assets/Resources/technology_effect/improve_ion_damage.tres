@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ben0kq84crymf"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/increase_ionized_damage.gd" id="1_d1qic"]
+
+[resource]
+script = ExtResource("1_d1qic")
+bonus_damage = 1
+effect_description = "Ion Damage : 2 -> 3"
+on_player = false
+type = 4

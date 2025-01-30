@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://wmjahllfnlvh"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/activate_mini_shield.gd" id="1_v5eip"]
+
+[resource]
+script = ExtResource("1_v5eip")
+effect_description = "Mini Shields"
+on_player = false
+type = 5

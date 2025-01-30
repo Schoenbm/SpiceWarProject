@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c0k8tytn6733y"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/increase_ionized_survability.gd" id="1_7uj3x"]
+
+[resource]
+script = ExtResource("1_7uj3x")
+values = Array[float]([6.0, 6.0, 6.0, 10.0])
+effect_description = "Ion Longevity : "
+on_player = false
+type = 4

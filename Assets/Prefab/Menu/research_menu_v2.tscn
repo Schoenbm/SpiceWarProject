@@ -1,0 +1,722 @@
+[gd_scene load_steps=33 format=3 uid="uid://cof2ro64vogec"]
+
+[ext_resource type="Script" path="res://Scripts/ResearchMenu.gd" id="1_dcjrh"]
+[ext_resource type="Texture2D" uid="uid://ciy36nm2uba3c" path="res://Assets/Sprites/UI/ProgressBarUnder.png" id="3_5j2wq"]
+[ext_resource type="StyleBox" uid="uid://behkidh45iibq" path="res://Assets/UI/expend_button.tres" id="3_53eec"]
+[ext_resource type="Texture2D" uid="uid://14m6tp4ajuyu" path="res://Assets/Sprites/UI/SearchMenu/Roman3.png" id="3_hbkcy"]
+[ext_resource type="Texture2D" uid="uid://c34g506pun4xb" path="res://Assets/Sprites/UI/SearchMenu/Roman1.png" id="4_2psor"]
+[ext_resource type="Texture2D" uid="uid://b2xkx750762ct" path="res://Assets/Sprites/UI/ProgressBarFill.png" id="4_abl5t"]
+[ext_resource type="Texture2D" uid="uid://bl6e1mxuea7l0" path="res://Assets/Sprites/UI/SearchMenu/Roman2.png" id="4_ce0hx"]
+[ext_resource type="Texture2D" uid="uid://3ohaf82l4n7a" path="res://Assets/Sprites/UI/expand_down.png" id="4_ljcbv"]
+[ext_resource type="Texture2D" uid="uid://bpawtr42ioam1" path="res://Assets/Sprites/UI/Up.png" id="6_34tvi"]
+[ext_resource type="Texture2D" uid="uid://1d5bl7fvty1u" path="res://Assets/Sprites/UI/Icons/acceleration_icon.png" id="6_m4n30"]
+[ext_resource type="Theme" uid="uid://ketuy06ig7wh" path="res://Assets/UI/ResearchTheme.tres" id="6_tmf1k"]
+[ext_resource type="ButtonGroup" uid="uid://cwmvmino0jj1x" path="res://Assets/UI/Button/search_button_group.tres" id="9_3cdbi"]
+[ext_resource type="Texture2D" uid="uid://upwd0d3kq7i2" path="res://Assets/Sprites/UI/Icons/bolt_icon.png" id="10_2i6i8"]
+[ext_resource type="Script" path="res://Scripts/UI/buttonline.gd" id="10_sty2b"]
+[ext_resource type="Texture2D" uid="uid://bo6yhin7be626" path="res://Assets/Sprites/SpiceFactory.png" id="11_m7cr8"]
+[ext_resource type="Texture2D" uid="uid://2i4ebok8iekf" path="res://Assets/Sprites/UI/Icons/shield_icon.png" id="11_qe24x"]
+[ext_resource type="LabelSettings" uid="uid://dwle4sqsr7aj1" path="res://Assets/UI/Labels/smallTextResearchMenu.tres" id="13_3o5fn"]
+[ext_resource type="FontFile" uid="uid://wkc04qutggra" path="res://Assets/UI/Font/Hemi Head Bd It.otf" id="13_68yok"]
+[ext_resource type="Texture2D" uid="uid://xkd1nb1pb6ic" path="res://Assets/Sprites/UI/Icons/Spices2_icon.png" id="14_rfnlc"]
+[ext_resource type="Texture2D" uid="uid://bg14umaeng1hn" path="res://Assets/Sprites/new_ship.png" id="15_oejs6"]
+[ext_resource type="Texture2D" uid="uid://8khnrtceqq1e" path="res://Assets/Sprites/UI/Icons/hourglass.png" id="16_orgm5"]
+[ext_resource type="Texture2D" uid="uid://cj683holwrm7m" path="res://Assets/Sprites/UI/Icons/Lab_icon.png" id="19_m8k4a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8e87l"]
+content_margin_left = 8.0
+content_margin_top = 11.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_color = Color(0.418763, 0.469639, 0.987371, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_k1tdh"]
+color = Color(0.0196078, 0.00784314, 0.164706, 1)
+grow_begin = 11.0
+thickness = 2
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_uh76t"]
+color = Color(0.14902, 0.0823529, 0.576471, 1)
+grow_begin = 4.0
+grow_end = 20.0
+thickness = 5
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emm8x"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.134156, 0.0743481, 0.533601, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 20
+shadow_size = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7wt1e"]
+color = Color(0.14902, 0.0823529, 0.576471, 1)
+grow_begin = 6.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm8fg"]
+bg_color = Color(0.454902, 0.458824, 0.443137, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncmyo"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14902, 0.0823529, 0.576471, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6t8bv"]
+color = Color(0.14902, 0.0823529, 0.576471, 1)
+grow_end = 3.0
+thickness = 3
+vertical = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_34fte"]
+font = ExtResource("13_68yok")
+font_color = Color(0.0196078, 0.00784314, 0.164706, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_qjp0d"]
+content_margin_top = 5.0
+color = Color(0.14902, 0.0823529, 0.576471, 1)
+thickness = 3
+
+[node name="ResearchMenu" type="Control" node_paths=PackedStringArray("spice_cost_text", "time_cost_text", "ship_cost_text", "spice_cost_icon", "ship_cost_icon", "effect_text", "acceleration_progress_bar", "generator_progress_bar", "shield_progress_bar", "rafinery_progress_bar", "network_progress_bar", "acceleration_button", "generator_button", "shield_button", "rafinery_button", "network_button", "research_button", "research_panel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dcjrh")
+spice_cost_text = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/SpiceCost/Label")
+time_cost_text = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/TimeCost/Label")
+ship_cost_text = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/ShipCost/Label")
+spice_cost_icon = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/SpiceCost")
+ship_cost_icon = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/ShipCost")
+effect_text = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/VBoxContainer/MarginContainer/EffectsDesc")
+acceleration_progress_bar = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar/TextureProgressBar")
+generator_progress_bar = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar/TextureProgressBar")
+shield_progress_bar = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar/TextureProgressBar")
+rafinery_progress_bar = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar/TextureProgressBar")
+network_progress_bar = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar/TextureProgressBar")
+acceleration_button = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar/Button")
+generator_button = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar/Button")
+shield_button = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar/Button")
+rafinery_button = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar/Button")
+network_button = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar/Button")
+research_button = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/MarginContainer/Button")
+research_panel = NodePath("CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer")
+icon_green = Color(0, 0.898039, 0.439216, 1)
+icon_light_green = Color(0.355049, 1, 0.568679, 1)
+icon_red = Color(0.815686, 0.0980392, 0.184314, 1)
+icon_redlight = Color(0.968798, 0.160447, 0.240325, 1)
+icon_yellow = Color(0.880472, 0.633836, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(0, -62.77)
+transform = Transform2D(1, 0, 0, 1, 0, -62.77)
+follow_viewport_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.5
+offset_top = -273.5
+offset_right = 165.5
+offset_bottom = 274.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_max_width = 35
+theme_override_styles/hover = ExtResource("3_53eec")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8e87l")
+theme_override_styles/normal = ExtResource("3_53eec")
+icon = ExtResource("4_ljcbv")
+icon_alignment = 1
+expand_icon = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme = ExtResource("6_tmf1k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("6_tmf1k")
+
+[node name="TierBarsMargin" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+
+[node name="TierBars" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin"]
+custom_minimum_size = Vector2(66, 200)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("6_tmf1k")
+theme_override_constants/separation = 0
+
+[node name="Tiers" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("6_tmf1k")
+
+[node name="MarginContainer4" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Tiers"]
+layout_mode = 2
+theme_override_constants/margin_top = 44
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Tiers/MarginContainer4"]
+layout_mode = 2
+theme = ExtResource("6_tmf1k")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Tiers"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Tiers/MarginContainer"]
+modulate = Color(0.0196078, 0.00784314, 0.164706, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("3_hbkcy")
+expand_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Tiers"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Tiers/MarginContainer2"]
+modulate = Color(0.0196078, 0.00784314, 0.164706, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("4_ce0hx")
+expand_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Tiers"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Tiers/MarginContainer3"]
+modulate = Color(0.0196078, 0.00784314, 0.164706, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("4_2psor")
+expand_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars"]
+visible = false
+layout_mode = 2
+theme = ExtResource("6_tmf1k")
+theme_override_styles/separator = SubResource("StyleBoxLine_k1tdh")
+
+[node name="Acceleration Bar" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("6_tmf1k")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar"]
+layout_mode = 2
+theme_override_constants/margin_right = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_m4n30")
+expand_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar"]
+custom_minimum_size = Vector2(40, 170)
+layout_mode = 2
+size_flags_horizontal = 4
+step = 0.2
+value = 5.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("3_5j2wq")
+texture_progress = ExtResource("4_abl5t")
+tint_progress = Color(0.976471, 0.345098, 0.945098, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+theme_override_colors/icon_normal_color = Color(0, 0.898039, 0.439216, 1)
+theme_override_colors/icon_pressed_color = Color(0.486542, 1, 0.632233, 1)
+toggle_mode = true
+button_group = ExtResource("9_3cdbi")
+icon = ExtResource("6_34tvi")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar/Button"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = 52.0
+offset_right = 52.0
+offset_bottom = 55.0
+theme_override_styles/separator = SubResource("StyleBoxLine_uh76t")
+script = ExtResource("10_sty2b")
+
+[node name="GeneratorBar" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("6_tmf1k")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar"]
+layout_mode = 2
+theme_override_constants/margin_right = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_2i6i8")
+expand_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar"]
+custom_minimum_size = Vector2(40, 170)
+layout_mode = 2
+size_flags_horizontal = 4
+step = 0.2
+value = 5.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("3_5j2wq")
+texture_progress = ExtResource("4_abl5t")
+tint_progress = Color(0.878431, 0.831373, 0.0666667, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+toggle_mode = true
+button_group = ExtResource("9_3cdbi")
+icon = ExtResource("6_34tvi")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar/Button"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = 52.0
+offset_right = 53.0
+offset_bottom = 55.0
+theme_override_styles/separator = SubResource("StyleBoxLine_uh76t")
+script = ExtResource("10_sty2b")
+
+[node name="ShieldBar" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("6_tmf1k")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("11_qe24x")
+expand_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar"]
+custom_minimum_size = Vector2(40, 170)
+layout_mode = 2
+size_flags_horizontal = 4
+step = 0.2
+value = 5.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("3_5j2wq")
+texture_progress = ExtResource("4_abl5t")
+tint_progress = Color(0, 0.815686, 0.827451, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+toggle_mode = true
+button_group = ExtResource("9_3cdbi")
+icon = ExtResource("6_34tvi")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar/Button"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = 52.0
+offset_right = 52.0
+offset_bottom = 55.0
+theme_override_styles/separator = SubResource("StyleBoxLine_uh76t")
+script = ExtResource("10_sty2b")
+
+[node name="SpiceBar" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("6_tmf1k")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar"]
+layout_mode = 2
+theme_override_constants/margin_right = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("11_m7cr8")
+expand_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar"]
+custom_minimum_size = Vector2(40, 170)
+layout_mode = 2
+size_flags_horizontal = 4
+step = 0.2
+value = 5.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("3_5j2wq")
+texture_progress = ExtResource("4_abl5t")
+tint_progress = Color(0.901961, 0.258824, 0.196078, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+toggle_mode = true
+button_group = ExtResource("9_3cdbi")
+icon = ExtResource("6_34tvi")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar/Button"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = 52.0
+offset_right = 53.0
+offset_bottom = 55.0
+theme_override_styles/separator = SubResource("StyleBoxLine_uh76t")
+script = ExtResource("10_sty2b")
+
+[node name="NetworkBar" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("6_tmf1k")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar"]
+layout_mode = 2
+theme_override_constants/margin_right = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar/MarginContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("19_m8k4a")
+expand_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar"]
+custom_minimum_size = Vector2(40, 170)
+layout_mode = 2
+size_flags_horizontal = 4
+step = 0.2
+value = 5.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("3_5j2wq")
+texture_progress = ExtResource("4_abl5t")
+tint_progress = Color(0.168627, 0.815686, 0.290196, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("6_tmf1k")
+toggle_mode = true
+button_group = ExtResource("9_3cdbi")
+icon = ExtResource("6_34tvi")
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar/Button"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = 52.0
+offset_right = 53.0
+offset_bottom = 55.0
+theme_override_styles/separator = SubResource("StyleBoxLine_uh76t")
+script = ExtResource("10_sty2b")
+
+[node name="ContextMenuMargin" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_emm8x")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="ChoosenBarContextMenu" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+
+[node name="CostAndButton" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeCost" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_constants/separation = -2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/TimeCost"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "20 "
+label_settings = ExtResource("13_3o5fn")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/TimeCost"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("16_orgm5")
+expand_mode = 2
+
+[node name="SpiceCost" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_constants/separation = -2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/SpiceCost"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "20"
+label_settings = ExtResource("13_3o5fn")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/SpiceCost"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("14_rfnlc")
+expand_mode = 2
+
+[node name="ShipCost" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/ShipCost"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "20 "
+label_settings = ExtResource("13_3o5fn")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/ShipCost"]
+modulate = Color(0.709804, 0.709804, 0.709804, 1)
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("15_oejs6")
+expand_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton"]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_7wt1e")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton"]
+layout_mode = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/MarginContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("6_tmf1k")
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = ExtResource("13_68yok")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nm8fg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ncmyo")
+toggle_mode = true
+text = "SEARCH
+"
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_6t8bv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.8
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.1
+text = "EFFECTS"
+label_settings = SubResource("LabelSettings_34fte")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_tmf1k")
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxLine_qjp0d")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+
+[node name="EffectsDesc" type="Label" parent="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 9
+text = "+ shield size     
++ shield size     
++ shield size     
++ shield size     
++ shield size     
+"
+label_settings = ExtResource("13_3o5fn")
+vertical_alignment = 1
+visible_characters_behavior = 3
+
+[node name="ResearchTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RefreshButtonsTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="hidden" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar/Button/VSeparator" method="_on_button_hidden"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar/Button" to="." method="_on_acceleration_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar/Button/VSeparator" method="_on_button_toggled"]
+[connection signal="hidden" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar/Button/VSeparator" method="_on_button_hidden"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar/Button" to="." method="_on_generator_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar/Button/VSeparator" method="_on_button_toggled"]
+[connection signal="hidden" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar/Button/VSeparator" method="_on_button_hidden"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar/Button" to="." method="_on_shield_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar/Button/VSeparator" method="_on_button_toggled"]
+[connection signal="hidden" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar/Button/VSeparator" method="_on_button_hidden"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar/Button" to="." method="_on_spice_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar/Button/VSeparator" method="_on_button_toggled"]
+[connection signal="hidden" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar/Button/VSeparator" method="_on_button_hidden"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar/Button" to="." method="_on_network_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar/Button" to="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar/Button/VSeparator" method="_on_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/ContextMenuMargin/PanelContainer/MarginContainer/ChoosenBarContextMenu/MarginContainer2/CostAndButton/MarginContainer/Button" to="." method="_on_research_button_toggled"]
+[connection signal="timeout" from="ResearchTimer" to="." method="_on_research_timer_timeout"]
+[connection signal="timeout" from="RefreshButtonsTimer" to="." method="_on_refresh_buttons_timer_timeout"]

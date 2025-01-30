@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://sk5g6g8vmnve"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/magnet_effect.gd" id="1_dtful"]
+
+[resource]
+script = ExtResource("1_dtful")
+effect_description = "Magnet effect"
+on_player = false
+type = 0

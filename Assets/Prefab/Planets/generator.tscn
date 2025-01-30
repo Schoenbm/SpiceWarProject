@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx3yqljwof8cr"]
+[gd_scene load_steps=11 format=3 uid="uid://bx3yqljwof8cr"]
 
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_a7ab7"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_8aai7"]
-[ext_resource type="Texture2D" uid="uid://ccfgu3qqoyctk" path="res://Assets/Sprites/bolt.png" id="3_amsiw"]
 [ext_resource type="Script" path="res://Scripts/Planet/generator.gd" id="3_u3qnl"]
 [ext_resource type="Shader" path="res://Assets/Material/bolt.gdshader" id="3_yk1ab"]
 [ext_resource type="Resource" uid="uid://lm08md2qy5sm" path="res://Assets/Resources/Skills/RegenRandom/RegenRandom.tres" id="4_5psls"]
+[ext_resource type="Resource" uid="uid://iv3oyn1aiu8v" path="res://Assets/Resources/Skills/RegenRandom/RegenRandomUpgraded.tres" id="5_s3s4p"]
+[ext_resource type="Texture2D" uid="uid://upwd0d3kq7i2" path="res://Assets/Sprites/UI/Icons/bolt_icon.png" id="7_wd0xy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65ghs"]
 resource_local_to_scene = true
@@ -33,10 +34,11 @@ shader_parameter/bandwith = 0.95
 material = SubResource("ShaderMaterial_65ghs")
 script = ExtResource("3_u3qnl")
 probability_ionization = 0.0
-ship_speed_production = 1.75
+ship_speed_production = 0.75
 number_of_ships = 0
 type = 1
-skill = ExtResource("4_5psls")
+base_skill = ExtResource("4_5psls")
+upgraded_skill = ExtResource("5_s3s4p")
 
 [node name="PlanetSprite" parent="." index="1"]
 material = SubResource("ShaderMaterial_4n43x")
@@ -44,5 +46,5 @@ material = SubResource("ShaderMaterial_4n43x")
 [node name="Bolt" type="Sprite2D" parent="." index="4"]
 z_index = 1
 material = SubResource("ShaderMaterial_gswyf")
-scale = Vector2(0.013, 0.013)
-texture = ExtResource("3_amsiw")
+scale = Vector2(0.123, 0.123)
+texture = ExtResource("7_wd0xy")

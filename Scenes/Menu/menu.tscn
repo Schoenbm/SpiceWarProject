@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://btxdaf8sk7evk"]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenuManager.gd" id="1_0a3mp"]
+[ext_resource type="Script" path="res://Scripts/UI/PlayerName.gd" id="2_vdjpf"]
+[ext_resource type="PackedScene" uid="uid://bc66x7g6ehud3" path="res://Scenes/Menu/lobby.tscn" id="3_vcibn"]
+
+[sub_resource type="Theme" id="Theme_n3265"]
+
+[node name="PreLobby" type="Control" node_paths=PackedStringArray("LobbyMenu", "MainMenu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0a3mp")
+LobbyMenu = NodePath("Lobby")
+MainMenu = NodePath("PanelContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_n3265")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_vdjpf")
+
+[node name="Host" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "HOST
+"
+
+[node name="Join" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "JOIN
+"
+
+[node name="Solo" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "SOLO
+"
+
+[node name="Lobby" parent="." instance=ExtResource("3_vcibn")]
+visible = false
+layout_mode = 1
+
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/LineEdit" to="PanelContainer/VBoxContainer/LineEdit" method="_on_text_changed"]
+[connection signal="text_submitted" from="PanelContainer/VBoxContainer/LineEdit" to="PanelContainer/VBoxContainer/LineEdit" method="_on_text_submitted"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Solo" to="." method="_on_solo_pressed"]
+
+[editable path="Lobby"]
+[editable path="Lobby/PanelContainer/MarginContainer/VBoxContainer/PlayerList/PlayerData3"]

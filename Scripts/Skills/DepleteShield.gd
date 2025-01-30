@@ -8,7 +8,7 @@ var planet : Planet
 var shield : Shield 
 var original_regen : float
 @export var delay_rate : float
-
+@export var reboot = true
 func use_skill(aPlanet : Planet) -> void:
 	planet = aPlanet
 	shield = planet.shield
@@ -24,6 +24,8 @@ func _on_timeout():
 	if(!make_ship() || shield.shield_capacity == 0):
 		planet.skill_in_use(false)
 		shield.shield_regen_delay = original_regen
+		if(!reboot):
+			shield.time_elapsed_before_reboot = shield.shield_reboot_time
 	else: 
 		planet.get_tree().create_timer(delay_rate).timeout.connect(_on_timeout)
 

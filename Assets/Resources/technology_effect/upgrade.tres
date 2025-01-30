@@ -1,6 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cyyq1h8sxsasw"]
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://cyyq1h8sxsasw"]
 
 [ext_resource type="Script" path="res://Assets/Resources/technology_effect/Upgrade.gd" id="1_o08rh"]
 
 [resource]
 script = ExtResource("1_o08rh")
+effect_description = ""
+on_player = false
+type = 0

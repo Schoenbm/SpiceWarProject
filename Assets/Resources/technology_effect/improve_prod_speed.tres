@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://6rhppyc117q0"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/increase_production_speed.gd" id="1_6sx85"]
+
+[resource]
+script = ExtResource("1_6sx85")
+values = Array[float]([0.8, 1.0, 1.2, 1.5])
+effect_description = "Ship Production :"
+on_player = false
+type = 1

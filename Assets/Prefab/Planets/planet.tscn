@@ -1,13 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://br4o8xqbdn12j"]
+[gd_scene load_steps=26 format=3 uid="uid://br4o8xqbdn12j"]
 
 [ext_resource type="Script" path="res://Scripts/Planet.gd" id="1_c1och"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="1_gdd4u"]
 [ext_resource type="Resource" uid="uid://doc7ra6ndv11c" path="res://Assets/Resources/Skills/EmptySkill/EmptySkill.tres" id="2_daryf"]
+[ext_resource type="Resource" uid="uid://c0gpxait3t1fx" path="res://Assets/Resources/Skills/EmptySkill/EmptySkillUpgraded.tres" id="3_eg76c"]
 [ext_resource type="Texture2D" uid="uid://bhm7yurck1f4q" path="res://Assets/Sprites/ship2.png" id="3_nw3pg"]
 [ext_resource type="Texture2D" uid="uid://bg14umaeng1hn" path="res://Assets/Sprites/new_ship.png" id="4_1od3o"]
 [ext_resource type="Texture2D" uid="uid://cnt1y1ji64ih6" path="res://Assets/Sprites/Particles/circle_particle.png" id="5_001pd"]
 [ext_resource type="Texture2D" uid="uid://dgby0camk5lc1" path="res://Assets/Sprites/Particles/particle_rectangle.png" id="6_ixttc"]
 [ext_resource type="FontFile" uid="uid://wkc04qutggra" path="res://Assets/UI/Font/Hemi Head Bd It.otf" id="8_ka1rc"]
+[ext_resource type="PackedScene" uid="uid://dvudvtb5iwuml" path="res://Assets/Prefab/Planets/Shield/shield.tscn" id="10_f27py"]
+[ext_resource type="Script" path="res://addons/godot-rollback-netcode/NetworkTimer.gd" id="11_7pumf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yang"]
 radius = 24.1868
@@ -85,21 +88,23 @@ font_color = Color(0.113725, 1, 1, 1)
 outline_size = 5
 outline_color = Color(0.0627451, 0.0705882, 1, 1)
 
-[node name="Planet" type="Area2D"]
+[node name="Planet" type="Area2D" node_paths=PackedStringArray("shield") groups=["Planet", "network_sync"]]
 z_index = 1
 scale = Vector2(0.65, 0.65)
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("1_c1och")
-ship_speed_production = 6.0
+ship_speed_production = 0.5
 number_of_ships = 1
 auto_find_neighbors = true
-radius_neighbors = 100
-send_ship_cd = 0.35
+radius_neighbors = 250
+shield = NodePath("Shield")
+send_ship_cd = 0.27
 type = 4
 alliance = 4
 color_change_anim_duration = 0.0
-skill = ExtResource("2_daryf")
+base_skill = ExtResource("2_daryf")
+upgraded_skill = ExtResource("3_eg76c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3yang")
@@ -162,5 +167,22 @@ label_settings = SubResource("LabelSettings_jb8ti")
 [node name="IonizedShipsTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="Shield" parent="." instance=ExtResource("10_f27py")]
+modulate = Color(0.768627, 0.729412, 0.796078, 0.670588)
+z_index = 2
+scale = Vector2(0.35, 0.35)
+shield_regen_delay = 0
+shield_max_capacity = 5
+shield_reboot_time = 0
+dormant_shield = true
+
+[node name="ShipTimer" type="Node" parent="."]
+script = ExtResource("11_7pumf")
+
+[node name="IonizedTimer" type="Node" parent="."]
+script = ExtResource("11_7pumf")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="IonizedShipsTimer" to="." method="_on_ionized_ships_timeout"]
+[connection signal="timeout" from="ShipTimer" to="." method="_on_ship_timer_timeout"]
+[connection signal="timeout" from="IonizedTimer" to="." method="_on_ionized_timer_timeout"]

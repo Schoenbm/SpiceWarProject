@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c5kctcdtsyns5"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_i6dvs"]
+color = Color(0.864675, 0.864675, 0.864675, 1)
+grow_begin = 4.0
+grow_end = 4.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_o801y"]
+color = Color(0.498039, 0.498039, 0.498039, 1)
+grow_begin = 7.0
+grow_end = 6.0
+vertical = true
+
+[resource]
+HSeparator/styles/separator = SubResource("StyleBoxLine_i6dvs")
+VSeparator/styles/separator = SubResource("StyleBoxLine_o801y")

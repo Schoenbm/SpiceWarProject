@@ -27,7 +27,6 @@ thickness = 10
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4btoy"]
 texture = ExtResource("2_wthsp")
-modulate_color = Color(0.254902, 0.576471, 0.576471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btmfd"]
 bg_color = Color(0.219608, 0.403922, 0.509804, 1)

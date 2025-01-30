@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dwvd2x7rntqxd"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/increase_spice_production_efficiency.gd" id="1_qwodh"]
+
+[resource]
+script = ExtResource("1_qwodh")
+values = Array[int]([8, 5, 3, 2])
+effect_description = "Free Spice : "
+on_player = false
+type = 3

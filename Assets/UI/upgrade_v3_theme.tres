@@ -1,0 +1,58 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://coddisvibf2in"]
+
+[ext_resource type="StyleBox" uid="uid://b6h6xihjepg14" path="res://Assets/UI/ButtonResarchTheme.tres" id="1_xhksh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iohdd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8e1ph"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ypkg0"]
+bg_color = Color(0.966056, 0.992785, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.281752, 0.252949, 0.794429, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 20
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ml4pq"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rh5kk"]
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.129412, 0.105882, 0.423529, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 20
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwmy4"]
+bg_color = Color(0.914365, 0.962218, 0.975308, 1)
+border_width_left = 2
+border_width_top = 6
+border_width_right = 2
+border_color = Color(0.129412, 0.105882, 0.423529, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[resource]
+Button/constants/icon_max_width = 2
+Button/styles/focus = SubResource("StyleBoxEmpty_iohdd")
+Button/styles/hover = SubResource("StyleBoxEmpty_8e1ph")
+Button/styles/normal = ExtResource("1_xhksh")
+Button/styles/pressed = SubResource("StyleBoxFlat_ypkg0")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ml4pq")
+HSlider/styles/slider = SubResource("StyleBoxFlat_rh5kk")
+Label/colors/font_color = Color(0.129412, 0.105882, 0.423529, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_iwmy4")

@@ -23,8 +23,9 @@ uniform float move_speed = -3.0;
 
 
 void fragment() {
+	vec2 uv_offset = vec2(UV.x + 0.01, UV.y - 0.035);
 	vec4 circle_mask = texture(circle_texture, UV);
-	vec4 matrices = texture(matrices_texture, UV);
+	vec4 matrices = texture(matrices_texture, uv_offset);
 	float dist = distance(UV, vec2(0.5,0.5));
 	float rings = sin(dist * ring_frequency + (TIME * move_speed));
 	rings = step(ring_portion, rings);

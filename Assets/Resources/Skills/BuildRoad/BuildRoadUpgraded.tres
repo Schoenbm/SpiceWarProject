@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BuildRoad" load_steps=2 format=3 uid="uid://c8mpgxhdt02e7"]
+
+[ext_resource type="Script" path="res://Scripts/Skills/BuildRoad.gd" id="1_u1bgr"]
+
+[resource]
+script = ExtResource("1_u1bgr")
+range = 200
+bonus_range = 100
+spice_cost = 15.0

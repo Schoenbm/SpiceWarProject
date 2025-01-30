@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c0fswtw53c2xy"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/increase_probability_ionization.gd" id="1_ekdgu"]
+
+[resource]
+script = ExtResource("1_ekdgu")
+values = Array[float]([0.0, 0.2, 0.4, 0.5])
+effect_description = "Ion Probability : "
+on_player = false
+type = 1

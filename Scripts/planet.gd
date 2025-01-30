@@ -10,6 +10,8 @@ var current_ship_production = 0
 @export var number_of_ships = 0
 var number_of_ionized_ships = 0
 
+var bonus_damage_ionized_ships = 0
+
 @export var send_ship_threshold = 5
 @export var auto_find_neighbors = false
 @export var radius_neighbors = 64
@@ -32,7 +34,7 @@ var roads = {}
 var color_change_anim_time = 0
 
 var player : Player
-
+var planet_id : int
 var current_overlay : OverlayPlanet
 
 var base_scale : float
@@ -40,7 +42,10 @@ var base_scale : float
 
 #------------------------------------------------------------------------
 
-@export var skill : Skill
+var skill : Skill
+@export var base_skill : Skill
+@export var upgraded_skill : Skill
+var is_skill_upgraded = false
 var can_use_skill : bool
 var send_random : bool
 var send_all : bool
@@ -48,10 +53,20 @@ var send_all : bool
 var magnet = false
 @export var magnet_force = 2.0
 
+var network_production_bonus = 1
+var network_flowrate_bonus = 1
+
 signal self_updated(planet: Planet)
 
+@export var starter_player = 0
+var gm : GameManager
+
+var time_to_tick = 60
+
 func _ready() -> void:
-	$Timer.wait_time = send_ship_cd
+	gm = get_parent().get_parent()
+	skill = base_skill
+	$ShipTimer.wait_ticks = send_ship_cd * time_to_tick
 	can_send_ship = true
 	base_scale = scale.x
 	selected_neighbor = self
@@ -59,7 +74,7 @@ func _ready() -> void:
 	can_use_skill = true
 	
 # Called when the node enters the scene tree for the first time.
-func setup(aPlayer) -> void:
+func setup(aPlayer, new_planet_id = -1) -> void:
 	$PermanentCursorPivot.hide() #cache le curseur avant d'attaquer
 	$PlanetSprite.material.set_shader_parameter('transition_time',0)
 	$PlanetSprite.material.set_shader_parameter('transition_duration',color_change_anim_duration)
@@ -73,6 +88,8 @@ func setup(aPlayer) -> void:
 	input_neighbors.clear()
 	$PlanetSprite.material.set_shader_parameter('previous_color',PlanetType.get_alliance_color(alliance))
 	change_color_alliance(alliance, true)
+	if(new_planet_id != -1):
+		planet_id = new_planet_id
 
 func has_neighbor(neighbor : Planet) -> bool:
 	return roads.has(neighbor.name)
@@ -94,7 +111,7 @@ func change_color_alliance(pAlliance, first_time):
 		road.update_color(!first_time)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if(alliance != PlanetType.Alliance.NEUTRAL):
 		produce_ships(delta)
 		try_send_ship()
@@ -102,9 +119,9 @@ func _process(delta: float) -> void:
 	animate(delta)
 	pass
 	
-
 func try_send_ship() -> void : 
 	if(len(neighbors) > 0 && can_send_ship): # SI LE threshold EST ATTEINT ENVOI SHIP
+		can_send_ship = false
 		if(send_random && number_of_ships > send_ship_threshold):
 			send_ship(roads.values().pick_random())
 		elif(send_all):
@@ -116,12 +133,13 @@ func try_send_ship() -> void :
 
 func send_ship(road : Road):
 	if(number_of_ships >= 1):
-		road.send_ship(self, number_of_ionized_ships > 0)
+		road.send_ship(self, number_of_ionized_ships > 0, bonus_damage_ionized_ships)
 		reduce_ships_number(1)
-		can_send_ship = false	
+
+
 
 func produce_ships(delta: float) -> void:
-	current_ship_production += delta * ship_speed_production
+	current_ship_production += delta * ship_speed_production * network_production_bonus
 	if(current_ship_production >= 1):
 		number_of_ships += 1
 		current_ship_production -=1
@@ -154,9 +172,8 @@ func addShip(ionized : bool):
 
 func ionize_ship() -> bool:
 	if(number_of_ships > number_of_ionized_ships):
-		if($IonizedShipsTimer.is_stopped()):
-			$IonizedShipsTimer.start()
-			print("started")
+		if($IonizedTimer.is_stopped()):
+			$IonizedTimer.start()
 		number_of_ionized_ships += 1
 		return true
 	return false
@@ -165,20 +182,23 @@ func hit(damage : int, aAlliance : PlanetType.Alliance) -> void:
 	if(shield != null && shield.activated):
 		shield.hit(damage)
 		return
-		
 	reduce_ships_number(damage)
 	if(number_of_ships < 0):
-		change_alliance.emit(alliance, aAlliance)
-		$PlanetSprite.material.set_shader_parameter('previous_color',PlanetType.get_alliance_color(alliance)) #TODO on previent que cetait l'alliance davant au shader, pe faire ça ailleurs
-		self.alliance = aAlliance
-		particles_effect()
-		if(shield != null):
-			shield.alliance = aAlliance
-		change_color_alliance(alliance, false)
-		for road in roads.values():
-			road.start_color_transition()
+		set_alliance(aAlliance, false)
 		number_of_ships = 0
 
+func set_alliance(aAlliance, first_time):
+		self.alliance = aAlliance
+		if(!first_time):
+			change_alliance.emit(self, aAlliance)
+			$PlanetSprite.material.set_shader_parameter('previous_color',PlanetType.get_alliance_color(alliance)) #TODO on previent que cetait l'alliance davant au shader, pe faire ça ailleurs			
+			particles_effect()
+		if(shield != null):
+			shield.alliance = aAlliance
+		change_color_alliance(alliance, first_time)
+		for road in roads.values():
+			road.start_color_transition()
+		
 func particles_effect():
 	$CircleParticles.modulate = PlanetType.get_alliance_color(alliance)
 	$CircleParticles.emitting = true
@@ -198,16 +218,20 @@ func confirm_attack_on_planet(planet : Planet):
 	if planet != self:
 		if(selected_neighbor != self):
 			roads.get(selected_neighbor.name).manage_planet_attack(self,false)
-		selected_neighbor = planet
-		roads.get(selected_neighbor.name).manage_planet_attack(self,true)
-		$PermanentCursorPivot.look_at(selected_neighbor.position)
-		$PermanentCursorPivot.show()
-		enable_ship_timer(true)
-	else:
-		enable_ship_timer(false)
-		$PermanentCursorPivot.hide()
-		selected_neighbor = self
 
+		roads.get(planet.name).manage_planet_attack(self,true)
+		$PermanentCursorPivot.look_at(planet.position)
+		$PermanentCursorPivot.show()
+		start_attack(planet)
+	else:
+		$PermanentCursorPivot.hide()
+		start_attack(planet)
+
+
+func start_attack(attacked_planet : Planet):
+	selected_neighbor = attacked_planet
+	enable_ship_timer(attacked_planet != self)
+	
 #Detecte tout les voisins dans un cercle de rayon neighbor_radius et les place dans input_neighbors
 func detect_neighbors():
 	var space_state = get_world_2d().direct_space_state
@@ -232,7 +256,7 @@ func production_upgrade():
 	ship_speed_production *= 1.15
 
 
-func upgrade_planet(new_planet : Planet) -> void :
+func transform_planet(new_planet : Planet) -> void :
 	new_planet.alliance = alliance
 	new_planet.number_of_ships = number_of_ships
 	new_planet.neighbors = neighbors
@@ -241,6 +265,7 @@ func upgrade_planet(new_planet : Planet) -> void :
 	new_planet.global_position = self.global_position
 	new_planet.auto_find_neighbors = false
 	new_planet.name = self.name 
+	new_planet.planet_id = planet_id
 	
 	new_planet.setup(player)
 
@@ -250,7 +275,7 @@ func upgrade_planet(new_planet : Planet) -> void :
 	for road in new_planet.roads.values() :
 		road.change_planet(self, new_planet)
 	
-	self_updated.emit(new_planet)
+
 	
 	name = "GLORIOUS_EVOLUTION" 
 	add_sibling(new_planet)
@@ -259,6 +284,8 @@ func upgrade_planet(new_planet : Planet) -> void :
 	
 	if(selected_neighbor != self):
 		new_planet.confirm_attack_on_planet(selected_neighbor)
+	
+	self_updated.emit(new_planet)
 	self.queue_free()
 	
 	
@@ -271,37 +298,27 @@ func change_selected_neighbor(new_planet : Planet):
 	if(selected_neighbor.name == new_planet.name):
 		selected_neighbor = new_planet
 		
-
+func cancel_attack():
+	confirm_attack_on_planet(self)
+	
 func skill_in_use(bol):
 	can_use_skill = !bol
 
-#TODO Faire mieux car deux comparaisons a chaque fin de timer
-func _on_timer_timeout() -> void:
-	can_send_ship = true
-	if(selected_neighbor.magnet && !send_all && !send_random && $Timer.wait_time == send_ship_cd):
-		$Timer.wait_time = send_ship_cd / magnet_force
-	elif ($Timer.wait_time != send_ship_cd):
-		$Timer.wait_time = send_ship_cd
 
-func change_cooldown_ships(cd : float):
-	send_ship_cd = cd
-	$Timer.wait_time = cd
+func change_cooldown_ships(cd : float = -1):
+	if(cd == -1):
+		cd = send_ship_cd
+	$ShipTimer.wait_ticks = cd / network_flowrate_bonus * time_to_tick
+	acceleration_ships = network_flowrate_bonus
 
 func enable_ship_timer(bol):
 	if(bol):
-		$Timer.start()
+		$ShipTimer.start()
 	else:
-		$Timer.stop()
+		$ShipTimer.stop()
 
-
-func _on_ionized_ships_timeout() -> void:
-	number_of_ionized_ships -= 1
-	if(number_of_ionized_ships <= 0):
-		number_of_ionized_ships = 0
-		$IonizedShipsTimer.stop()
-
-func increase_durability_ionized_ships(coef : float):
-	$IonizedShipsTimer.wait_time *= coef
+func set_durability_ionized_ships(time : float):
+	$IonizedTimer.wait_ticks = time * time_to_tick
 	
 func reduce_ships_number(amount : int):
 	number_of_ships -= amount
@@ -311,3 +328,89 @@ func reduce_ships_number(amount : int):
 func update_color_of_road_to_neighbor(neighbor_name : String):
 	if(roads.has(neighbor_name)):
 		roads[neighbor_name].update_color(true)
+
+func set_shield(scale, max_capacity, regen):
+	$Shield.shield_max_capacity = max_capacity
+	$Shield.shield_regen_delay = regen
+	$Shield.scale = Vector2(scale,scale)
+
+func get_shield_capacity() -> int:
+	return $Shield.shield_capacity
+	
+func upgrade_skill(bol):
+	if(bol):
+		skill = upgraded_skill
+	else:
+		skill = base_skill
+
+func regen_shield(regen : int):
+	$Shield.regen_shield(1)
+	
+func is_shield_full() -> bool :
+	if(shield != null && shield.is_full()):
+		return true
+	return false
+	
+func _save_state() -> Dictionary:
+	var neighbors_id = []
+	for neighbor in neighbors.values():
+		neighbors_id.append(neighbor.planet_id)
+	var state = {
+		"position" : global_position,
+		"id" :  planet_id,
+		"selected_neighbor" : selected_neighbor.planet_id,
+		"neighbors" : neighbors_id,
+		"production_rate" : ship_speed_production,
+		"number_of_ships" : number_of_ships,
+		"number_of_ionized_ships" : number_of_ionized_ships,
+		#"send_ship_threshold" : send_ship_threshold,
+		#"send_ship_cd" : send_ship_cd,
+		#"alliance" : alliance,
+		#"network_flowrate_bonus" : network_flowrate_bonus,
+		#"network_production_bonus" : network_production_bonus,
+		#"magnet" : magnet,
+		#"shield_capacity" : shield.shield_capacity,
+		#"shield_max_capacity" : shield.shield_max_capacity,
+		#"shield_regen" : shield.shield_regen_delay,
+		#"dormant_shield" : shield.dormant_shield,
+		#"shield_reboot" : shield.shield_reboot_time,
+	}
+	return state
+
+func _load_state(state):
+	return
+	global_position = state.position
+	planet_id = state["id"]
+	selected_neighbor = gm.get_planets_from_planets_id([state["selected_neighbor"]])
+	neighbors = gm.get_planets_from_planets_id(state["neighbors"])
+	ship_speed_production = state["production_rate"]
+	number_of_ships = state["number_of_ships"]
+	number_of_ionized_ships = state["number_of_ionized_ships"]
+	#send_ship_threshold = state["send_ship_threshold"] 
+	#send_ship_cd = state["send_ship_cd"]
+	#alliance = state["alliance"] 
+	#network_flowrate_bonus = state["network_flowrate_bonus"]
+	#network_production_bonus = state["network_production_bonus"]
+	#magnet = state["magnet"]
+	#shield.shield_capacity = state["shield_capacity"]
+	#shield.shield_max_capacity = state["shield_max_capacity"] 
+	#shield.shield_regen = state["shield_regen"]
+	#shield.dormant = state["dormant_shield"]
+	#shield.shield_reboot_time = state["shield_reboot"]
+	gm.update_planets(self)
+
+
+func _on_ship_timer_timeout() -> void:
+	can_send_ship = true
+	if(selected_neighbor.magnet && !send_all && !send_random && $ShipTimer.wait_ticks == send_ship_cd * time_to_tick):
+		$ShipTimer.wait_ticks = (send_ship_cd *  magnet_force) * time_to_tick
+		print("magnet " + str(send_ship_cd * magnet_force))
+	elif ($ShipTimer.wait_ticks != send_ship_cd * time_to_tick) :
+		$ShipTimer.wait_ticks = send_ship_cd * time_to_tick
+
+
+func _on_ionized_timer_timeout() -> void:
+	number_of_ionized_ships -= 1
+	if(number_of_ionized_ships <= 0):
+		number_of_ionized_ships = 0
+		$IonizedTimer.stop()

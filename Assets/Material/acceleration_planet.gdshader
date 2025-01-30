@@ -9,8 +9,8 @@ void vertex() {
 }
 
 void fragment() {
-	float dist = -UV.x + 0.35 * abs(UV.y - 0.5);
-	float bands = sin(TIME * speed +  frequency * dist );
+	float dist = UV.x + 0.65 * abs(UV.y - 0.5);
+	float bands = sin(-TIME * speed +  frequency * dist );
 
 	bands = smoothstep(bandwith, bandwith + bandwith_smooth,bands);
 	if(bands <= 0.0)

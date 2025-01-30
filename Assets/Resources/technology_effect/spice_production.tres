@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b3lem8ngqbafu"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/increase_spice_production.gd" id="1_r8dbx"]
+
+[resource]
+script = ExtResource("1_r8dbx")
+values = Array[float]([0.75, 1.0, 1.25, 1.5])
+effect_description = "Spice Production : "
+on_player = false
+type = 3

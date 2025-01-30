@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://wfr426dleqpv" path="res://Assets/Sprites/curstor.png" id="2_gthsx"]
 [ext_resource type="PackedScene" uid="uid://cmux8nkev6y74" path="res://Assets/Prefab/Road/preroad.tscn" id="3_2nt2y"]
 
-[node name="LocalPlayer" type="Node2D"]
+[node name="LocalPlayer" type="Node2D" groups=["network_sync"]]
 z_index = 5
 position = Vector2(760, 577)
 script = ExtResource("1_leqkc")
-spell_cooldown = Array[float]([10.0])
+cancel_attack_radius = 50
+bound = Vector2(2000, 2000)
+spell_cooldown = Array[float]([10.0, 8.0, 6.0, 4.0])
 
 [node name="Cursor" type="Sprite2D" parent="."]
 z_index = 5

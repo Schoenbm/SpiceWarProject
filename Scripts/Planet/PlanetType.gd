@@ -1,13 +1,12 @@
 class_name PlanetType
 
 enum Alliance{
-	RED,
-	BLUE,
-	GREEN,
-	YELLOW,
-	NEUTRAL
+	RED = 0,
+	BLUE = 1,
+	GREEN = 2,
+	YELLOW = 3,
+	NEUTRAL = 4
 }
-
 
 
 static var alliances_colors = {
@@ -34,3 +33,9 @@ static func get_alliance_name(alliance) -> String:
 	if alliance in alliances_colors:
 		return alliances_string[alliance]
 	return "Unknown"
+
+static func get_alliance_from_name(name):
+	return Alliance[name] as int
+
+static func get_alliance_from_int(i : int):
+	return Alliance[Alliance.find_key(i)]

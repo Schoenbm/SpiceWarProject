@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkrsfwg4p1mqt"]
+
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_dub07"]
+[ext_resource type="Texture2D" uid="uid://cbpdyxi12yvop" path="res://Assets/Sprites/UI/Icons/Lab_planet_icon.png" id="3_6awc0"]
+[ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="4_hv0d2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m87ix"]
+resource_local_to_scene = true
+shader = ExtResource("4_hv0d2")
+shader_parameter/previous_color = Vector3(1, 1, 1)
+shader_parameter/color = Vector3(1, 0, 0)
+shader_parameter/transition_time = 0.0
+shader_parameter/transition_duration = 0.3
+
+[node name="Planet" instance=ExtResource("1_dub07")]
+ship_speed_production = 0.0
+type = 2
+
+[node name="PlanetSprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_m87ix")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="10"]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_6awc0")

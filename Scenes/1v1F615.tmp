@@ -1,0 +1,296 @@
+[gd_scene load_steps=41 format=3 uid="uid://bsbchmwr3synh"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_y26eu"]
+[ext_resource type="Script" path="res://Assets/Resources/technology_effect/Upgrade.gd" id="2_skaro"]
+[ext_resource type="Resource" uid="uid://c153l6fjaa5c" path="res://Assets/Resources/technology_effect/improve_flow.tres" id="3_tytax"]
+[ext_resource type="Resource" uid="uid://bp6fqa25xcjqq" path="res://Assets/Resources/technology_effect/improve_spell_range.tres" id="4_vl8r2"]
+[ext_resource type="Resource" uid="uid://sk5g6g8vmnve" path="res://Assets/Resources/technology_effect/magnet.tres" id="5_ocetf"]
+[ext_resource type="Resource" uid="uid://diaargqqqppqd" path="res://Assets/Resources/technology_effect/improve_production_speed_accelerator.tres" id="6_bs5tl"]
+[ext_resource type="Resource" uid="uid://6rhppyc117q0" path="res://Assets/Resources/technology_effect/improve_prod_speed.tres" id="7_81nm2"]
+[ext_resource type="Resource" uid="uid://c0fswtw53c2xy" path="res://Assets/Resources/technology_effect/improve_ion_probability.tres" id="8_pg533"]
+[ext_resource type="Resource" uid="uid://ben0kq84crymf" path="res://Assets/Resources/technology_effect/improve_ion_damage.tres" id="9_giq5x"]
+[ext_resource type="Resource" uid="uid://c0k8tytn6733y" path="res://Assets/Resources/technology_effect/improve_ion_survability.tres" id="10_w0wl8"]
+[ext_resource type="Resource" uid="uid://b3lem8ngqbafu" path="res://Assets/Resources/technology_effect/spice_production.tres" id="11_xbcbl"]
+[ext_resource type="Resource" uid="uid://dwvd2x7rntqxd" path="res://Assets/Resources/technology_effect/increase_spice_production_efficiency.tres" id="12_sctl7"]
+[ext_resource type="Resource" uid="uid://c67o7paudp1ra" path="res://Assets/Resources/technology_effect/decrease_cd_spell.tres" id="13_3pn4n"]
+[ext_resource type="Resource" uid="uid://c3rrqs7tx4xp0" path="res://Assets/Resources/technology_effect/improve_spell.tres" id="14_2126j"]
+[ext_resource type="Resource" uid="uid://blt6iuceluwyk" path="res://Assets/Resources/technology_effect/improve_shield.tres" id="15_e17t2"]
+[ext_resource type="Resource" uid="uid://wmjahllfnlvh" path="res://Assets/Resources/technology_effect/mini_shield.tres" id="16_qgykv"]
+[ext_resource type="Resource" uid="uid://dbsbaqfm1p34j" path="res://Assets/Resources/technology_effect/improve_network.tres" id="17_40hkb"]
+[ext_resource type="Script" path="res://Scripts/UI/cost.gd" id="18_eel6d"]
+[ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="23_pfif6"]
+[ext_resource type="Script" path="res://Scenes/sync_lost_text.gd" id="24_ku3wg"]
+[ext_resource type="PackedScene" uid="uid://c6grjvn04a2dv" path="res://Assets/Prefab/player.tscn" id="26_eqxce"]
+[ext_resource type="PackedScene" uid="uid://hxteagq3xy5n" path="res://Assets/Prefab/Menu/playerui.tscn" id="27_kbnas"]
+[ext_resource type="PackedScene" uid="uid://pj6qvxrb3t2x" path="res://Assets/Prefab/background.tscn" id="28_w5t35"]
+[ext_resource type="PackedScene" uid="uid://b88pa33kir0yp" path="res://Assets/Prefab/Menu/game_ui.tscn" id="29_cb4na"]
+
+[sub_resource type="Resource" id="Resource_sic7s"]
+script = ExtResource("18_eel6d")
+spice_cost = 10
+ship_cost = 0
+time_cost = 1
+
+[sub_resource type="Resource" id="Resource_5cv8l"]
+script = ExtResource("18_eel6d")
+spice_cost = 10
+ship_cost = 10
+time_cost = 1
+
+[sub_resource type="Resource" id="Resource_apeqc"]
+script = ExtResource("18_eel6d")
+spice_cost = 15
+ship_cost = 15
+time_cost = 3
+
+[sub_resource type="Resource" id="Resource_ophvp"]
+script = ExtResource("18_eel6d")
+spice_cost = 0
+ship_cost = 10
+time_cost = 20
+
+[sub_resource type="Resource" id="Resource_pnool"]
+script = ExtResource("18_eel6d")
+spice_cost = 10
+ship_cost = 10
+time_cost = 25
+
+[sub_resource type="Resource" id="Resource_1fl4k"]
+script = ExtResource("18_eel6d")
+spice_cost = 15
+ship_cost = 15
+time_cost = 30
+
+[sub_resource type="Resource" id="Resource_1hiwb"]
+script = ExtResource("18_eel6d")
+spice_cost = 5
+ship_cost = 5
+time_cost = 15
+
+[sub_resource type="Resource" id="Resource_tr4gg"]
+script = ExtResource("18_eel6d")
+spice_cost = 15
+ship_cost = 10
+time_cost = 20
+
+[sub_resource type="Resource" id="Resource_akss7"]
+script = ExtResource("18_eel6d")
+spice_cost = 25
+ship_cost = 10
+time_cost = 25
+
+[sub_resource type="Resource" id="Resource_dc6fj"]
+script = ExtResource("18_eel6d")
+spice_cost = 0
+ship_cost = 10
+time_cost = 15
+
+[sub_resource type="Resource" id="Resource_ssu43"]
+script = ExtResource("18_eel6d")
+spice_cost = 10
+ship_cost = 10
+time_cost = 20
+
+[sub_resource type="Resource" id="Resource_0hme7"]
+script = ExtResource("18_eel6d")
+spice_cost = 12
+ship_cost = 12
+time_cost = 25
+
+[sub_resource type="Resource" id="Resource_kmk8w"]
+script = ExtResource("18_eel6d")
+spice_cost = 10
+ship_cost = 10
+time_cost = 20
+
+[sub_resource type="Resource" id="Resource_8aj63"]
+script = ExtResource("18_eel6d")
+spice_cost = 15
+ship_cost = 15
+time_cost = 25
+
+[sub_resource type="Resource" id="Resource_5c80y"]
+script = ExtResource("18_eel6d")
+spice_cost = 20
+ship_cost = 20
+time_cost = 25
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_y23ik"]
+
+[node name="Level" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("1_y26eu")
+accelerator_research_effects = Array[ExtResource("2_skaro")]([ExtResource("3_tytax"), ExtResource("4_vl8r2"), ExtResource("5_ocetf"), ExtResource("6_bs5tl")])
+generator_research_effects = Array[ExtResource("2_skaro")]([ExtResource("7_81nm2"), ExtResource("8_pg533"), ExtResource("9_giq5x"), ExtResource("10_w0wl8")])
+rafinery_research_effects = Array[ExtResource("2_skaro")]([ExtResource("11_xbcbl"), ExtResource("12_sctl7"), ExtResource("13_3pn4n"), ExtResource("14_2126j")])
+shield_research_effects = Array[ExtResource("2_skaro")]([ExtResource("15_e17t2"), ExtResource("16_qgykv")])
+laboratory_research_effects = Array[ExtResource("2_skaro")]([ExtResource("17_40hkb")])
+accelerator_cost = Array[ExtResource("18_eel6d")]([SubResource("Resource_sic7s"), SubResource("Resource_5cv8l"), SubResource("Resource_apeqc")])
+generator_cost = Array[ExtResource("18_eel6d")]([SubResource("Resource_ophvp"), SubResource("Resource_pnool"), SubResource("Resource_1fl4k")])
+rafinery_cost = Array[ExtResource("18_eel6d")]([SubResource("Resource_1hiwb"), SubResource("Resource_tr4gg"), SubResource("Resource_akss7")])
+shield_cost = Array[ExtResource("18_eel6d")]([SubResource("Resource_dc6fj"), SubResource("Resource_ssu43"), SubResource("Resource_0hme7")])
+laboratory_cost = Array[ExtResource("18_eel6d")]([SubResource("Resource_kmk8w"), SubResource("Resource_8aj63"), SubResource("Resource_5c80y")])
+
+[node name="AllRoads" type="Node2D" parent="GameManager"]
+
+[node name="AllPlanets" type="Node2D" parent="GameManager"]
+
+[node name="Planet" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(768, 1290)
+number_of_ships = 5
+alliance = 0
+starter_player = 1
+
+[node name="Planet2" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(934, 1296)
+number_of_ships = 5
+alliance = 0
+starter_player = 1
+
+[node name="Planet3" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(653, 1141)
+number_of_ships = 2
+
+[node name="Planet4" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(852, 1143)
+number_of_ships = 3
+
+[node name="Planet5" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(1027, 1152)
+number_of_ships = 3
+
+[node name="Planet6" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(950, 971)
+number_of_ships = 5
+
+[node name="Planet7" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(1154, 971)
+number_of_ships = 5
+
+[node name="Planet8" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(1040, 815)
+number_of_ships = 8
+
+[node name="Planet9" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(1280, 811)
+number_of_ships = 8
+
+[node name="Planet10" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(738, 971)
+number_of_ships = 5
+
+[node name="Planet11" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(519, 964)
+number_of_ships = 5
+
+[node name="Planet12" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(612, 816)
+send_ship_threshold = 8
+
+[node name="Planet13" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(406, 815)
+number_of_ships = 8
+
+[node name="Planet14" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(507, 639)
+number_of_ships = 5
+
+[node name="Planet15" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(740, 644)
+number_of_ships = 5
+
+[node name="Planet16" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(950, 650)
+number_of_ships = 5
+
+[node name="Planet17" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(1160, 639)
+number_of_ships = 5
+
+[node name="Planet18" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(631, 517)
+number_of_ships = 3
+
+[node name="Planet19" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(857, 511)
+number_of_ships = 3
+
+[node name="Planet20" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(1044, 512)
+number_of_ships = 3
+
+[node name="Planet21" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(764, 373)
+number_of_ships = 5
+alliance = 1
+starter_player = 2
+
+[node name="Planet22" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
+position = Vector2(937, 373)
+number_of_ships = 5
+alliance = 1
+starter_player = 2
+
+[node name="Player" parent="GameManager" node_paths=PackedStringArray("context_menu") instance=ExtResource("26_eqxce")]
+context_menu = NodePath("../UI/CanvasLayer")
+
+[node name="UI" parent="GameManager" instance=ExtResource("27_kbnas")]
+
+[node name="CanvasLayer" parent="GameManager/UI" index="0" node_paths=PackedStringArray("player", "gm", "ResearchMenu")]
+follow_viewport_enabled = false
+player = NodePath("../../Player")
+gm = NodePath("../..")
+ResearchMenu = NodePath("../ResearchMenu")
+
+[node name="CanvasLayer" parent="GameManager/UI/ResearchMenu" index="0"]
+follow_viewport_enabled = false
+
+[node name="Button" parent="GameManager/UI/ResearchMenu/CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/Acceleration Bar" index="3"]
+button_group = SubResource("ButtonGroup_y23ik")
+
+[node name="Button" parent="GameManager/UI/ResearchMenu/CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/GeneratorBar" index="3"]
+button_group = SubResource("ButtonGroup_y23ik")
+
+[node name="Button" parent="GameManager/UI/ResearchMenu/CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/ShieldBar" index="3"]
+button_group = SubResource("ButtonGroup_y23ik")
+
+[node name="Button" parent="GameManager/UI/ResearchMenu/CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/SpiceBar" index="3"]
+button_group = SubResource("ButtonGroup_y23ik")
+
+[node name="Button" parent="GameManager/UI/ResearchMenu/CanvasLayer/VBoxContainer/AspectRatioContainer/PanelContainer/VBoxContainer/TierBarsMargin/TierBars/NetworkBar" index="3"]
+button_group = SubResource("ButtonGroup_y23ik")
+
+[node name="Background" parent="." instance=ExtResource("28_w5t35")]
+scale = Vector2(65.6296, 55.2234)
+
+[node name="GameUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("29_cb4na")]
+player = NodePath("../GameManager/Player")
+
+[node name="Multiplayer" type="CanvasLayer" parent="."]
+
+[node name="Reset" type="Button" parent="Multiplayer"]
+z_index = 5
+offset_top = 58.0
+offset_right = 93.0
+offset_bottom = 89.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "RESET"
+
+[node name="Label" type="Label" parent="Multiplayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -68.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Sync lost"
+script = ExtResource("24_ku3wg")
+
+[connection signal="research_is_closing" from="GameManager/UI/ResearchMenu" to="GameManager/UI/CanvasLayer" method="_on_research_menu_research_is_closing"]
+[connection signal="pressed" from="Multiplayer/Reset" to="GameManager" method="_on_stop_match_pressed"]
+
+[editable path="GameManager/UI"]
+[editable path="GameManager/UI/CanvasLayer"]
+[editable path="GameManager/UI/ResearchMenu"]

@@ -2,7 +2,6 @@ extends Player
 
 class_name LocalPlayer
 
-var alliance = PlanetType.Alliance.RED
 
 var active_touches_pos = {}
 
@@ -30,10 +29,12 @@ var cursor
 
 var choose_attack_mode : bool 
 var upgrade_menu_oppened : bool
+var spawn_camera : Vector2
 
-@export var context_menu : ContextMenu
+var context_menu : ContextMenu
 
 @export var spell_cooldown : Array[float]
+var spell_cooldown_tier = 0
 var can_use_spell : bool
 
 var camera : Camera2D
@@ -47,32 +48,32 @@ func preparePlayer() -> void:
 	camera = $Camera2D
 	$SpellCD.wait_time = spell_cooldown[0]
 	cursor.hide()
+	context_menu = get_parent().get_node("UI/CanvasLayer")
 	window_size = get_viewport().size
-	
+	gm.get_node("PlayerUI").set_player(self)
 	
 	visible_width = window_size.x / camera.zoom.x
 	visible_height = window_size.y / camera.zoom.y
 
 func clamp_pos():
-	position.x = clamp(position.x, visible_width / 2, bound.x - visible_width / 2)
-	position.y = clamp(position.y, visible_height / 2, bound.y - visible_height / 2)
+	position.x = clamp(position.x, 0, bound.x)
+	position.y = clamp(position.y, 0, bound.y)
 	
 
 func _unhandled_input(event):
-	if(upgrade_menu_oppened):
-		if(!event.is_pressed()):
-			return
-		upgrade_menu_oppened = false
-		active_planet = null
-		context_menu.player_close_context_menu()
 	
 	if event is	InputEventScreenTouch :
 			update_active_touches(event)
 			update_initial_distance(event)
-			if(event.double_tap):
-				if(active_planet !=null):
-					find_active_planet_in_areas(event)
-					active_planet.selected_neighbor = active_planet
+			
+			if(event.is_pressed() && upgrade_menu_oppened):
+				upgrade_menu_oppened = false
+				active_planet = null
+				context_menu.player_close_context_menu()
+			
+			var planet = find_planet(event)
+			if(event.double_tap && planet != null):
+				planet.cancel_attack()
 			elif(active_planet != null && event.is_released()):
 				if(choose_attack_mode):
 					confirm_attack()
@@ -81,8 +82,8 @@ func _unhandled_input(event):
 					context_menu.player_open_context_menu(active_planet)
 					upgrade_menu_oppened = true
 			elif(event.is_pressed()):
-				active_planet = null
-				find_active_planet_in_areas(event)
+				active_planet = planet
+
 				
 	if event is	InputEventScreenDrag :
 			update_active_touches(event)
@@ -134,7 +135,8 @@ func emule_touch(bol):
 	touch_1.pressed = bol  # Doigt appuyé
 	Input.parse_input_event(touch_1)
 
-func find_active_planet_in_areas(event):
+
+func find_planet(event) -> Planet:
 	if(event.pressed):
 		var space_state = get_world_2d().direct_space_state
 		var physics_query = PhysicsPointQueryParameters2D.new()
@@ -146,12 +148,10 @@ func find_active_planet_in_areas(event):
 
 		for result in results:
 			if(result.collider is Planet && result.collider.alliance == self.alliance):
-				print("find planet")
-				active_planet = result.collider
-	else:
-		print("lool")
-		active_planet = null
+				return result.collider
+	return null
 
+	
 func get_finger_pos() -> Vector2:
 	if(len(active_touches_pos) == 1):
 		return get_viewport().canvas_transform.affine_inverse() * active_touches_pos[0]
@@ -163,9 +163,9 @@ func preselect_planet():
 
 
 func confirm_attack():
-	active_planet.confirm_attack_on_planet(preselected_planet)
+	print("attak")
+	input_attack_planet(active_planet.planet_id, preselected_planet.planet_id)
 	cursor.hide()
-	
 
 
 func activate_attack_mode(bol : bool) :
@@ -222,5 +222,9 @@ func preselectClosestNeighbor(touch_pos):
 		if(min_distance > neighbor.global_position.distance_to(touch_pos)):
 			closest_neighbor = neighbor
 			min_distance = neighbor.global_position.distance_to(touch_pos)
-	if(global_position.distance_to(touch_pos) > cancel_attack_radius):
+	if(active_planet.global_position.distance_to(touch_pos) > cancel_attack_radius):
 		preselected_planet = closest_neighbor
+
+func upgrade_spell_cooldown():
+	spell_cooldown_tier += 1
+	$SpellCD.wait_time = spell_cooldown[spell_cooldown_tier]

@@ -9,9 +9,12 @@ var prod : float
 @export var boost : float
 @export var slow : float
 
+var size_neighbors
+
 func use_skill(aPlanet : Planet) -> void:
 	planet = aPlanet
-	planet.change_cooldown_ships( planet.send_ship_cd / boost)
+	size_neighbors = planet.neighbors.size()
+	planet.change_cooldown_ships( planet.send_ship_cd * size_neighbors/ boost)
 	planet.acceleration_ships
 	planet.send_all = true
 	planet.acceleration_ships /= slow
@@ -26,7 +29,7 @@ func use_skill(aPlanet : Planet) -> void:
 
 
 func _on_timeout():
-	planet.change_cooldown_ships( planet.send_ship_cd * boost)
+	planet.change_cooldown_ships( planet.send_ship_cd * boost / size_neighbors)
 	planet.send_all = false
 	planet.skill_in_use(false)
 	planet.enable_ship_timer(true)

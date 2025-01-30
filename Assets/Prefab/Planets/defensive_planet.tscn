@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://deh2o6x4w83v7"]
+[gd_scene load_steps=9 format=3 uid="uid://deh2o6x4w83v7"]
 
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="1_jeql6"]
 [ext_resource type="Shader" path="res://Assets/Material/planet.gdshader" id="2_qxyjn"]
-[ext_resource type="PackedScene" uid="uid://dvudvtb5iwuml" path="res://Assets/Prefab/Planets/Shield/shield.tscn" id="3_gs5ru"]
 [ext_resource type="Resource" uid="uid://cwg64t2ehfouh" path="res://Assets/Resources/Skills/ShieldDeplete/ShieldDeplaete.tres" id="3_pb6qw"]
-[ext_resource type="Shader" path="res://Assets/Material/shield.gdshader" id="5_opjn2"]
-[ext_resource type="Texture2D" uid="uid://dmq3kcfkpg0ua" path="res://Assets/Sprites/Shader/circlemask.png" id="6_jqd51"]
-[ext_resource type="Texture2D" uid="uid://4ak7hjulijxj" path="res://Assets/Sprites/—Pngtree—vector shield icon_3785558.png" id="7_avgox"]
-[ext_resource type="Texture2D" uid="uid://crvnu0h7qc4ui" path="res://Assets/Sprites/Shader/HexEdgeSmol.png" id="7_cg7ao"]
+[ext_resource type="Script" path="res://Scripts/Planet/defensive.gd" id="3_th0is"]
+[ext_resource type="Resource" uid="uid://d1hcpufd6b12g" path="res://Assets/Resources/Skills/ShieldDeplete/ShieldDeplaeteUpgraded.tres" id="4_vcs16"]
+[ext_resource type="Texture2D" uid="uid://2i4ebok8iekf" path="res://Assets/Sprites/UI/Icons/shield_icon.png" id="6_43se0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vrjwx"]
 resource_local_to_scene = true
@@ -17,23 +15,6 @@ shader_parameter/color = null
 shader_parameter/transition_time = null
 shader_parameter/transition_duration = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fnqm"]
-shader = ExtResource("5_opjn2")
-shader_parameter/blink_speed = 0.455
-shader_parameter/charged = false
-shader_parameter/fade_state = 0.0
-shader_parameter/hit = false
-shader_parameter/blink_charged_amp = 0.0
-shader_parameter/blink_charging_amp = 0.05
-shader_parameter/blink_charged_base = 0.4
-shader_parameter/blink_charging_base = 0.9
-shader_parameter/ring_color = Color(0.243137, 1, 1, 1)
-shader_parameter/ring_frequency = 3.0
-shader_parameter/ring_portion = -0.2
-shader_parameter/move_speed = -3.25
-shader_parameter/matrices_texture = ExtResource("7_cg7ao")
-shader_parameter/circle_texture = ExtResource("6_jqd51")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ktnjs"]
 resource_local_to_scene = true
 shader = ExtResource("2_qxyjn")
@@ -42,25 +23,34 @@ shader_parameter/color = Vector3(1, 0, 0)
 shader_parameter/transition_time = 0.0
 shader_parameter/transition_duration = 0.3
 
-[node name="DefensivePlanet" node_paths=PackedStringArray("shield") instance=ExtResource("1_jeql6")]
+[node name="DefensivePlanet" instance=ExtResource("1_jeql6")]
 material = SubResource("ShaderMaterial_vrjwx")
-ship_speed_production = 1.0
+script = ExtResource("3_th0is")
 number_of_ships = 0
-shield = NodePath("Shield")
 type = 5
-skill = ExtResource("3_pb6qw")
+alliance = 0
+color_change_anim_duration = 0.15
+base_skill = ExtResource("3_pb6qw")
+upgraded_skill = ExtResource("4_vcs16")
 
-[node name="Shield" parent="." index="0" instance=ExtResource("3_gs5ru")]
-modulate = Color(0.466667, 1, 1, 1)
-z_index = 1
-material = SubResource("ShaderMaterial_5fnqm")
-position = Vector2(-1, -1)
-scale = Vector2(0.5, 0.5)
-
-[node name="PlanetSprite" parent="." index="2"]
+[node name="PlanetSprite" parent="." index="1"]
 material = SubResource("ShaderMaterial_ktnjs")
 
-[node name="ShieldIcon" type="Sprite2D" parent="." index="5"]
-modulate = Color(1, 1, 1, 0.486)
-scale = Vector2(0.04, 0.04)
-texture = ExtResource("7_avgox")
+[node name="ShieldIcon" type="Sprite2D" parent="." index="4"]
+modulate = Color(0, 0, 0, 0.835294)
+scale = Vector2(0.115, 0.115)
+texture = ExtResource("6_43se0")
+
+[node name="Shield" parent="." index="10"]
+position = Vector2(-7.62939e-06, -1.90735e-06)
+scale = Vector2(1, 1)
+shield_capacity = 5
+shield_regen_delay = 1
+shield_max_capacity = 15
+shield_reboot_time = 1
+dormant_shield = false
+
+[node name="MiniShieldTimer" type="Timer" parent="." index="11"]
+wait_time = 1.25
+
+[connection signal="timeout" from="MiniShieldTimer" to="." method="_on_mini_shield_timer_timeout"]

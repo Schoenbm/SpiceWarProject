@@ -1,0 +1,500 @@
+[gd_scene load_steps=26 format=3 uid="uid://bl4y0ff6gbu8j"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade_menu.gd" id="1_ot0p4"]
+[ext_resource type="Theme" uid="uid://coddisvibf2in" path="res://Assets/UI/upgrade_v3_theme.tres" id="1_txgvp"]
+[ext_resource type="Texture2D" uid="uid://1d5bl7fvty1u" path="res://Assets/Sprites/UI/Icons/acceleration_icon.png" id="2_3t1i8"]
+[ext_resource type="LabelSettings" uid="uid://d4k140w2gky76" path="res://Assets/UI/Labels/upgrade_text.tres" id="3_7bhj4"]
+[ext_resource type="Texture2D" uid="uid://bg14umaeng1hn" path="res://Assets/Sprites/new_ship.png" id="3_bqbkv"]
+[ext_resource type="Texture2D" uid="uid://upwd0d3kq7i2" path="res://Assets/Sprites/UI/Icons/bolt_icon.png" id="5_2deo3"]
+[ext_resource type="Texture2D" uid="uid://2i4ebok8iekf" path="res://Assets/Sprites/UI/Icons/shield_icon.png" id="6_ac7j6"]
+[ext_resource type="Texture2D" uid="uid://bo6yhin7be626" path="res://Assets/Sprites/SpiceFactory.png" id="7_8itsj"]
+[ext_resource type="Texture2D" uid="uid://d367qiojcd5x1" path="res://Assets/Sprites/UI/Icons/money.png" id="7_jj02v"]
+[ext_resource type="Texture2D" uid="uid://cj683holwrm7m" path="res://Assets/Sprites/UI/Icons/Lab_icon.png" id="8_le8pa"]
+[ext_resource type="Texture2D" uid="uid://dt2jdfap7mbc3" path="res://Assets/Sprites/UI/Icons/SpellIcon/shield_spell_icon.png" id="8_n0hlk"]
+[ext_resource type="Texture2D" uid="uid://cpvx4ub3y00e2" path="res://Assets/Sprites/UI/Icons/SpellIcon/generator_spell icon.png" id="9_pa1ew"]
+[ext_resource type="Texture2D" uid="uid://bg7x42434khf4" path="res://Assets/Sprites/UI/Icons/Spices2_icon_blue.png" id="9_vh8lf"]
+[ext_resource type="Texture2D" uid="uid://c12865l7ttcl1" path="res://Assets/Sprites/UI/Icons/SpellIcon/Accelerator_spell_icon.png" id="9_x2dv2"]
+[ext_resource type="LabelSettings" uid="uid://cdi4gppd64ucv" path="res://Assets/UI/upgrade_menu_info.tres" id="10_phffb"]
+[ext_resource type="Texture2D" uid="uid://bxxlfsvtdqd08" path="res://Assets/Sprites/UI/Icons/SpellIcon/Normal_spell_icon.png" id="11_u0rdr"]
+[ext_resource type="Theme" uid="uid://ketuy06ig7wh" path="res://Assets/UI/ResearchTheme.tres" id="12_ennnc"]
+[ext_resource type="StyleBox" uid="uid://behkidh45iibq" path="res://Assets/UI/expend_button.tres" id="13_2bjw2"]
+[ext_resource type="Texture2D" uid="uid://h06lk6npn6jg" path="res://Assets/Sprites/UI/expand_up.png" id="16_sxmvo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_euvvc"]
+content_margin_left = 8.0
+content_margin_top = 11.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_color = Color(0.418763, 0.469639, 0.987371, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6rq1"]
+content_margin_left = 8.0
+content_margin_top = 11.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+bg_color = Color(0.913725, 0.960784, 0.976471, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_color = Color(0.129412, 0.105882, 0.423529, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="Theme" id="Theme_ttuc6"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_xf2ao"]
+color = Color(0.129412, 0.105882, 0.423529, 1)
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_t2bm0"]
+color = Color(0.129412, 0.105882, 0.423529, 1)
+grow_begin = 4.0
+thickness = 3
+vertical = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1fhk"]
+bg_color = Color(0.966056, 0.992785, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.129412, 0.105882, 0.423529, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+shadow_size = 2
+
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("AcceleratorButtonText", "ShieldButtonText", "GeneratorButtonText", "RafineryButtonText", "LaboratoryButtonText", "AcceleratorButton", "ShieldButton", "GeneratorButton", "RafineryButton", "LaboratoryButton", "SpellButton", "SpellButtonText", "ExpendButton", "ThresholdSlider", "ThresholdText", "PlanetText")]
+layer = 2
+follow_viewport_enabled = true
+script = ExtResource("1_ot0p4")
+popup_anim_duration = 0.2
+AcceleratorButtonText = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Acceleration/MarginContainer/HBoxContainer/Acceleration")
+ShieldButtonText = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Shield/MarginContainer/HBoxContainer/Shield")
+GeneratorButtonText = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Genreator/MarginContainer/HBoxContainer/Generator")
+RafineryButtonText = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Rafinery/MarginContainer/HBoxContainer/Rafinery")
+LaboratoryButtonText = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Laboratory/MarginContainer/HBoxContainer/Laboratory")
+AcceleratorButton = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Acceleration/AccelerationButton")
+ShieldButton = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Shield/ShieldButton")
+GeneratorButton = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Genreator/GeneratorButton")
+RafineryButton = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Rafinery/RafineryButton")
+LaboratoryButton = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Laboratory/LaboratoryButton")
+SpellButton = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer2/VBoxContainer/SpellButton")
+SpellButtonText = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer/Label")
+ExpendButton = NodePath("UpgradeMenuV3/VBoxContainer/Button")
+ThresholdSlider = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer3/VBoxContainer/HSlider")
+ThresholdText = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer3/VBoxContainer/Label")
+PlanetText = NodePath("UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer/HBoxContainer/Label2")
+accel_icon = ExtResource("2_3t1i8")
+shield_icon = ExtResource("6_ac7j6")
+generator_icon = ExtResource("5_2deo3")
+rafinery_icon = ExtResource("7_8itsj")
+laboratory_icon = ExtResource("8_le8pa")
+sell_icon = ExtResource("7_jj02v")
+spell_accel_icon = ExtResource("9_x2dv2")
+spell_shield_icon = ExtResource("8_n0hlk")
+spell_generator_icon = ExtResource("9_pa1ew")
+spell_rafinery_icon = ExtResource("11_u0rdr")
+spell_laboratory_icon = ExtResource("11_u0rdr")
+spell_normal_icon = ExtResource("11_u0rdr")
+
+[node name="UpgradeMenuV3" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.333
+anchor_top = 0.951
+anchor_right = 0.673
+anchor_bottom = 1.0
+offset_left = -136.863
+offset_top = -168.181
+offset_right = 134.397
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenuV3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -1
+alignment = 2
+
+[node name="Button" type="Button" parent="UpgradeMenuV3/VBoxContainer"]
+z_index = -1
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("12_ennnc")
+theme_override_colors/icon_normal_color = Color(0.597176, 0.597176, 0.597176, 1)
+theme_override_constants/icon_max_width = 35
+theme_override_styles/hover = ExtResource("13_2bjw2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_euvvc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_j6rq1")
+icon = ExtResource("16_sxmvo")
+icon_alignment = 1
+expand_icon = true
+
+[node name="PanelContainer" type="PanelContainer" parent="UpgradeMenuV3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("1_txgvp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = -3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="Acceleration" type="VBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AccelerationButton" type="Button" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Acceleration"]
+custom_minimum_size = Vector2(64, 62)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_txgvp")
+theme_override_constants/icon_max_width = 50
+icon = ExtResource("2_3t1i8")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Acceleration"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Acceleration/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Acceleration" type="Label" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Acceleration/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "10"
+label_settings = ExtResource("3_7bhj4")
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Acceleration/MarginContainer/HBoxContainer"]
+modulate = Color(0.501961, 0.403922, 0.827451, 1)
+texture_filter = 6
+custom_minimum_size = Vector2(10, 6)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_ttuc6")
+texture = ExtResource("3_bqbkv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Genreator" type="VBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="GeneratorButton" type="Button" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Genreator"]
+custom_minimum_size = Vector2(64, 62)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_txgvp")
+theme_override_constants/icon_max_width = 40
+icon = ExtResource("5_2deo3")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Genreator"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Genreator/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Generator" type="Label" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Genreator/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "10"
+label_settings = ExtResource("3_7bhj4")
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Genreator/MarginContainer/HBoxContainer"]
+modulate = Color(0.501961, 0.403922, 0.827451, 1)
+texture_filter = 6
+custom_minimum_size = Vector2(10, 6)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_ttuc6")
+texture = ExtResource("3_bqbkv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Shield" type="VBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 62)
+layout_mode = 2
+
+[node name="ShieldButton" type="Button" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Shield"]
+custom_minimum_size = Vector2(64, 62)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_txgvp")
+theme_override_constants/icon_max_width = 34
+icon = ExtResource("6_ac7j6")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Shield"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Shield/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Shield" type="Label" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Shield/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "10"
+label_settings = ExtResource("3_7bhj4")
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Shield/MarginContainer/HBoxContainer"]
+modulate = Color(0.501961, 0.403922, 0.827451, 1)
+texture_filter = 6
+custom_minimum_size = Vector2(10, 6)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_ttuc6")
+texture = ExtResource("3_bqbkv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Rafinery" type="VBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RafineryButton" type="Button" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Rafinery"]
+custom_minimum_size = Vector2(64, 62)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_txgvp")
+theme_override_constants/icon_max_width = 40
+icon = ExtResource("7_8itsj")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Rafinery"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Rafinery/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Rafinery" type="Label" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Rafinery/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "10"
+label_settings = ExtResource("3_7bhj4")
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Rafinery/MarginContainer/HBoxContainer"]
+modulate = Color(0.501961, 0.403922, 0.827451, 1)
+texture_filter = 6
+custom_minimum_size = Vector2(10, 6)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_ttuc6")
+texture = ExtResource("3_bqbkv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Laboratory" type="VBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LaboratoryButton" type="Button" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Laboratory"]
+custom_minimum_size = Vector2(64, 62)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_txgvp")
+theme_override_constants/icon_max_width = 40
+icon = ExtResource("8_le8pa")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Laboratory"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Laboratory/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 0
+
+[node name="Laboratory" type="Label" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Laboratory/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "10"
+label_settings = ExtResource("3_7bhj4")
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Laboratory/MarginContainer/HBoxContainer"]
+modulate = Color(0.501961, 0.403922, 0.827451, 1)
+texture_filter = 6
+custom_minimum_size = Vector2(10, 6)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_ttuc6")
+texture = ExtResource("3_bqbkv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HSeparator" type="HSeparator" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+theme_override_styles/separator = SubResource("StyleBoxLine_xf2ao")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Production	        
+Shield Capacity 
+Tier                      
+"
+label_settings = ExtResource("10_phffb")
+
+[node name="Label2" type="Label" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ": 0
+: 2
+: 3
+"
+label_settings = ExtResource("10_phffb")
+
+[node name="VSeparator" type="VSeparator" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_t2bm0")
+
+[node name="MarginContainer2" type="MarginContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="SpellButton" type="Button" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("1_txgvp")
+theme_override_colors/font_pressed_color = Color(0.233091, 0.201382, 0.68441, 1)
+theme_override_constants/icon_max_width = 79
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1fhk")
+icon = ExtResource("11_u0rdr")
+clip_text = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Label" type="Label" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
+
+[node name="TextureRect" type="TextureRect" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer2/VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.870588)
+texture_filter = 6
+custom_minimum_size = Vector2(16, 6)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_ttuc6")
+texture = ExtResource("9_vh8lf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VSeparator2" type="VSeparator" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_t2bm0")
+
+[node name="MarginContainer3" type="MarginContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Min Ship : 5"
+label_settings = ExtResource("3_7bhj4")
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_txgvp")
+min_value = 1.0
+step = 2.0
+value = 1.0
+
+[connection signal="pressed" from="UpgradeMenuV3/VBoxContainer/Button" to="." method="_on_expend_button_pressed"]
+[connection signal="pressed" from="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Acceleration/AccelerationButton" to="." method="_on_acceleration_button_pressed"]
+[connection signal="pressed" from="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Genreator/GeneratorButton" to="." method="_on_generator_button_pressed"]
+[connection signal="pressed" from="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Shield/ShieldButton" to="." method="_on_shield_button_pressed"]
+[connection signal="pressed" from="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Rafinery/RafineryButton" to="." method="_on_rafinery_button_pressed"]
+[connection signal="pressed" from="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Laboratory/LaboratoryButton" to="." method="_on_laboratory_button_pressed"]
+[connection signal="pressed" from="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer2/VBoxContainer/SpellButton" to="." method="_on_spell_button_pressed"]
+[connection signal="drag_ended" from="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer3/VBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="value_changed" from="UpgradeMenuV3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/MarginContainer3/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
