@@ -7,7 +7,6 @@ class_name Ship
 @export var shield_damage = 1
 
 var sending_planet_id : int
-var destination_planet_id : int
 var direction : Vector2
 const ship_scene : PackedScene = preload("res://Assets/Prefab/Ship/ship.tscn")
 const ionized_scene : PackedScene = preload("res://Assets/Prefab/Ship/ionized_ship.tscn")
@@ -30,21 +29,22 @@ static func spawn(data : Dictionary, road : Node2D , ionized : bool, shield_ship
 		SyncManager.spawn(name, road, Ship.ship_scene,data)
 
 func _network_spawn(data : Dictionary):
-	if(ionized):
-		shield_damage = data["ionized_bonus_damage"]
 	sending_planet_id = data["sender"]
-	destination_planet_id = data["destination"]
-	direction = data["position"]
+	direction = (data["direction"] - data["position"]).normalized()
 	alliance = data["alliance"]
-	speed =  speed * data["acceleration_ships"]
-	stop_moving = false
 	global_position = data["position"]
-	look_at(data["direction"] + global_position)
-	direction = data["direction"]
+	stop_moving = false
+	look_at(direction + global_position)
+
 	$ShipParticles.modulate = PlanetType.get_alliance_color(alliance)
 	$ShipSprite.self_modulate = PlanetType.get_alliance_color(alliance)
 	lifetime_particles = max($ShieldParticles.lifetime, $ShipParticles.lifetime, $PlanetParticles.lifetime)
 
+func _network_despawn():
+	$ShipSprite.show()
+	collision_layer = 1
+	collision_mask = 3
+	pass
 
 #static func create_ship(destination : Planet, sender : Planet, pIonized : bool, pShieldShip : bool = false) -> Ship:
 	#var new_ship
@@ -75,11 +75,8 @@ func _ready() -> void:
 	pass
 #PLANETE OU SHIP DETECTE
 func _on_area_entered(area: Area2D) -> void:
-	if (area is Planet && area.planet_id == destination_planet_id && alliance == area.alliance):
-		area.addShip(ionized)
-		destroy("", area.alliance)
-	elif(area is Planet && area.planet_id == destination_planet_id) : #Enemy planet 
-		area.hit(damage, alliance)
+	if (area is Planet && area.planet_id != sending_planet_id ):
+		area.addShip( alliance,damage, ionized)
 		destroy("planet", area.alliance)
 	elif(area is Ship && area.alliance != self.alliance): # vaisseau enemi
 		if(!area is ShieldShip):
@@ -110,7 +107,6 @@ func destroy(particules : String, hit_alliance : int ) -> void :
 
 func desactive_ship() -> void:
 		$ShipSprite.hide()
-		$CollisionShape2D.disabled
 		stop_moving = true
 		collision_layer = 0
 		collision_mask = 0
@@ -120,5 +116,3 @@ func desactive_ship() -> void:
 func change_planet(new_planet : Planet):
 	if(new_planet.planet_id == sending_planet_id):
 		sending_planet_id = new_planet.planet_id
-	else:
-		destination_planet_id = new_planet.planet_id

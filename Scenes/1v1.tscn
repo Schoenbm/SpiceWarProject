@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bsbchmwr3synh"]
+[gd_scene load_steps=41 format=3 uid="uid://bsbchmwr3synh"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_y26eu"]
 [ext_resource type="Script" path="res://Assets/Resources/technology_effect/Upgrade.gd" id="2_skaro"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/cost.gd" id="18_eel6d"]
 [ext_resource type="PackedScene" uid="uid://br4o8xqbdn12j" path="res://Assets/Prefab/Planets/planet.tscn" id="23_pfif6"]
 [ext_resource type="Script" path="res://Scenes/sync_lost_text.gd" id="24_ku3wg"]
+[ext_resource type="Script" path="res://Scripts/Tools/roadBuilder.gd" id="24_try41"]
 [ext_resource type="PackedScene" uid="uid://hxteagq3xy5n" path="res://Assets/Prefab/Menu/playerui.tscn" id="27_kbnas"]
 [ext_resource type="PackedScene" uid="uid://pj6qvxrb3t2x" path="res://Assets/Prefab/background.tscn" id="28_w5t35"]
 [ext_resource type="PackedScene" uid="uid://b88pa33kir0yp" path="res://Assets/Prefab/Menu/game_ui.tscn" id="29_cb4na"]
@@ -138,96 +139,140 @@ laboratory_cost = Array[ExtResource("18_eel6d")]([SubResource("Resource_kmk8w"),
 [node name="Planet" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(768, 1290)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 alliance = 0
 starter_player = 1
 
 [node name="Planet2" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(934, 1296)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 alliance = 0
 starter_player = 1
 
 [node name="Planet3" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(653, 1141)
 number_of_ships = 2
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet4" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(852, 1143)
 number_of_ships = 3
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet5" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(1027, 1152)
 number_of_ships = 3
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet6" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(950, 971)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet7" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(1154, 971)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet8" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(1040, 815)
 number_of_ships = 8
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet9" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(1280, 811)
 number_of_ships = 8
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet10" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(738, 971)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet11" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(519, 964)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet12" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(612, 816)
 send_ship_threshold = 8
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet13" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(406, 815)
 number_of_ships = 8
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet14" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(507, 639)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet15" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(740, 644)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet16" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(950, 650)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet17" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(1160, 639)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet18" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(631, 517)
 number_of_ships = 3
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet19" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(857, 511)
 number_of_ships = 3
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet20" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(1044, 512)
 number_of_ships = 3
+search_neighbors = true
+can_send_ship = true
 
 [node name="Planet21" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(764, 373)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 alliance = 1
 starter_player = 2
 
 [node name="Planet22" parent="GameManager/AllPlanets" instance=ExtResource("23_pfif6")]
 position = Vector2(937, 373)
 number_of_ships = 5
+search_neighbors = true
+can_send_ship = true
 alliance = 1
 starter_player = 2
 
@@ -259,6 +304,7 @@ button_group = SubResource("ButtonGroup_y23ik")
 [node name="PlayerUI" parent="GameManager" instance=ExtResource("29_cb4na")]
 
 [node name="Background" parent="." instance=ExtResource("28_w5t35")]
+position = Vector2(1107, 967)
 scale = Vector2(65.6296, 55.2234)
 
 [node name="Multiplayer" type="CanvasLayer" parent="."]
@@ -281,6 +327,13 @@ offset_bottom = 23.0
 grow_horizontal = 0
 text = "Sync lost"
 script = ExtResource("24_ku3wg")
+
+[node name="ToolBox" type="Node2D" parent="." node_paths=PackedStringArray("roads", "planets", "planet1", "planet2")]
+script = ExtResource("24_try41")
+roads = NodePath("../GameManager/AllRoads")
+planets = NodePath("../GameManager/AllPlanets")
+planet1 = NodePath("../GameManager/AllPlanets/Planet")
+planet2 = NodePath("../GameManager/AllPlanets/Planet2")
 
 [connection signal="research_is_closing" from="GameManager/UI/ResearchMenu" to="GameManager/UI/CanvasLayer" method="_on_research_menu_research_is_closing"]
 [connection signal="pressed" from="Multiplayer/Reset" to="GameManager" method="_on_stop_match_pressed"]

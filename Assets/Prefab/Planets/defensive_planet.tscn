@@ -41,7 +41,7 @@ modulate = Color(0, 0, 0, 0.835294)
 scale = Vector2(0.115, 0.115)
 texture = ExtResource("6_43se0")
 
-[node name="Shield" parent="." index="10"]
+[node name="Shield" parent="." index="8"]
 position = Vector2(-7.62939e-06, -1.90735e-06)
 scale = Vector2(1, 1)
 shield_capacity = 5

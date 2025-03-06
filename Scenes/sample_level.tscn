@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://k06bpausbfuq"]
+[gd_scene load_steps=39 format=3 uid="uid://k06bpausbfuq"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager.gd" id="2_4t0s1"]
 [ext_resource type="Script" path="res://Assets/Resources/technology_effect/Upgrade.gd" id="2_q15ae"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://dbsbaqfm1p34j" path="res://Assets/Resources/technology_effect/improve_network.tres" id="17_kgo1u"]
 [ext_resource type="Script" path="res://Scripts/UI/cost.gd" id="18_6hcln"]
 [ext_resource type="PackedScene" uid="uid://hxteagq3xy5n" path="res://Assets/Prefab/Menu/playerui.tscn" id="20_wcg2n"]
+[ext_resource type="Script" path="res://Scripts/Tools/roadBuilder.gd" id="22_u0trb"]
 
 [sub_resource type="Resource" id="Resource_sic7s"]
 script = ExtResource("18_6hcln")
@@ -163,6 +164,9 @@ button_group = SubResource("ButtonGroup_y23ik")
 [node name="Background" parent="." instance=ExtResource("3_8pr8n")]
 position = Vector2(820, 921)
 scale = Vector2(65.6296, 55.2234)
+
+[node name="Toolbox" type="Node2D" parent="."]
+script = ExtResource("22_u0trb")
 
 [connection signal="research_is_closing" from="GameManager/UI/ResearchMenu" to="GameManager/UI/CanvasLayer" method="_on_research_menu_research_is_closing"]
 

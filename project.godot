@@ -53,6 +53,11 @@ sync_debug={
 
 pointing/emulate_touch_from_mouse=true
 
+[network]
+
+rollback/input_delay=3
+rollback/spawn_manager/reuse_despawned_nodes=true
+
 [rendering]
 
 anti_aliasing/quality/msaa_2d=1

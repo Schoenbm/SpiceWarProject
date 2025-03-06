@@ -13,14 +13,14 @@
 [ext_resource type="Script" path="res://addons/godot-rollback-netcode/NetworkTimer.gd" id="11_7pumf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yang"]
-radius = 24.1868
+radius = 17.1172
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjrm6"]
 resource_local_to_scene = true
 shader = ExtResource("1_gdd4u")
 shader_parameter/previous_color = Vector3(1, 1, 1)
 shader_parameter/color = Vector3(1, 0, 0)
-shader_parameter/transition_time = 0.0
+shader_parameter/transition_time = null
 shader_parameter/transition_duration = 0.3
 
 [sub_resource type="Curve" id="Curve_sr2qk"]
@@ -90,13 +90,11 @@ outline_color = Color(0.0627451, 0.0705882, 1, 1)
 
 [node name="Planet" type="Area2D" node_paths=PackedStringArray("shield") groups=["Planet", "network_sync"]]
 z_index = 1
-scale = Vector2(0.65, 0.65)
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("1_c1och")
 ship_speed_production = 0.5
 number_of_ships = 1
-auto_find_neighbors = true
 radius_neighbors = 250
 shield = NodePath("Shield")
 send_ship_cd = 0.27
@@ -151,21 +149,15 @@ offset_bottom = -26.2308
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
-text = "0"
+text = "1"
 horizontal_alignment = 1
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="IonizedLabel" type="Label" parent="."]
 offset_left = 1.53846
 offset_top = -47.6923
 offset_right = 41.5385
 offset_bottom = -24.6923
-text = " "
 label_settings = SubResource("LabelSettings_jb8ti")
-
-[node name="IonizedShipsTimer" type="Timer" parent="."]
-wait_time = 3.0
 
 [node name="Shield" parent="." instance=ExtResource("10_f27py")]
 modulate = Color(0.768627, 0.729412, 0.796078, 0.670588)
@@ -182,7 +174,9 @@ script = ExtResource("11_7pumf")
 [node name="IonizedTimer" type="Node" parent="."]
 script = ExtResource("11_7pumf")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="IonizedShipsTimer" to="." method="_on_ionized_ships_timeout"]
+[node name="ProduceShipTimer" type="Node" parent="."]
+script = ExtResource("11_7pumf")
+
 [connection signal="timeout" from="ShipTimer" to="." method="_on_ship_timer_timeout"]
 [connection signal="timeout" from="IonizedTimer" to="." method="_on_ionized_timer_timeout"]
+[connection signal="timeout" from="ProduceShipTimer" to="." method="_on_produce_ship_timeout"]

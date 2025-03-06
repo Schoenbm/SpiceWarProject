@@ -158,12 +158,11 @@ func get_finger_pos() -> Vector2:
 	return Vector2.ZERO
 
 func preselect_planet():
-	preselectClosestNeighbor(	get_viewport().canvas_transform.affine_inverse() * active_touches_pos[0])
+	preselectClosestNeighbor(get_viewport().canvas_transform.affine_inverse() * active_touches_pos[0])
 	cursor.global_position = preselected_planet.global_position
 
 
 func confirm_attack():
-	print("attak")
 	input_attack_planet(active_planet.planet_id, preselected_planet.planet_id)
 	cursor.hide()
 

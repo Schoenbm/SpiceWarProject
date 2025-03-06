@@ -189,8 +189,8 @@ func set_alliance(planet : Planet):
 		pass#local_player.camera.position = planet.position
 
 func start_game():
-	for planet in planets.values():
-		planet.set_physics_process(true)
+	for planet in planets.values():	
+		planet.boot()
 
 
 func _on_stop_match_pressed() -> void:
@@ -244,10 +244,13 @@ func create_bot(index : int, alliance : int):
 func setup_planets():
 	var planet_id = 0
 	for planet in planets_node.get_children():
-		planet.set_physics_process(MultiplayerManager.solo)
+		planet.set_planet_id(planet_id)
 		planets[planet_id] = planet
-		planet.setup(local_player,planet_id)
 		planet_id += 1
+	for planet in planets_node.get_children():
+		planet.set_physics_process(MultiplayerManager.solo)
+
+		planet.setup(local_player)
 		planet.self_updated.connect(_on_planet_self_updated)
 		planet.change_alliance.connect(_on_planet_change_alliance)
 		if(planet.starter_player != 0):
@@ -272,7 +275,7 @@ func _save_state():
 		state[player.player_id] = {
 			"alliance" : player.alliance,
 			"tiers" : player.technology_tiers,
-			"name" : player.player_name
+			"player_name" : player.player_name
 		}
 	return state
 
@@ -280,16 +283,18 @@ func _save_state():
 func _load_state(state : Dictionary):
 	for player in players.values():
 		player.alliance = state[player.player_id]["alliance"]
-		player.tiers = state[player.player_id]["technology_tiers"]
-		player.name = state[player.player_id]["player_name"]
+		player.technology_tiers = state[player.player_id]["tiers"]
+		player.player_name = state[player.player_id]["player_name"]
 
-func get_planets_from_planets_id(planets_id : Array[int]) -> Dictionary:
+func get_planets_from_planets_id(planets_id : Array) -> Dictionary:
 	var vplanets = {}
 	for vplanet_id in planets_id:
-		vplanets[planets[vplanet_id].name] = planets[vplanet_id]
+		vplanets[vplanet_id] = planets[vplanet_id]
 	return vplanets
 
 func action(input : Dictionary):
+	if(input.size() > 0):
+		print(str(SyncManager._current_tick) + str(input))
 	if(input.has("upgrade")):
 		var up_type = PlanetData.Types[input["upgrade"][1]]
 		var up_planet = planets[input["upgrade"][0]]

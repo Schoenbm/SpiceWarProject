@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 
@@ -34,7 +35,10 @@ static func create_road(P1: Planet, P2: Planet) -> Road :
 func _ready() -> void:
 	prepareRoadSprite()
 
+
 func _physics_process(delta : float) -> void:
+	if Engine.is_editor_hint():
+		return;
 	transition_color(delta)
 
 	
@@ -53,22 +57,16 @@ func transition_color(delta : float) -> void:
 func send_ship(sender : Planet, ionized : bool, ionized_bonus_damage, shield_ship : bool = false):
 	current_ships_number+=1
 	var data : Dictionary
+	var receiver : Planet
 	if(sender == planet1):
-		data["destination"] = planet2.planet_id
-		data["sender"] = planet1.planet_id
-		data["direction"] = (planet2.global_position - planet1.global_position).normalized()
-		data["position"] = planet1.global_position
-		data["alliance"] = planet1.alliance
+		receiver = planet2
 	else:
-		data["sender"] = planet2.planet_id
-		data["destination"] = planet1.planet_id
-		data["direction"] = (planet1.global_position - planet2.global_position).normalized()
-		data["position"] = planet2.global_position
-		data["alliance"] = planet2.alliance
-	if(ionized):
-		data["ionized_bonus_damage"] = ionized_bonus_damage
-	data["acceleration_ships"] = sender.acceleration_ships
-	
+		receiver = planet1
+		
+	data["sender"] = sender.planet_id
+	data["direction"] = receiver.global_position
+	data["position"] = sender.global_position
+	data["alliance"] = sender.alliance
 
 	var name = "ship" +"_"+ PlanetType.get_alliance_name(sender.alliance)+"_" + str(current_ships_number)
 	
